@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
-import type { AppProps } from 'next/app';
+import type { AppProps, AppContext } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
 
 import GlobalStyles from '../styles/globalStyles';
@@ -14,9 +14,19 @@ export type NextPageWithLayout = NextPage & {
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
+  canonical: string;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+MyApp.getInitialProps = ({ ctx }: AppContext) => {
+  const { asPath } = ctx;
+  const canonical = `https://seungahhong-portfolio.vercel.app${asPath}`;
+
+  return {
+    canonical,
+  };
+};
+
+function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
 
@@ -24,7 +34,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <ThemeProvider theme={theme}>
       <Layout>
         <GlobalStyles />
-        <Template {...pageProps}>
+        <Template {...pageProps} canonical={canonical}>
           <Component {...pageProps} />
         </Template>
       </Layout>

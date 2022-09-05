@@ -6,6 +6,7 @@ interface TemplateProps {
   description: string;
   url: string;
   author: string;
+  canonical: string;
   children: ReactNode;
 }
 
@@ -14,6 +15,7 @@ const Template: FunctionComponent<TemplateProps> = ({
   description = '홍승아 포트폴리오에 오신걸 환영합니다.',
   url = 'https://seungahhong-portfolio.vercel.app',
   author = '홍승아',
+  canonical,
   children,
 }) => {
   return (
@@ -24,6 +26,7 @@ const Template: FunctionComponent<TemplateProps> = ({
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
+        <link rel="canonical" href={canonical} />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
