@@ -5,6 +5,9 @@ const Container = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 13px;
+  color: #abb7b7;
+  line-height: 20px;
   padding: ${(props) => props.theme.spacing['spacing-5']};
   border-top: 1px solid gray;
 `;

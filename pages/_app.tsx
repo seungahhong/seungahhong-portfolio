@@ -6,6 +6,7 @@ import { ThemeProvider } from '@emotion/react';
 import GlobalStyles from '../styles/globalStyles';
 import Layout from '../components/Layout';
 import theme from '../styles/theme';
+import Template from '../components/common/Template';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <ThemeProvider theme={theme}>
       <Layout>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <Template {...pageProps}>
+          <Component {...pageProps} />
+        </Template>
       </Layout>
     </ThemeProvider>
   );
