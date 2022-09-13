@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -14,6 +15,7 @@
     "emotion-reset": "^3.0.1",
     "facepaint": "^1.2.1",
     "next": "12.2.5",
+    "next-sitemap": "^3.1.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-responsive": "^9.0.0-beta.10"
