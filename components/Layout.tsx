@@ -21,7 +21,6 @@ const Container = styled.div`
 
 const Content = styled.main`
   display: flex;
-  align-items: center;
   justify-content: center;
   flex: 1;
 
