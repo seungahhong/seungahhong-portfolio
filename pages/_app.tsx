@@ -27,15 +27,6 @@ MyApp.getInitialProps = ({ ctx }: AppContext) => {
   };
 };
 
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-width: 1024px;
-  padding: 96px 0 60px;
-  margin: 0 auto;
-`;
-
 function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
@@ -46,9 +37,6 @@ function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
         <GlobalStyles />
         <Template {...pageProps} canonical={canonical}>
           {getLayout(<Component {...pageProps} />)}
-          {/* <Container>
-            <Component {...pageProps} />
-          </Container> */}
         </Template>
       </Layout>
     </ThemeProvider>

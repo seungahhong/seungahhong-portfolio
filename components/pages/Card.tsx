@@ -2,12 +2,15 @@ import { FunctionComponent } from 'react';
 import { keyframes, Keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { ImageProps } from 'next/image';
 
-interface IPageCardProps {
+export interface ICardProps {
   href: string;
-  imageSrc: string;
-  imageAlt: string;
+  image: {
+    src: string;
+    alt: string;
+    objectFit: string;
+  };
   title: string;
   description?: string;
   date?: string;
@@ -63,14 +66,12 @@ const CardImage = styled.div`
 
   img {
     position: absolute;
-    object-fit: contain;
   }
 `;
 
 const Content = styled.div`
   position: relative;
   z-index: 1;
-  margin-top: ${(props) => props.theme.spacing['spacing-6']};
   padding: 20px;
   background: rgba(248, 249, 250, 0.8);
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
@@ -89,10 +90,9 @@ const Description = styled.p`
   margin-top: ${(props) => props.theme.spacing['spacing-2']};
 `;
 
-const Card: FunctionComponent<IPageCardProps> = ({
+const Card: FunctionComponent<ICardProps> = ({
   href,
-  imageSrc,
-  imageAlt,
+  image,
   title,
   description,
   date,
@@ -104,10 +104,11 @@ const Card: FunctionComponent<IPageCardProps> = ({
           <a href={href}>
             <CardImage>
               <Image
-                src={imageSrc}
-                alt={imageAlt}
+                src={image.src}
+                alt={image.alt}
                 layout="fill"
                 aria-label="logo"
+                objectFit={image.objectFit as ImageProps['objectFit']}
               />
             </CardImage>
             <Content>
