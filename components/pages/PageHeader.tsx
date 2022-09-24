@@ -1,5 +1,10 @@
-import { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
+
+import facepaint from 'facepaint';
+import { breakpoints } from '../../helpers/styles/mediaQuery';
+
+const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
 interface IPageHeaderProps {
   title: string;
@@ -10,8 +15,11 @@ const Title = styled.h1`
   max-height: 1024px;
   text-align: center;
   ${(props) => props.theme.fonts.title1};
-  font-size: 60px;
   font-weight: 800;
+
+  ${mq({
+    'font-size': ['60px', '48px'],
+  })}
 `;
 
 const Description = styled.p`

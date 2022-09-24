@@ -14,6 +14,7 @@ const GlobalStyles = () => {
           font-smoothing: antialiased;
 
           word-break: keep-all;
+          overflow-wrap: break-word;
         }
       `}
     />

@@ -1,7 +1,17 @@
-import type { NextPage } from 'next';
+import styled from '@emotion/styled';
 import PageHeader from '../components/pages/PageHeader';
+import { NextPageWithLayout } from './_app';
 
-const About: NextPage = () => {
+const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 1024px;
+  padding: 96px 0 60px;
+  margin: 0 auto;
+`;
+
+const About: NextPageWithLayout = () => {
   return (
     <div>
       <PageHeader
@@ -11,6 +21,10 @@ const About: NextPage = () => {
       About Page
     </div>
   );
+};
+
+About.getLayout = function getLayout(page: React.ReactElement) {
+  return <Container>{page}</Container>;
 };
 
 export default About;

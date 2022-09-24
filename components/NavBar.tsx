@@ -92,7 +92,7 @@ const SocialLink = styled.a`
 `;
 
 const Navbar: FunctionComponent = () => {
-  const [isMobile] = useMediaQuery();
+  const isMobile = useMediaQuery();
 
   return (
     <Container>
