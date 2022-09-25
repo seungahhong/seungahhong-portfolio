@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { keyframes, Keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import Image, { ImageProps } from 'next/image';
 
 export interface ICardProps {
-  href: string;
+  href?: string;
   image: {
     src: string;
     alt: string;
@@ -97,11 +97,27 @@ const Card: FunctionComponent<ICardProps> = ({
   description,
   date,
 }) => {
+  const withAnchore = useCallback(
+    (href: string | undefined, WrappedComponent: React.ReactNode) => {
+      if (!href) {
+        return WrappedComponent;
+      }
+
+      return (
+        <Link href={href}>
+          <a href={href}>{WrappedComponent}</a>
+        </Link>
+      );
+    },
+    []
+  );
+
   return (
     <Container animation={bounce}>
       <Inner>
-        <Link href={href}>
-          <a href={href}>
+        {withAnchore(
+          href,
+          <>
             <CardImage>
               <Image
                 src={image.src}
@@ -116,8 +132,8 @@ const Card: FunctionComponent<ICardProps> = ({
               {description && <Description>{description}</Description>}
               {date && <Description>{date}</Description>}
             </Content>
-          </a>
-        </Link>
+          </>
+        )}
       </Inner>
     </Container>
   );

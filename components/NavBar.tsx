@@ -1,7 +1,8 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useCallback, useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
+import Social from './Social';
 import useMediaQuery from '../helpers/hooks/useMediaQuery';
 import { breakpoints } from '../helpers/styles/mediaQuery';
 
@@ -9,18 +10,27 @@ import NavLink from './NavLink';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
+interface INavMenuProps {
+  color: string;
+  fontWeight: number | string;
+}
+
+interface INavigationProps {
+  isOpen: boolean;
+}
+
 const Container = styled.header`
   position: relative;
-  background: yellow;
 
-  ${mq({
-    position: ['fixed', 'relative'],
-    width: ['25%', '100%'],
-    left: 0,
-    top: 0,
-    bottom: 0,
-    padding: ['0', '80px 40px'],
-  })}
+  ${(props) =>
+    mq({
+      position: ['fixed', 'relative'],
+      width: ['25%', '100%'],
+      left: 0,
+      top: 0,
+      bottom: 0,
+      padding: ['0', props.theme.spacing['spacing-7']],
+    })}
 `;
 
 const Overlay = styled.div`
@@ -33,9 +43,12 @@ const Overlay = styled.div`
 `;
 
 const Content = styled.div`
+  display: flex;
   position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
   bottom: 0;
-  padding: 60px 30px 52px;
   color: #fff;
   font-weight: 600;
 
@@ -43,19 +56,28 @@ const Content = styled.div`
     font-size: 28px;
     ${(props) =>
       mq({
-        marginBottom: [
-          props.theme.spacing['spacing-5'],
-          props.theme.spacing['spacing-3'],
-        ],
+        marginBottom: [props.theme.spacing['spacing-5'], 0],
+        fontSize: ['28px', '20px'],
       })}
   }
 
   & > p {
     font-size: 20px;
   }
+
+  ${(props) =>
+    mq({
+      left: ['auto', 0],
+      top: ['auto', 0],
+      right: ['auto', 0],
+      alignItems: ['stretch', 'center'],
+      flexDirection: ['column', 'row'],
+      padding: ['60px 30px 52px', props.theme.spacing['spacing-5']],
+      justifyContent: ['normal', 'space-between'],
+    })}
 `;
 
-const NavMenu = styled.div`
+const NavMenu = styled.div<INavMenuProps>`
   margin-top: 30px;
 
   & > ul {
@@ -65,105 +87,133 @@ const NavMenu = styled.div`
 
     a {
       text-decoration: none;
-      color: #fff;
+      font-weight: ${(props) => props.fontWeight};
+      color: ${(props) => props.color};
     }
   }
 `;
 
-const SocialLinkContainer = styled.div`
-  display: grid;
-  grid-template-columns: 40px 40px 40px 40px;
-  grid-gap: 8px;
-  margin-top: 36px;
+const Menu = styled.div`
+  position: relative;
+  width: 24px;
+  height: 20px;
+  margin-left: 8px;
+
+  & > span:before {
+    top: -8px;
+  }
+
+  & > span:after {
+    top: 8px;
+  }
 `;
 
-const SocialLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+const MenuItem = styled.span`
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
   background: rgba(255, 255, 255, 0.7);
-  color: #161b21;
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  font-size: 20px;
-  border: none;
-  border-radius: 50%;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transition: all 0.1s;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transition: all 0.1s;
+    background: rgba(255, 255, 255, 0.7);
+  }
 `;
 
+const Navigation = styled.section<INavigationProps>`
+  position: fixed;
+  left: ${(props) => (props.isOpen ? 0 : '100%')};
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  background: #ffffff;
+  opacity: ${(props) => (props.isOpen ? 1 : 0)};
+  padding: ${(props) => props.theme.spacing['spacing-5']};
+  transition: all 0.75s ease;
+`;
+
+const NavTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & > h2 {
+    ${(props) => props.theme.fonts.title1};
+  }
+`;
 const Navbar: FunctionComponent = () => {
   const isMobile = useMediaQuery();
+  const [isOpen, setOpen] = useState<boolean>(false);
+
+  const handleNavClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  const handleNavOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
 
   return (
-    <Container>
-      <Image src="/background-NavBar.jpg" alt="" layout="fill" aria-hidden />
-      <Overlay />
-      <Content>
-        <h3>홍승아</h3>
-        <p>성장과 협업을 좋아하는 프론트엔드 개발자입니다.</p>
-        {!isMobile && (
-          <>
-            <NavMenu>
-              <NavLink />
-            </NavMenu>
-            <SocialLinkContainer>
-              <SocialLink
-                href="https://github.com/seungahhong"
-                rel="noopener noreferrer"
-                title="github"
-                target="_blank"
-              >
-                <Image
-                  src="/github.svg"
-                  alt="github icon"
-                  width={40}
-                  height={40}
-                />
-              </SocialLink>
-              <SocialLink
-                href="https://material-debt-c1c.notion.site/daa60481e37840ea9e1b7e1b12269942"
-                rel="noopener noreferrer"
-                title="notion"
-                target="_blank"
-              >
-                <Image
-                  src="/notion.svg"
-                  alt="notion icon"
-                  width={30}
-                  height={30}
-                />
-              </SocialLink>
-              <SocialLink
-                href="https://www.linkedin.com/in/seungahhong/"
-                rel="noopener noreferrer"
-                title="linkedin"
-                target="_blank"
-              >
-                <Image
-                  src="/linkedin.svg"
-                  alt="linkedin icon"
-                  width={38}
-                  height={38}
-                />
-              </SocialLink>
-              <SocialLink
-                href="https://www.facebook.com/people/%ED%99%8D%EC%8A%B9%EC%95%84/100002349562000/"
-                rel="noopener noreferrer"
-                title="facebook"
-                target="_blank"
-              >
-                <Image
-                  src="/facebook.svg"
-                  alt="facebook icon"
-                  width={32}
-                  height={32}
-                />
-              </SocialLink>
-            </SocialLinkContainer>
-          </>
-        )}
-      </Content>
-    </Container>
+    <>
+      <Container>
+        <Image src="/background-NavBar.jpg" alt="" layout="fill" aria-hidden />
+        <Overlay />
+        <Content>
+          <h3>홍승아 포트폴리오</h3>
+          {isMobile && (
+            <Menu onClick={handleNavOpen}>
+              <MenuItem />
+            </Menu>
+          )}
+          {!isMobile && (
+            <>
+              <p>성장과 협업을 좋아하는 프론트엔드 개발자입니다.</p>
+              <NavMenu color="#ffffff" fontWeight="normal">
+                <NavLink />
+              </NavMenu>
+              <Social />
+            </>
+          )}
+        </Content>
+      </Container>
+      <Navigation isOpen={isOpen} onClick={handleNavClose}>
+        <NavTitle>
+          <h2>Menu</h2>
+          <Image
+            src="/close_circle.svg"
+            alt="Close Button"
+            width={32}
+            height={32}
+          />
+        </NavTitle>
+        <NavMenu color="#000000" fontWeight={700}>
+          <NavLink />
+        </NavMenu>
+        <Social />
+      </Navigation>
+    </>
   );
 };
 

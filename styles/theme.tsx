@@ -6,6 +6,7 @@ const spacing = {
   'spacing-5': '16px',
   'spacing-6': '24px',
   'spacing-7': '32px',
+  'spacing-8': '40px',
 };
 
 const fonts = {

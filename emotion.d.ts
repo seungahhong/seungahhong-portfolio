@@ -42,6 +42,8 @@ declare module '@emotion/react' {
       'spacing-4': string;
       'spacing-5': string;
       'spacing-6': string;
+      'spacing-7': string;
+      'spacing-8': string;
     };
 
     theme: {
