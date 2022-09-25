@@ -198,7 +198,7 @@ const Navbar: FunctionComponent = () => {
           )}
         </Content>
       </Container>
-      <Navigation isOpen={isOpen} onClick={handleNavClose}>
+      <Navigation isOpen={isOpen}>
         <NavTitle>
           <h2>Menu</h2>
           <Image
@@ -206,10 +206,11 @@ const Navbar: FunctionComponent = () => {
             alt="Close Button"
             width={32}
             height={32}
+            onClick={handleNavClose}
           />
         </NavTitle>
         <NavMenu color="#000000" fontWeight={700}>
-          <NavLink />
+          <NavLink handleClose={handleNavClose} />
         </NavMenu>
         <Social />
       </Navigation>

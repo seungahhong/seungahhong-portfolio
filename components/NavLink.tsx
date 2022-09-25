@@ -1,9 +1,15 @@
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
 
-const NavLink: FunctionComponent = () => {
+interface INaveLinkProps {
+  handleClose?: () => void;
+}
+
+const NavLink: FunctionComponent<INaveLinkProps> = ({
+  handleClose = () => {},
+}) => {
   return (
-    <ul>
+    <ul onClick={handleClose}>
       <li>
         <Link href="/">
           <a>Home</a>
