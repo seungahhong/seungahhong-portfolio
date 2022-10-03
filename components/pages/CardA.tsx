@@ -90,7 +90,7 @@ const Description = styled.p`
   margin-top: ${(props) => props.theme.spacing['spacing-2']};
 `;
 
-const Card: FunctionComponent<ICardProps> = ({
+const CardA: FunctionComponent<ICardProps> = ({
   href,
   image,
   title,
@@ -139,4 +139,4 @@ const Card: FunctionComponent<ICardProps> = ({
   );
 };
 
-export default Card;
+export default CardA;

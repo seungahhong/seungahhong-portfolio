@@ -4,7 +4,7 @@ import facepaint from 'facepaint';
 import { worksDatas } from '../../helpers/datas/works';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
 import PageHeader from '../../components/pages/PageHeader';
-import Card, { ICardProps } from '../../components/pages/Card';
+import CardA, { ICardProps } from '../../components/pages/CardA';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
 import { NextPageWithLayout } from '../_app';
@@ -49,7 +49,7 @@ const Works: NextPageWithLayout = () => {
           <List>
             {cards.map((card, index) => (
               <li key={`WorksCard_${index}`} role="none">
-                <Card {...card} href={`/works/${card.href}`} />
+                <CardA {...card} href={`/works/${card.href}`} />
               </li>
             ))}
           </List>

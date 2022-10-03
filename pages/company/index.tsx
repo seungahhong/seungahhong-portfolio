@@ -4,7 +4,7 @@ import facepaint from 'facepaint';
 import { companyDatas } from '../../helpers/datas/company';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
 import PageHeader from '../../components/pages/PageHeader';
-import Card, { ICardProps } from '../../components/pages/Card';
+import CardA, { ICardProps } from '../../components/pages/CardA';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
 import { NextPageWithLayout } from '../_app';
@@ -49,7 +49,7 @@ const Company: NextPageWithLayout = () => {
           <List>
             {cards.map((card, index) => (
               <li key={`CompanyCard_${index}`} role="none">
-                <Card {...card} href={`/company/${card.href}`} />
+                <CardA {...card} href={`/company/${card.href}`} />
               </li>
             ))}
           </List>
