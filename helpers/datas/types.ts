@@ -1,4 +1,4 @@
-export interface IProjectType {
+export interface IProjectDatas {
   title: string;
   image: {
     src: string;
@@ -10,4 +10,8 @@ export interface IProjectType {
     href: string;
     label: string;
   };
+}
+
+export interface IProjectType {
+  [key: string]: IProjectDatas[];
 }

@@ -11,7 +11,7 @@ import {
   companyDatas,
   companyProdjectDatas,
 } from '../../helpers/datas/company';
-import { IProjectType } from '../../helpers/datas/types';
+import { IProjectDatas } from '../../helpers/datas/types';
 
 const Container = styled.section`
   display: flex;
@@ -50,9 +50,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  datas: IProjectType[];
-}> = async () => {
-  const datas: IProjectType[] = companyProdjectDatas;
+  datas: IProjectDatas[];
+}> = async (context) => {
+  const id = context?.params?.id?.toString() || '';
+  const datas = companyProdjectDatas[id];
 
   return {
     props: {
@@ -67,7 +68,7 @@ const CompanyItem = ({
   return (
     datas.length > 0 && (
       <ClassNames>
-        {({ css, cx }) => (
+        {({ css }) => (
           <ul>
             {datas.map((data, index) => (
               <CardB

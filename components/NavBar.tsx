@@ -143,15 +143,15 @@ const MenuItem = styled.span`
 
 const Navigation = styled.section<INavigationProps>`
   position: fixed;
-  left: ${(props) => (props.isOpen ? 0 : '100%')};
+  left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   z-index: 1;
   background: #ffffff;
-  opacity: ${(props) => (props.isOpen ? 1 : 0)};
+  transform: translateX(${(props) => (props.isOpen ? 0 : '100%')});
   padding: ${(props) => props.theme.spacing['spacing-5']};
-  transition: all 0.75s ease;
+  transition: all 1s ease;
 `;
 
 const NavTitle = styled.div`
