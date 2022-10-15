@@ -18,7 +18,7 @@ const Title = styled.h1`
   font-weight: 800;
 
   ${mq({
-    'font-size': ['60px', '48px'],
+    fontSize: ['60px', '48px'],
   })}
 `;
 

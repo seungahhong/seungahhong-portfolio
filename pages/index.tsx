@@ -30,13 +30,14 @@ const Description = styled.div`
   font-size: 32px;
   font-weight: 700;
   line-height: 32px;
+  text-align: center;
+  color: #212529;
 `;
 
 const Home: NextPageWithLayout = () => {
   return (
     <Container>
       <Content>
-        <PageHeader title="포트폴리오" />
         <Description>
           항상 도전하고 노력하며 공유하는 프론트엔드 개발자입니다.
         </Description>

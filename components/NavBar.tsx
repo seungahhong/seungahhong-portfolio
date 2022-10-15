@@ -3,10 +3,10 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 import Social from './social/Social';
-import useMediaQuery from '../helpers/hooks/useMediaQuery';
 import { breakpoints } from '../helpers/styles/mediaQuery';
 
 import NavLink from './NavLink';
+import Link from 'next/link';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
@@ -52,17 +52,19 @@ const Content = styled.div`
   color: #fff;
   font-weight: 600;
 
-  & > h3 {
+  & > a {
+    text-decoration: none;
+  }
+
+  & h3 {
     font-size: 28px;
+    color: #fff;
+
     ${(props) =>
       mq({
         marginBottom: [props.theme.spacing['spacing-5'], 0],
         fontSize: ['28px', '20px'],
       })}
-  }
-
-  & > p {
-    font-size: 20px;
   }
 
   ${(props) =>
@@ -93,18 +95,31 @@ const NavMenu = styled.div<INavMenuProps>`
   }
 `;
 
-const Menu = styled.div`
-  position: relative;
-  width: 24px;
-  height: 20px;
-  margin-left: 8px;
+const MobileMenu = styled.div`
+  display: none;
 
-  & > span:before {
-    top: -8px;
+  @media (max-width: 1024px) {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 20px;
+    margin-left: 8px;
+
+    & > span:before {
+      top: -8px;
+    }
+
+    & > span:after {
+      top: 8px;
+    }
   }
+`;
 
-  & > span:after {
-    top: 8px;
+const DesktopMenu = styled.div`
+  display: block;
+
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
@@ -164,15 +179,16 @@ const NavTitle = styled.div`
   }
 `;
 const Navbar: FunctionComponent = () => {
-  const isMobile = useMediaQuery();
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleNavClose = useCallback(() => {
     setOpen(false);
+    document.body.style.overflow = 'auto';
   }, []);
 
   const handleNavOpen = useCallback(() => {
     setOpen(true);
+    document.body.style.overflow = 'hidden';
   }, []);
 
   return (
@@ -181,21 +197,20 @@ const Navbar: FunctionComponent = () => {
         <Image src="/background-NavBar.jpg" alt="" layout="fill" aria-hidden />
         <Overlay />
         <Content>
-          <h3>홍승아 포트폴리오</h3>
-          {isMobile && (
-            <Menu onClick={handleNavOpen}>
-              <MenuItem />
-            </Menu>
-          )}
-          {!isMobile && (
-            <>
-              <p>성장과 협업을 좋아하는 프론트엔드 개발자입니다.</p>
-              <NavMenu color="#ffffff" fontWeight="normal">
-                <NavLink />
-              </NavMenu>
-              <Social />
-            </>
-          )}
+          <Link href="/">
+            <a>
+              <h3>홍승아 포트폴리오</h3>
+            </a>
+          </Link>
+          <MobileMenu onClick={handleNavOpen}>
+            <MenuItem />
+          </MobileMenu>
+          <DesktopMenu>
+            <NavMenu color="#ffffff" fontWeight="normal">
+              <NavLink />
+            </NavMenu>
+            <Social />
+          </DesktopMenu>
         </Content>
       </Container>
       <Navigation isOpen={isOpen}>
