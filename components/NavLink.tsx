@@ -1,9 +1,14 @@
 import { FunctionComponent } from 'react';
+import styled from '@emotion/styled';
 import Link from 'next/link';
 
 interface INaveLinkProps {
   handleClose?: () => void;
 }
+
+const Anchor = styled.a`
+  display: block;
+`;
 
 const NavLink: FunctionComponent<INaveLinkProps> = ({
   handleClose = () => {},
@@ -12,22 +17,22 @@ const NavLink: FunctionComponent<INaveLinkProps> = ({
     <ul onClick={handleClose}>
       <li>
         <Link href="/">
-          <a>Home</a>
+          <Anchor>Home</Anchor>
         </Link>
       </li>
       <li>
         <Link href="/company">
-          <a>Company</a>
+          <Anchor>Company</Anchor>
         </Link>
       </li>
       <li>
         <Link href="/works">
-          <a>Works</a>
+          <Anchor>Works</Anchor>
         </Link>
       </li>
       <li>
         <Link href="/about">
-          <a>About</a>
+          <Anchor>About</Anchor>
         </Link>
       </li>
     </ul>
