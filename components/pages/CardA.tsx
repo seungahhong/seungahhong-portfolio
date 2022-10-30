@@ -3,18 +3,7 @@ import { keyframes, Keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import Image, { ImageProps } from 'next/image';
-
-export interface ICardProps {
-  href?: string;
-  image: {
-    src: string;
-    alt: string;
-    objectFit: string;
-  };
-  title: string;
-  description?: string;
-  date?: string;
-}
+import { ICardItemProps } from '../types';
 
 interface IContainerProps {
   animation: Keyframes;
@@ -75,7 +64,6 @@ const Content = styled.div`
   padding: 20px;
   background: rgba(248, 249, 250, 0.8);
   box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
-  padding-bottom: 15%;
 `;
 
 const Title = styled.h2`
@@ -90,7 +78,13 @@ const Description = styled.p`
   margin-top: ${(props) => props.theme.spacing['spacing-2']};
 `;
 
-const CardA: FunctionComponent<ICardProps> = ({
+const Date = styled.p`
+  font-size: 16px;
+  margin-top: ${(props) => props.theme.spacing['spacing-4']};
+  color: #7e7e7e;
+`;
+
+const CardA: FunctionComponent<ICardItemProps> = ({
   href,
   image,
   title,
@@ -130,7 +124,7 @@ const CardA: FunctionComponent<ICardProps> = ({
             <Content>
               <Title>{title}</Title>
               {description && <Description>{description}</Description>}
-              {date && <Description>{date}</Description>}
+              {date && <Date>{date}</Date>}
             </Content>
           </>
         )}

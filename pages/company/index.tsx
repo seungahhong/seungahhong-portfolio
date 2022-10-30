@@ -4,9 +4,10 @@ import facepaint from 'facepaint';
 import { companyDatas } from '../../helpers/datas/company';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
 import PageHeader from '../../components/pages/PageHeader';
-import CardA, { ICardProps } from '../../components/pages/CardA';
+import CardA from '../../components/pages/CardA';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
+import { ICardItemProps } from '../../components/types';
 import { NextPageWithLayout } from '../_app';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
@@ -36,7 +37,7 @@ const List = styled.ul`
 
 const Company: NextPageWithLayout = () => {
   const isMobile = useMediaQuery();
-  const [currentRef, cards] = useInfinityScroll<ICardProps>(
+  const [currentRef, cards] = useInfinityScroll<ICardItemProps>(
     companyDatas,
     isMobile ? 1 : 6
   );

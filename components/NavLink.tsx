@@ -8,6 +8,7 @@ interface INaveLinkProps {
 
 const Anchor = styled.a`
   display: block;
+  cursor: pointer;
 `;
 
 const NavLink: FunctionComponent<INaveLinkProps> = ({

@@ -4,9 +4,10 @@ import facepaint from 'facepaint';
 import { worksDatas } from '../../helpers/datas/works';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
 import PageHeader from '../../components/pages/PageHeader';
-import CardA, { ICardProps } from '../../components/pages/CardA';
+import CardC from '../../components/pages/CardC';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
+import { ICardItemProps } from '../../components/types';
 import { NextPageWithLayout } from '../_app';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
@@ -25,18 +26,20 @@ const List = styled.ul`
   flex-wrap: wrap;
   flex: 0 1 auto;
   box-sizing: border-box;
-  margin-top: ${(props) => props.theme.spacing['spacing-6']};
 
   & > li {
+    position: relative;
+    margin: ${(props) => props.theme.spacing['spacing-6']}
+      ${(props) => props.theme.spacing['spacing-6']} 0;
     ${mq({
-      width: ['calc(4 / 12 * 100%)', '100%'],
+      width: ['30%', '100%'],
     })}
   }
 `;
 
 const Works: NextPageWithLayout = () => {
   const isMobile = useMediaQuery();
-  const [currentRef, cards] = useInfinityScroll<ICardProps>(
+  const [currentRef, cards] = useInfinityScroll<ICardItemProps>(
     worksDatas,
     isMobile ? 1 : 6
   );
@@ -49,7 +52,7 @@ const Works: NextPageWithLayout = () => {
           <List>
             {cards.map((card, index) => (
               <li key={`WorksCard_${index}`} role="none">
-                <CardA {...card} href={`/works/${card.href}`} />
+                <CardC {...card} href={`/works/${card.href}`} />
               </li>
             ))}
           </List>
