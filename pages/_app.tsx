@@ -2,12 +2,11 @@ import type { ReactElement, ReactNode } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps, AppContext } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
-import styled from '@emotion/styled';
 
 import GlobalStyles from '../styles/globalStyles';
-import Layout from '../components/Layout';
+import Layout from '../templates/Layout';
 import theme from '../styles/theme';
-import Template from '../components/common/Template';
+import Template from '../templates/Template';
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

@@ -3,11 +3,11 @@ import facepaint from 'facepaint';
 
 import { worksDatas } from '../../helpers/datas/works';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
-import PageHeader from '../../components/pages/PageHeader';
-import CardC from '../../components/pages/CardC';
+import PageHeader from '../../templates/components/PageHeader';
+import CardC from '../../components/Cards/CardC';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
-import { ICardItemProps } from '../../components/types';
+import { CardsType } from '../../components/type';
 import { NextPageWithLayout } from '../_app';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
@@ -39,7 +39,7 @@ const List = styled.ul`
 
 const Works: NextPageWithLayout = () => {
   const isMobile = useMediaQuery();
-  const [currentRef, cards] = useInfinityScroll<ICardItemProps>(
+  const [currentRef, cards] = useInfinityScroll<CardsType.ICardItemProps>(
     worksDatas,
     isMobile ? 1 : 6
   );

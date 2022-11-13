@@ -1,24 +1,17 @@
 import { FunctionComponent } from 'react';
 import styled from '@emotion/styled';
-import { keyframes, Keyframes } from '@emotion/react';
 
 interface IProgressProps {
   title: string;
   percent: number;
+  isStart: boolean;
 }
 
 interface IProgressBarInProps {
   percent: number;
+  isStart: boolean;
 }
 
-const bounce = (width: number) => keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: ${width}%;
-  }
-`;
 const ProgressTitle = styled.span`
   display: flex;
   justify-content: space-between;
@@ -36,12 +29,21 @@ const ProgressBar = styled.div`
 const ProgressBarIn = styled.div<IProgressBarInProps>`
   background: #eb4a4c;
   height: 100%;
-  width: ${(props) => props.percent}%;
-  animation: ${(props) => bounce(props.percent)} 1s 1 ease-in-out;
-  transition: all 1s;
+
+  ${(props) =>
+    props.isStart
+      ? `
+    width: ${props.percent}%;
+    transition: all 1s;
+  `
+      : `width: 0;`}
 `;
 
-const Progress: FunctionComponent<IProgressProps> = ({ title, percent }) => {
+const Progress: FunctionComponent<IProgressProps> = ({
+  title,
+  percent,
+  isStart,
+}) => {
   return (
     <>
       <ProgressTitle>
@@ -49,7 +51,7 @@ const Progress: FunctionComponent<IProgressProps> = ({ title, percent }) => {
         <span>{percent}%</span>
       </ProgressTitle>
       <ProgressBar>
-        <ProgressBarIn percent={percent} />
+        <ProgressBarIn percent={percent} isStart={isStart} />
       </ProgressBar>
     </>
   );

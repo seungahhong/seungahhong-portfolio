@@ -1,8 +1,8 @@
 import { FunctionComponent, ReactNode } from 'react';
 import styled from '@emotion/styled';
+import facepaint from 'facepaint';
 import Navbar from './NavBar';
 import Footer from './Footer';
-import facepaint from 'facepaint';
 
 import { breakpoints } from '../helpers/styles/mediaQuery';
 

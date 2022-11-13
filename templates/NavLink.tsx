@@ -22,8 +22,8 @@ const NavLink: FunctionComponent<INaveLinkProps> = ({
         </Link>
       </li>
       <li>
-        <Link href="/company">
-          <Anchor>Company</Anchor>
+        <Link href="/career">
+          <Anchor>Career</Anchor>
         </Link>
       </li>
       <li>

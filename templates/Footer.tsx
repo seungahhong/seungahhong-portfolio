@@ -9,7 +9,7 @@ const Container = styled.footer`
   color: #abb7b7;
   line-height: 20px;
   padding: ${(props) => props.theme.spacing['spacing-5']};
-  border-top: 1px solid gray;
+  border-top: 1px solid #dee2e6;
 `;
 
 const Footer: FunctionComponent = () => {

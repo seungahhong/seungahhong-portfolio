@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 
-import { companyDatas } from '../../helpers/datas/company';
+import { careerDatas } from '../../helpers/datas/career';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
-import PageHeader from '../../components/pages/PageHeader';
-import CardA from '../../components/pages/CardA';
+import PageHeader from '../../templates/components/PageHeader';
+import CardA from '../../components/Cards/CardA';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
-import { ICardItemProps } from '../../components/types';
+import { CardsType } from '../../components/type';
 import { NextPageWithLayout } from '../_app';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
@@ -35,22 +35,22 @@ const List = styled.ul`
   }
 `;
 
-const Company: NextPageWithLayout = () => {
+const Career: NextPageWithLayout = () => {
   const isMobile = useMediaQuery();
-  const [currentRef, cards] = useInfinityScroll<ICardItemProps>(
-    companyDatas,
+  const [currentRef, cards] = useInfinityScroll<CardsType.ICardItemProps>(
+    careerDatas,
     isMobile ? 1 : 6
   );
 
   return (
     <>
-      <PageHeader title="Company" />
+      <PageHeader title="Career" />
       {cards.length > 0 && (
         <>
           <List>
             {cards.map((card, index) => (
-              <li key={`CompanyCard_${index}`} role="none">
-                <CardA {...card} href={`/company/${card.href}`} />
+              <li key={`CareerCard_${index}`} role="none">
+                <CardA {...card} href={`/career/${card.href}`} />
               </li>
             ))}
           </List>
@@ -61,8 +61,8 @@ const Company: NextPageWithLayout = () => {
   );
 };
 
-Company.getLayout = function getLayout(page: React.ReactElement) {
+Career.getLayout = function getLayout(page: React.ReactElement) {
   return <Container>{page}</Container>;
 };
 
-export default Company;
+export default Career;

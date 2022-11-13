@@ -3,7 +3,7 @@ import { keyframes, Keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import Image, { ImageProps } from 'next/image';
-import { ICardItemProps } from '../types';
+import { ICardItemProps } from './type';
 
 interface IContainerProps {
   animation: Keyframes;

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { NextPageWithLayout } from './_app';
-import PageHeader from '../components/pages/PageHeader';
 
 const BackgroundWrapper = styled.div`
   background: url('/home_logo.jpeg') center center / cover no-repeat;

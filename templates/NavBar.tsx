@@ -2,7 +2,7 @@ import { FunctionComponent, useCallback, useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
-import Social from './social/Social';
+import Social from '../components/Social/Social';
 import { breakpoints } from '../helpers/styles/mediaQuery';
 
 import NavLink from './NavLink';

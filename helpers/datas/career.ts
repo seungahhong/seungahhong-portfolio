@@ -1,6 +1,6 @@
 import { IProjectType } from './types';
 
-export const companyDatas = [
+export const careerDatas = [
   {
     title: '와디즈',
     href: 'wadiz',
@@ -47,7 +47,7 @@ export const companyDatas = [
   },
 ];
 
-export const companyProdjectDatas: IProjectType = {
+export const careerProdjectDatas: IProjectType = {
   wadiz: [],
   hancom: [
     {

@@ -1,10 +1,12 @@
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
-import { NextPageWithLayout } from './_app';
+
 import { breakpoints } from '../helpers/styles/mediaQuery';
-import SocialLink from '../components/social/SocialLink';
-import Progress from '../components/common/Progress';
+import SocialLink from '../components/Social/SocialLink';
+import Progress from '../components/Progress';
+import { NextPageWithLayout } from './_app';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
@@ -93,6 +95,30 @@ const ProgressContainer = styled.div`
 `;
 
 const About: NextPageWithLayout = () => {
+  const currentRef = useRef<HTMLDivElement>(null);
+  const [isStart, setStart] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries, observer) => {
+      if (!entries[0].isIntersecting) {
+        return;
+      }
+
+      setStart(true);
+      observer.disconnect();
+    });
+
+    if (currentRef.current === null) {
+      return;
+    }
+
+    observer.observe(currentRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <Content>
       <Profile>
@@ -148,23 +174,24 @@ const About: NextPageWithLayout = () => {
             Programming <em>Skills</em>
           </Name>
         </Title>
+        <div ref={currentRef} />
         <ProgressContainer>
-          <Progress title="Javascript" percent={100} />
+          <Progress title="Javascript" percent={100} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
-          <Progress title="React" percent={90} />
+          <Progress title="React" percent={90} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
-          <Progress title="Html,Css" percent={90} />
+          <Progress title="Html,Css" percent={90} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
-          <Progress title="C,C++" percent={90} />
+          <Progress title="C,C++" percent={90} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
-          <Progress title="Typescript" percent={70} />
+          <Progress title="Typescript" percent={70} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
-          <Progress title="Express" percent={70} />
+          <Progress title="Express" percent={70} isStart={isStart} />
         </ProgressContainer>
       </Explanation>
     </Content>

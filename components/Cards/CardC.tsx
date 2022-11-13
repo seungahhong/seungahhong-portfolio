@@ -6,7 +6,7 @@ import { keyframes, Keyframes } from '@emotion/react';
 import facepaint from 'facepaint';
 
 import { breakpoints } from '../../helpers/styles/mediaQuery';
-import { ICardItemProps } from '../types';
+import { ICardItemProps } from './type';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 

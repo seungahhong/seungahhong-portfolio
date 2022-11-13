@@ -1,29 +1,13 @@
-import { FunctionComponent, useCallback } from 'react';
+import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import styled from '@emotion/styled';
-
-import facepaint from 'facepaint';
-import { breakpoints } from '../../helpers/styles/mediaQuery';
 import Link from 'next/link';
+import styled from '@emotion/styled';
+import facepaint from 'facepaint';
+
+import { breakpoints } from '../../helpers/styles/mediaQuery';
+import { ICardBItemProps } from './type';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
-
-export interface ICardProps {
-  className: string;
-  date?: string;
-  title: string;
-  descriptions: React.ReactNode;
-  image: {
-    src: string;
-    alt: string;
-    width?: number;
-    height?: number;
-  };
-  link: {
-    href: string;
-    label: string;
-  };
-}
 
 const Container = styled.div`
   display: flex;
@@ -77,7 +61,7 @@ const Description = styled.div`
   color: rgba(75, 85, 99);
 `;
 
-const CardB: FunctionComponent<ICardProps> = ({
+const CardB: FunctionComponent<ICardBItemProps> = ({
   date,
   title,
   className,

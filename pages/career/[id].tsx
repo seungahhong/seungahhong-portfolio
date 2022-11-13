@@ -6,11 +6,8 @@ import type {
 import styled from '@emotion/styled';
 import { ClassNames } from '@emotion/react';
 
-import CardB from '../../components/pages/CardB';
-import {
-  companyDatas,
-  companyProdjectDatas,
-} from '../../helpers/datas/company';
+import CardB from '../../components/Cards/CardB';
+import { careerDatas, careerProdjectDatas } from '../../helpers/datas/career';
 import { IProjectDatas } from '../../helpers/datas/types';
 
 const Container = styled.section`
@@ -44,7 +41,7 @@ const DescriptionItem = styled.li`
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: companyDatas.map((data) => ({ params: { id: data.href } })),
+    paths: careerDatas.map((data) => ({ params: { id: data.href } })),
     fallback: false, // can also be true or 'blocking'
   };
 };
@@ -53,7 +50,7 @@ export const getStaticProps: GetStaticProps<{
   datas: IProjectDatas[];
 }> = async (context) => {
   const id = context?.params?.id?.toString() || '';
-  const datas = companyProdjectDatas[id];
+  const datas = careerProdjectDatas[id];
 
   return {
     props: {
@@ -62,7 +59,7 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-const CompanyItem = ({
+const CareerItem = ({
   datas,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -73,7 +70,7 @@ const CompanyItem = ({
             {datas.map((data, index) => (
               <CardB
                 className={css({ marginTop: '24px' })}
-                key={`CompanyItem_${index}`}
+                key={`CareerItem_${index}`}
                 {...data}
                 descriptions={
                   <ul>
@@ -82,13 +79,13 @@ const CompanyItem = ({
                         ([key, value], index) => {
                           return (
                             <DescriptionItem
-                              key={`CompanyItem_Description_${index}`}
+                              key={`CareerItem_Description_${index}`}
                             >
                               {key}:{' '}
                               {Array.isArray(value)
                                 ? value.map((val, index) => (
                                     <div
-                                      key={`CompanyItem_Description_value_${index}`}
+                                      key={`CareerItem_Description_value_${index}`}
                                     >
                                       {val}
                                     </div>
@@ -110,8 +107,8 @@ const CompanyItem = ({
   );
 };
 
-CompanyItem.getLayout = function getLayout(page: React.ReactElement) {
+CareerItem.getLayout = function getLayout(page: React.ReactElement) {
   return <Container>{page}</Container>;
 };
 
-export default CompanyItem;
+export default CareerItem;
