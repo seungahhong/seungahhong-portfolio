@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 
 import { breakpoints } from '../helpers/styles/mediaQuery';
-import SocialLink from '../components/Social/SocialLink';
+import SocialLink from '../components/Socials/SocialLink';
 import Progress from '../components/Progress';
 import { NextPageWithLayout } from './_app';
 
