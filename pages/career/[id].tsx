@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { ClassNames } from '@emotion/react';
 
 import CardB from '../../components/Cards/CardB';
-import { careerDatas, careerProdjectDatas } from '../../helpers/datas/career';
+import { careerDatas, careerProjectDatas } from '../../helpers/datas/career';
 import { IProjectDatas } from '../../helpers/datas/types';
 
 const Container = styled.section`
@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<{
   datas: IProjectDatas[];
 }> = async (context) => {
   const id = context?.params?.id?.toString() || '';
-  const datas = careerProdjectDatas[id];
+  const datas = careerProjectDatas[id];
 
   return {
     props: {

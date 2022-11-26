@@ -47,7 +47,7 @@ export const careerDatas = [
   },
 ];
 
-export const careerProdjectDatas: IProjectType = {
+export const careerProjectDatas: IProjectType = {
   wadiz: [],
   hancom: [
     {
