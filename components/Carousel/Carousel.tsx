@@ -91,14 +91,16 @@ const Carousel: FunctionComponent<ICarouselProps> = ({ images }) => {
 
   return (
     <Container>
-      <ArrowButton
-        direction="left"
-        title="Left Arrow Button"
-        aria-label="Left Arrow Button"
-        onClick={handleLeftArrowClick}
-      >
-        <RiArrowDropLeftLine />
-      </ArrowButton>
+      {images.length > 1 && (
+        <ArrowButton
+          direction="left"
+          title="Left Arrow Button"
+          aria-label="Left Arrow Button"
+          onClick={handleLeftArrowClick}
+        >
+          <RiArrowDropLeftLine />
+        </ArrowButton>
+      )}
       {images.length > 0 && (
         <CarouselList>
           {images.map((image, index) => (
@@ -111,14 +113,16 @@ const Carousel: FunctionComponent<ICarouselProps> = ({ images }) => {
           ))}
         </CarouselList>
       )}
-      <ArrowButton
-        direction="right"
-        title="Right Arrow Button"
-        aria-label="Right Arrow Button"
-        onClick={handleRightArrowClick}
-      >
-        <RiArrowDropRightLine />
-      </ArrowButton>
+      {images.length > 1 && (
+        <ArrowButton
+          direction="right"
+          title="Right Arrow Button"
+          aria-label="Right Arrow Button"
+          onClick={handleRightArrowClick}
+        >
+          <RiArrowDropRightLine />
+        </ArrowButton>
+      )}
       {images.length > 0 && (
         <NavContainer>
           <RiArrowDropLeftLine />

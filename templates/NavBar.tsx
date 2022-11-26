@@ -162,7 +162,7 @@ const Navigation = styled.section<INavigationProps>`
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   background: #ffffff;
   transform: translateX(${(props) => (props.isOpen ? 0 : '100%')});
   padding: ${(props) => props.theme.spacing['spacing-5']};
