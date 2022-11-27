@@ -12,18 +12,24 @@ import {
   workProjectDetailType,
 } from '../../helpers/datas/works';
 import { IProjectItem } from '../../types';
-import ProjectItem from '../../components/ProjectItem';
+import Project from '../../components/Project';
+import PageHeader from '../../templates/components/PageHeader';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
-const Container = styled.section`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
   background: #f5f5f5;
   font-size: 16px;
+  padding: 96px 0;
+`;
 
+const Content = styled.section`
+  width: 100%;
   ${mq({
-    padding: ['4rem', '1rem'],
+    padding: ['3rem', '1rem'],
   })}
 `;
 
@@ -35,6 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
+  id: string;
   items: IProjectItem[];
 }> = async (context) => {
   const id = context?.params?.id?.toString() || '';
@@ -42,24 +49,29 @@ export const getStaticProps: GetStaticProps<{
 
   return {
     props: {
+      id,
       items,
     }, // will be passed to the page component as props
   };
 };
 
 const WorksItem = ({
+  id,
   items,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     items.length > 0 && (
       <Container>
-        {items.map((item, index) => (
-          <ProjectItem
-            key={`Work_${index}`}
-            item={item}
-            style={{ marginTop: index > 0 ? '36px' : 0 }}
-          />
-        ))}
+        <PageHeader title={`${id === 'project' ? '프로젝트' : '스터디'}`} />
+        <Content>
+          {items.map((item, index) => (
+            <Project
+              key={`Work_${index}`}
+              item={item}
+              style={{ marginTop: index > 0 ? '36px' : 0 }}
+            />
+          ))}
+        </Content>
       </Container>
     )
   );

@@ -70,6 +70,10 @@ const Description = styled.div`
   ${mq({
     width: ['calc(60% - 3rem)', '100%'],
   })}
+
+  & > p {
+    white-space: pre-line;
+  }
 `;
 
 const Divider = styled.hr`
@@ -119,7 +123,7 @@ const LabelLinkValue = styled.a`
   text-decoration: underline;
 `;
 
-const ProjectItem: FunctionComponent<IProjectProps> = ({ item, style }) => {
+const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
   return (
     <Container style={style}>
       <Head>
@@ -131,7 +135,7 @@ const ProjectItem: FunctionComponent<IProjectProps> = ({ item, style }) => {
           <Carousel images={item.images} />
         </ContentImage>
         <Description>
-          <div>{item.description['sub-discription']}</div>
+          <p>{item.description['sub-discription']}</p>
           <Divider />
           {item.description.labels.length > 0 && (
             <LabelOrderList>
@@ -160,4 +164,4 @@ const ProjectItem: FunctionComponent<IProjectProps> = ({ item, style }) => {
   );
 };
 
-export default ProjectItem;
+export default Project;

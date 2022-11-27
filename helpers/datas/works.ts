@@ -181,5 +181,57 @@ export const workProjectDetailType: IProjectItemType = {
       },
     },
   ],
-  study: [],
+  study: [
+    {
+      title: '상태관리',
+      date: '2022.06',
+      images: [
+        {
+          src: '/works_study_state_1_logo.png',
+          alt: '상태관리 스터디 이미지 1',
+        },
+      ],
+      description: {
+        'sub-discription':
+          '리액트에서 사용하는 상태관리에 대한 특징, 사용법을 익히기 위해서 동일한 로직을 여러 상태관리로 구현할 경우에 대해서 정리한 웹사이트 입니다.',
+        labels: [
+          {
+            name: 'Github',
+            value: {
+              type: 'link',
+              data: 'https://github.com/seungahhong/states-todos',
+            },
+          },
+          {
+            name: 'URL',
+            value: {
+              type: 'link',
+              data: 'https://seungahhong.github.io/states-todos',
+            },
+          },
+          {
+            name: '특징',
+            value: {
+              type: 'link',
+              data: 'https://material-debt-c1c.notion.site/state-management-0bbd0e51f3784ee1b477515dd19d608b',
+            },
+          },
+          {
+            name: 'Frontend',
+            value: {
+              type: 'text',
+              data: 'react, typescript, @reduxjs/toolkit, redux, mobx, recoil, react-query, swr, jotai, zustand',
+            },
+          },
+          {
+            name: 'Deploy',
+            value: {
+              type: 'text',
+              data: 'gh-pages',
+            },
+          },
+        ],
+      },
+    },
+  ],
 };
