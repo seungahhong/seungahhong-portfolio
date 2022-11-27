@@ -8,7 +8,7 @@ import { ClassNames } from '@emotion/react';
 
 import CardB from '../../components/Cards/CardB';
 import { careerDatas, careerProjectDatas } from '../../helpers/datas/career';
-import { IProjectDatas } from '../../helpers/datas/types';
+import { IProjectCategory } from '../../types';
 
 const Container = styled.section`
   display: flex;
@@ -47,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  datas: IProjectDatas[];
+  datas: IProjectCategory[];
 }> = async (context) => {
   const id = context?.params?.id?.toString() || '';
   const datas = careerProjectDatas[id];

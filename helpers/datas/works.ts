@@ -1,16 +1,17 @@
-import { IWorkProjectType } from './types';
+import { CardsType } from '../../components/type';
+import { IProjectItemType } from '../../types';
 
-export const worksDatas = [
+export const workProjectValues: CardsType.ICardItemProps[] = [
   {
     title: '프로젝트',
-    description: '기술블로그, 포트폴리오, 특허, 사내블로그 서버개발',
+    description: '기술블로그, 포트폴리오, 특허',
     href: 'project',
     image: {
       src: '/project_logo.jpeg',
       alt: 'project logo',
       objectFit: 'cover',
     },
-    date: '2019.12 ~',
+    date: '2020.01 ~',
   },
   {
     title: '스터디',
@@ -25,7 +26,7 @@ export const worksDatas = [
   },
 ];
 
-export const worksDetailDatas: IWorkProjectType = {
+export const workProjectDetailType: IProjectItemType = {
   project: [
     {
       title: '포트폴리오 웹사이트',
@@ -33,11 +34,11 @@ export const worksDetailDatas: IWorkProjectType = {
       images: [
         {
           src: '/works_portfolio_1_logo.png',
-          alt: '',
+          alt: '포트폴리오 이미지 1',
         },
         {
           src: '/works_portfolio_2_logo.png',
-          alt: '',
+          alt: '포트폴리오 이미지 2',
         },
       ],
       description: {
@@ -87,11 +88,11 @@ export const worksDetailDatas: IWorkProjectType = {
       images: [
         {
           src: '/works_blog_1_logo.png',
-          alt: '',
+          alt: '기술블로그 이미지 1',
         },
         {
           src: '/works_blog_2_logo.png',
-          alt: '',
+          alt: '기술블로그 이미지 1',
         },
       ],
       description: {
@@ -141,7 +142,7 @@ export const worksDetailDatas: IWorkProjectType = {
       images: [
         {
           src: '/works_patent_logo.jpeg',
-          alt: '',
+          alt: '특허 이미지',
         },
       ],
       description: {

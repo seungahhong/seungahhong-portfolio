@@ -1,4 +1,4 @@
-export interface IProjectDatas {
+export interface IProjectCategory {
   title: string;
   image: {
     src: string;
@@ -12,11 +12,11 @@ export interface IProjectDatas {
   };
 }
 
-export interface IProjectType {
-  [key: string]: IProjectDatas[];
+export interface IProjectCategoryType {
+  [key: string]: IProjectCategory[];
 }
 
-export interface IWorkProjectDatas {
+export interface IProjectItem {
   title: string;
   date: string;
   images: {
@@ -35,6 +35,6 @@ export interface IWorkProjectDatas {
   };
 }
 
-export interface IWorkProjectType {
-  [key: string]: IWorkProjectDatas[];
+export interface IProjectItemType {
+  [key: string]: IProjectItem[];
 }

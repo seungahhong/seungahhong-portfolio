@@ -1,6 +1,7 @@
-import { IProjectType } from './types';
+import { CardsType } from '../../components/type';
+import { IProjectCategoryType } from '../../types';
 
-export const careerDatas = [
+export const careerDatas: CardsType.ICardItemProps[] = [
   {
     title: '와디즈',
     href: 'wadiz',
@@ -47,7 +48,7 @@ export const careerDatas = [
   },
 ];
 
-export const careerProjectDatas: IProjectType = {
+export const careerProjectDatas: IProjectCategoryType = {
   wadiz: [],
   hancom: [
     {

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 
-import { worksDatas } from '../../helpers/datas/works';
+import { workProjectValues } from '../../helpers/datas/works';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
 import PageHeader from '../../templates/components/PageHeader';
 import CardC from '../../components/Cards/CardC';
@@ -40,7 +40,7 @@ const List = styled.ul`
 const Works: NextPageWithLayout = () => {
   const isMobile = useMediaQuery();
   const [currentRef, cards] = useInfinityScroll<CardsType.ICardItemProps>(
-    worksDatas,
+    workProjectValues,
     isMobile ? 1 : 6
   );
 
