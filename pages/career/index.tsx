@@ -44,7 +44,7 @@ const Career: NextPageWithLayout = () => {
 
   return (
     <>
-      <PageHeader title="Career" />
+      <PageHeader title="경력" />
       {cards.length > 0 && (
         <>
           <List>

@@ -10,10 +10,12 @@ import { breakpoints } from '../../helpers/styles/mediaQuery';
 import {
   workProjectValues,
   workProjectDetailType,
-} from '../../helpers/datas/works';
+} from '../../helpers/datas/work';
 import { IProjectItem } from '../../types';
 import Project from '../../components/Project';
 import PageHeader from '../../templates/components/PageHeader';
+import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
+import useMediaQuery from '../../helpers/hooks/useMediaQuery';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
@@ -55,26 +57,33 @@ export const getStaticProps: GetStaticProps<{
   };
 };
 
-const WorksItem = ({
+const WorkItem = ({
   id,
   items,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const isMobile = useMediaQuery();
+  const [currentRef, datas] = useInfinityScroll<IProjectItem>(
+    items,
+    isMobile ? 1 : 2
+  );
+
   return (
     items.length > 0 && (
       <Container>
         <PageHeader title={`${id === 'project' ? '프로젝트' : '스터디'}`} />
         <Content>
-          {items.map((item, index) => (
+          {datas.map((item, index) => (
             <Project
-              key={`Work_${index}`}
+              key={`WorkItem_${index}`}
               item={item}
               style={{ marginTop: index > 0 ? '36px' : 0 }}
             />
           ))}
         </Content>
+        <div ref={currentRef} />
       </Container>
     )
   );
 };
 
-export default WorksItem;
+export default WorkItem;

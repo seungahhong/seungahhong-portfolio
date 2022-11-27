@@ -73,6 +73,9 @@ const Description = styled.div`
 
   & > p {
     white-space: pre-line;
+    ${mq({
+      marginTop: ['0', '16px'],
+    })}
   }
 `;
 

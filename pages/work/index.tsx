@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 
-import { workProjectValues } from '../../helpers/datas/works';
+import { workProjectValues } from '../../helpers/datas/work';
 import { breakpoints } from '../../helpers/styles/mediaQuery';
 import PageHeader from '../../templates/components/PageHeader';
 import CardC from '../../components/Cards/CardC';
@@ -26,6 +26,7 @@ const List = styled.ul`
   flex-wrap: wrap;
   flex: 0 1 auto;
   box-sizing: border-box;
+  margin-top: ${(props) => props.theme.spacing['spacing-6']};
 
   & > li {
     position: relative;
@@ -37,7 +38,7 @@ const List = styled.ul`
   }
 `;
 
-const Works: NextPageWithLayout = () => {
+const Work: NextPageWithLayout = () => {
   const isMobile = useMediaQuery();
   const [currentRef, cards] = useInfinityScroll<CardsType.ICardItemProps>(
     workProjectValues,
@@ -46,13 +47,13 @@ const Works: NextPageWithLayout = () => {
 
   return (
     <>
-      <PageHeader title="Works" />
+      <PageHeader title="작업" />
       {cards.length > 0 && (
         <>
           <List>
             {cards.map((card, index) => (
-              <li key={`WorksCard_${index}`} role="none">
-                <CardC {...card} href={`/works/${card.href}`} />
+              <li key={`WorkCard_${index}`} role="none">
+                <CardC {...card} href={`/work/${card.href}`} />
               </li>
             ))}
           </List>
@@ -63,8 +64,8 @@ const Works: NextPageWithLayout = () => {
   );
 };
 
-Works.getLayout = function getLayout(page: React.ReactElement) {
+Work.getLayout = function getLayout(page: React.ReactElement) {
   return <Container>{page}</Container>;
 };
 
-export default Works;
+export default Work;

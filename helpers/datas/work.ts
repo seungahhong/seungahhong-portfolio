@@ -15,7 +15,7 @@ export const workProjectValues: CardsType.ICardItemProps[] = [
   },
   {
     title: '스터디',
-    description: '상태관리, MSW, Canvas, Notion',
+    description: '상태관리, Canvas, Form, 스터디',
     href: 'study',
     image: {
       src: '/study_logo.jpeg',
@@ -183,6 +183,98 @@ export const workProjectDetailType: IProjectItemType = {
   ],
   study: [
     {
+      title: '스터디',
+      date: '2022.12',
+      images: [
+        {
+          src: '/works_blog_1_logo.png',
+          alt: '기술블로그 이미지 1',
+        },
+        {
+          src: '/works_study_notion_1_logo.png',
+          alt: 'Notion 이미지 1',
+        },
+      ],
+      description: {
+        'sub-discription':
+          '프론트엔드 기술에 대한 특징, 사용법을 정리하고 전체가 발전할 수 있는 개발 생태계를 구성하기 위해서 꾸준히 공유하고 있습니다.',
+        labels: [
+          {
+            name: '기술블로그',
+            value: {
+              type: 'link',
+              data: 'https://seungahhong.github.io/',
+            },
+          },
+          {
+            name: '노션',
+            value: {
+              type: 'link',
+              data: 'https://material-debt-c1c.notion.site/daa60481e37840ea9e1b7e1b12269942',
+            },
+          },
+          {
+            name: 'Frontend',
+            value: {
+              type: 'text',
+              data: 'Cypress, Jest, MSW, CSS-in-JS...',
+            },
+          },
+        ],
+      },
+    },
+    {
+      title: 'Canvas',
+      date: '2022.03',
+      images: [
+        {
+          src: '/works_study_canvas_1_logo.png',
+          alt: '캔버스 스터디 이미지 1',
+        },
+      ],
+      description: {
+        'sub-discription':
+          '캔버스에 특징, 사용법을 익히기 위해서 만든 웹사이트이며, 렌더링 형태로는 사각형, 삼각형, 원, 라인, 텍스트, 이미지 타입이 있습니다.',
+        labels: [
+          {
+            name: 'Github',
+            value: {
+              type: 'link',
+              data: 'https://github.com/seungahhong/canvas-paint',
+            },
+          },
+          {
+            name: 'URL',
+            value: {
+              type: 'link',
+              data: 'https://canvas-paint-nine.vercel.app/',
+            },
+          },
+          {
+            name: '특징',
+            value: {
+              type: 'link',
+              data: 'https://seungahhong.github.io/blog/2022/03/2022-03-29-canvas/',
+            },
+          },
+          {
+            name: 'Frontend',
+            value: {
+              type: 'text',
+              data: 'react, typescript, jotai, mui',
+            },
+          },
+          {
+            name: 'Deploy',
+            value: {
+              type: 'text',
+              data: 'Vercel',
+            },
+          },
+        ],
+      },
+    },
+    {
       title: '상태관리',
       date: '2022.06',
       images: [
@@ -228,6 +320,80 @@ export const workProjectDetailType: IProjectItemType = {
             value: {
               type: 'text',
               data: 'gh-pages',
+            },
+          },
+        ],
+      },
+    },
+    {
+      title: '라우터',
+      date: '2022.03',
+      images: [
+        {
+          src: '/works_study_router_1_logo.png',
+          alt: '라우터 스터디 이미지 1',
+        },
+      ],
+      description: {
+        'sub-discription':
+          '라우팅 방식에 대한 특징, 사용법을 익히기 위해서 동일한 로직을 전통적 링크, AJAX, Hash, PJAX 방식으로 구현한 웹사이트입니다.',
+        labels: [
+          {
+            name: 'Github',
+            value: {
+              type: 'link',
+              data: 'https://github.com/seungahhong/router-tutorial',
+            },
+          },
+          {
+            name: '특징',
+            value: {
+              type: 'link',
+              data: 'https://www.notion.so/pure-router-f3126bda56e74cd8bce7a04f04bb6edd',
+            },
+          },
+          {
+            name: 'Frontend',
+            value: {
+              type: 'text',
+              data: 'react, react-router, scss',
+            },
+          },
+        ],
+      },
+    },
+    {
+      title: '폼 상태',
+      date: '2022.03',
+      images: [
+        {
+          src: '/works_study_form_1_logo.png',
+          alt: '폼 상태 스터디 이미지 1',
+        },
+      ],
+      description: {
+        'sub-discription':
+          '폼 상태,유효성에 대한 특징, 사용법을 VanilaJS, React, React-hook-form 3가지의 방식으로 구현한 웹사이트입니다.',
+        labels: [
+          {
+            name: 'Github',
+            value: {
+              type: 'link',
+              data: 'https://github.com/seungahhong/form-tutorial',
+            },
+          },
+          {
+            name: '특징',
+            value: {
+              type: 'link',
+              data: 'https://seungahhong.github.io/blog/2022/05/2022-05-30-form/',
+            },
+          },
+          {
+            name: 'Frontend',
+            value: {
+              type: 'text',
+              data: 'vanillaJS, react, react-hook-form, scss, mui',
             },
           },
         ],
