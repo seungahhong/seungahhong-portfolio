@@ -224,6 +224,49 @@ export const workProjectDetailType: IProjectItemType = {
       },
     },
     {
+      title: '블로그 서버구축',
+      date: '2022.10',
+      images: [
+        {
+          src: '/works_study_blog_server_1_logo.png',
+          alt: '블로그 서버구축 이미지 1',
+        },
+        {
+          src: '/works_study_blog_server_2_logo.png',
+          alt: '블로그 서버구축 스터디 이미지 1',
+        },
+      ],
+      description: {
+        'sub-discription': `NodeJS 기반의 Express 특징, 사용법을 익히기 위해서 간단한 블로그용 서버를 구축한 스터디 내용입니다.
+           기술스택으로는 Server: Express, Log: winston/morgan, Markdown: remark,
+           DB: MongoDB, ODM: Mongoose, Cloud DBaas: Atlas를 사용하였습니다.
+          `,
+        labels: [
+          {
+            name: 'Github',
+            value: {
+              type: 'link',
+              data: 'https://github.com/seungahhong/express-blog-server',
+            },
+          },
+          {
+            name: '특징',
+            value: {
+              type: 'link',
+              data: 'https://www.notion.so/express-b41a66c8ea9b4245bd8859c899ffbeaf',
+            },
+          },
+          {
+            name: 'Backend',
+            value: {
+              type: 'text',
+              data: 'express, typescript, mongodb, remark, morgin, winston',
+            },
+          },
+        ],
+      },
+    },
+    {
       title: 'Canvas',
       date: '2022.03',
       images: [
