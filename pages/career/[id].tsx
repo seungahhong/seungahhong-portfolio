@@ -4,111 +4,92 @@ import type {
   InferGetStaticPropsType,
 } from 'next';
 import styled from '@emotion/styled';
-import { ClassNames } from '@emotion/react';
+import facepaint from 'facepaint';
 
-import CardB from '../../components/Cards/CardB';
-import { careerDatas, careerProjectDatas } from '../../helpers/datas/career';
-import { IProjectCategory } from '../../types';
+import { breakpoints } from '../../helpers/styles/mediaQuery';
+import {
+  careerProjectValues,
+  careerProjectDetailType,
+} from '../../helpers/datas/career';
+import { IProjectItem } from '../../types';
+import Project from '../../components/Project';
+import PageHeader from '../../templates/components/PageHeader';
+import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
+import useMediaQuery from '../../helpers/hooks/useMediaQuery';
 
-const Container = styled.section`
+const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
+
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
-  max-width: 1024px;
-  padding: 60px 12px 60px;
-  margin: 0 auto;
+  width: 100%;
+  background: #f5f5f5;
+  font-size: 16px;
+  padding: 96px 0;
 `;
 
-const DescriptionItem = styled.li`
-  position: relative;
-  color: #6c7a89;
-  margin-top: ${(props) => props.theme.spacing['spacing-4']};
-  padding-left: ${(props) => props.theme.spacing['spacing-4']};
-
-  &:before {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    content: '·';
-  }
-
-  & > div {
-    margin-top: ${(props) => props.theme.spacing['spacing-4']};
-  }
+const Content = styled.section`
+  width: 100%;
+  ${mq({
+    padding: ['3rem', '1rem'],
+  })}
 `;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: careerDatas.map((data) => ({ params: { id: data.href } })),
+    paths: careerProjectValues.map((data) => ({ params: { id: data.href } })),
     fallback: false, // can also be true or 'blocking'
   };
 };
 
 export const getStaticProps: GetStaticProps<{
-  datas: IProjectCategory[];
+  id: string;
+  items: IProjectItem[];
+  header: string;
 }> = async (context) => {
   const id = context?.params?.id?.toString() || '';
-  const datas = careerProjectDatas[id];
+  const { header, items } = careerProjectDetailType[id];
 
   return {
     props: {
-      datas,
+      id,
+      items,
+      header,
     }, // will be passed to the page component as props
   };
 };
 
 const CareerItem = ({
-  datas,
+  id,
+  items,
+  header,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const isMobile = useMediaQuery();
+  const [currentRef, datas] = useInfinityScroll<IProjectItem>(
+    items,
+    isMobile ? 1 : 2
+  );
+
   return (
-    datas.length > 0 && (
-      <ClassNames>
-        {({ css }) => (
-          <ul>
-            {datas.map((data, index) => (
-              <CardB
-                className={css({ marginTop: '24px' })}
+    <Container>
+      <PageHeader title={header} />
+      {items.length > 0 && (
+        <>
+          <Content>
+            {datas.map((item, index) => (
+              <Project
                 key={`CareerItem_${index}`}
-                {...data}
-                descriptions={
-                  <ul>
-                    {data.descriptions.map((description, index) => {
-                      return Object.entries(description).map(
-                        ([key, value], index) => {
-                          return (
-                            <DescriptionItem
-                              key={`CareerItem_Description_${index}`}
-                            >
-                              {key}:{' '}
-                              {Array.isArray(value)
-                                ? value.map((val, index) => (
-                                    <div
-                                      key={`CareerItem_Description_value_${index}`}
-                                    >
-                                      {val}
-                                    </div>
-                                  ))
-                                : value}
-                            </DescriptionItem>
-                          );
-                        }
-                      );
-                    })}
-                  </ul>
-                }
+                item={item}
+                style={{ marginTop: index > 0 ? '36px' : 0 }}
               />
             ))}
-          </ul>
-        )}
-      </ClassNames>
-    )
+          </Content>
+          <div ref={currentRef} />
+        </>
+      )}
+      <div ref={currentRef} />
+    </Container>
   );
-};
-
-CareerItem.getLayout = function getLayout(page: React.ReactElement) {
-  return <Container>{page}</Container>;
 };
 
 export default CareerItem;

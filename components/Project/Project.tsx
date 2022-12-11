@@ -1,4 +1,5 @@
 import type { CSSProperties, FunctionComponent } from 'react';
+import { useMemo } from 'react';
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 
@@ -77,6 +78,21 @@ const Description = styled.div`
       marginTop: ['0', '16px'],
     })}
   }
+
+  & > ul > li {
+    display: flex;
+    align-items: baseline;
+
+    &:before {
+      display: inline;
+      content: '●';
+    }
+
+    & > span {
+      line-height: 20px;
+      padding-left: ${(props) => props.theme.spacing['spacing-5']};
+    }
+  }
 `;
 
 const Divider = styled.hr`
@@ -127,6 +143,22 @@ const LabelLinkValue = styled.a`
 `;
 
 const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
+  const descriptionElement = useMemo(() => {
+    const description = item.description['sub-discription'];
+    if (Array.isArray(description)) {
+      return (
+        <ul>
+          {description.map((desc, index) => (
+            <li key={`discription_${index}`}>
+              <span>{desc}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+    return <p>{description}</p>;
+  }, [item.description]);
+
   return (
     <Container style={style}>
       <Head>
@@ -138,7 +170,7 @@ const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
           <Carousel images={item.images} />
         </ContentImage>
         <Description>
-          <p>{item.description['sub-discription']}</p>
+          {descriptionElement}
           <Divider />
           {item.description.labels.length > 0 && (
             <LabelOrderList>

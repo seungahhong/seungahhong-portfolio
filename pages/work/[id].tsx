@@ -45,14 +45,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<{
   id: string;
   items: IProjectItem[];
+  header: string;
 }> = async (context) => {
   const id = context?.params?.id?.toString() || '';
-  const items = workProjectDetailType[id];
+  const { header, items } = workProjectDetailType[id];
 
   return {
     props: {
       id,
       items,
+      header,
     }, // will be passed to the page component as props
   };
 };
@@ -60,6 +62,7 @@ export const getStaticProps: GetStaticProps<{
 const WorkItem = ({
   id,
   items,
+  header,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const isMobile = useMediaQuery();
   const [currentRef, datas] = useInfinityScroll<IProjectItem>(
@@ -68,21 +71,24 @@ const WorkItem = ({
   );
 
   return (
-    items.length > 0 && (
-      <Container>
-        <PageHeader title={`${id === 'project' ? '프로젝트' : '스터디'}`} />
-        <Content>
-          {datas.map((item, index) => (
-            <Project
-              key={`WorkItem_${index}`}
-              item={item}
-              style={{ marginTop: index > 0 ? '36px' : 0 }}
-            />
-          ))}
-        </Content>
-        <div ref={currentRef} />
-      </Container>
-    )
+    <Container>
+      <PageHeader title={header} />
+      {items.length > 0 && (
+        <>
+          <Content>
+            {datas.map((item, index) => (
+              <Project
+                key={`CareerItem_${index}`}
+                item={item}
+                style={{ marginTop: index > 0 ? '36px' : 0 }}
+              />
+            ))}
+          </Content>
+          <div ref={currentRef} />
+        </>
+      )}
+      <div ref={currentRef} />
+    </Container>
   );
 };
 

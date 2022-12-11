@@ -1,21 +1,3 @@
-export interface IProjectCategory {
-  title: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  descriptions: { [key: string]: string | string[] }[];
-  date: string;
-  link: {
-    href: string;
-    label: string;
-  };
-}
-
-export interface IProjectCategoryType {
-  [key: string]: IProjectCategory[];
-}
-
 export interface IProjectItem {
   title: string;
   date: string;
@@ -24,7 +6,7 @@ export interface IProjectItem {
     alt: string;
   }[];
   description: {
-    'sub-discription': string;
+    'sub-discription': string | string[];
     labels: {
       name: string;
       value: {
@@ -36,5 +18,8 @@ export interface IProjectItem {
 }
 
 export interface IProjectItemType {
-  [key: string]: IProjectItem[];
+  [key: string]: {
+    header: string;
+    items: IProjectItem[];
+  };
 }
