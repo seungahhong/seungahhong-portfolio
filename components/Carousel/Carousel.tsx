@@ -1,4 +1,10 @@
-import { FunctionComponent, useCallback, useState } from 'react';
+import {
+  FunctionComponent,
+  useCallback,
+  useState,
+  useRef,
+  TouchEvent,
+} from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Image from 'next/image';
@@ -11,6 +17,12 @@ type ArrowButtonTypes = {
 
 interface ICarouselListItem {
   activeIndex: number;
+}
+
+interface IPos {
+  startPos: number;
+  currPos: number;
+  offset: number;
 }
 
 const Container = styled.div`
@@ -81,6 +93,12 @@ const NavContainer = styled.div`
 
 const Carousel: FunctionComponent<ICarouselProps> = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [pos, setPos] = useState<IPos>({
+    startPos: 0,
+    currPos: 0,
+    offset: 0,
+  });
+  const listRef = useRef(null);
   const handleLeftArrowClick = useCallback(() => {
     setActiveIndex((prev) => (prev - 1 < 0 ? images.length - 1 : prev - 1));
   }, [images]);
@@ -88,6 +106,23 @@ const Carousel: FunctionComponent<ICarouselProps> = ({ images }) => {
   const handleRightArrowClick = useCallback(() => {
     setActiveIndex((prev) => (prev >= images.length - 1 ? 0 : prev + 1));
   }, [images]);
+
+  const handleTouchStart = useCallback((e: TouchEvent<HTMLUListElement>) => {
+    // setPos((prev) => ({
+    //   ...prev,
+    //   startPos: e.touches[0].pageX,
+    // }));
+  }, []);
+
+  const handleTouchMove = useCallback((e: TouchEvent<HTMLUListElement>) => {
+    // setPos((prev) => ({
+    //   ...prev,
+    //   offset: prev.currPos + (e.targetTouches[0].pageX - prev.startPos),
+    // }));
+  }, []);
+
+  const handleTouchEnd = useCallback((e: TouchEvent<HTMLUListElement>) => {},
+  []);
 
   return (
     <Container>
@@ -102,11 +137,17 @@ const Carousel: FunctionComponent<ICarouselProps> = ({ images }) => {
         </ArrowButton>
       )}
       {images.length > 0 && (
-        <CarouselList>
+        <CarouselList
+          ref={listRef}
+          // onTouchStart={handleTouchStart}
+          // onTouchMove={handleTouchMove}
+          // onTouchEnd={handleTouchEnd}
+        >
           {images.map((image, index) => (
             <CarouselListItem
               key={`CarouselList_${index}`}
               activeIndex={activeIndex}
+              // style={{ transform: `translate3d(${pos.offset}px, 0px, 0px)` }}
             >
               <Image src={image.src} alt={image.alt} layout="fill" />
             </CarouselListItem>

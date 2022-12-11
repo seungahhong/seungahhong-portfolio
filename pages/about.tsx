@@ -128,6 +128,18 @@ const About: NextPageWithLayout = () => {
         <SocialProfile>
           <SocialLink
             link={{
+              href: 'tel:010-7118-2519',
+              title: '핸드폰번호',
+            }}
+            image={{
+              src: '/mobile.svg',
+              alt: 'mobile icon',
+              width: 30,
+              height: 30,
+            }}
+          />
+          <SocialLink
+            link={{
               href: 'https://github.com/seungahhong',
               title: 'github',
             }}

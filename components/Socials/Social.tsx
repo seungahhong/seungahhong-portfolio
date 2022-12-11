@@ -15,6 +15,18 @@ const Social: FunctionComponent = () => {
     <Container>
       <SocialLink
         link={{
+          href: 'tel:010-7118-2519',
+          title: '핸드폰번호',
+        }}
+        image={{
+          src: '/mobile.svg',
+          alt: 'mobile icon',
+          width: 32,
+          height: 32,
+        }}
+      />
+      <SocialLink
+        link={{
           href: 'https://github.com/seungahhong',
           title: 'github',
         }}
@@ -47,18 +59,6 @@ const Social: FunctionComponent = () => {
           alt: 'linkedin icon',
           width: 38,
           height: 38,
-        }}
-      />
-      <SocialLink
-        link={{
-          href: 'https://www.facebook.com/people/%ED%99%8D%EC%8A%B9%EC%95%84/100002349562000/',
-          title: 'facebook',
-        }}
-        image={{
-          src: '/facebook.svg',
-          alt: 'facebook icon',
-          width: 32,
-          height: 32,
         }}
       />
     </Container>
