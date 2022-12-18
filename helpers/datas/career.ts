@@ -10,7 +10,7 @@ export const careerProjectValues: CardsType.ICardItemProps[] = [
       alt: 'wadiz logo',
       objectFit: 'contain',
     },
-    description: '펀딩, 스토어',
+    description: '펀딩, 스토어, 스튜디오',
     date: '2020.11 ~',
   },
   {
@@ -51,7 +51,197 @@ export const careerProjectValues: CardsType.ICardItemProps[] = [
 export const careerProjectDetailType: IProjectItemType = {
   wadiz: {
     header: '와디즈',
-    items: [],
+    items: [
+      {
+        title: '펀딩 상품옵션 개선',
+        date: '2022.07 ~ 2022.10',
+        images: [
+          {
+            src: '/wadiz-option-change-log1.png',
+            alt: '와디즈 펀딩 상품옵션 개선 첫번째 이미지',
+          },
+          {
+            src: '/wadiz-option-change-log2.png',
+            alt: '와디즈 펀딩 상품옵션 개선 두번째 이미지',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            '펀딩 상품이 3depth 서브옵션까지 지원 가능하도록 기능개발',
+            '기존에 지원하던 옵션없는 상품, 직접입력, 상품옵션 레거시 기능/디자인을 개편작업(리액트, 디자인시스템으로 개편)',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://www.wadiz.kr/web/supporter-club/intro',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Scss, React-query, Storybook, Jest, Cypress, MSW',
+              },
+            },
+          ],
+        },
+      },
+      {
+        title: '서포터클럽',
+        date: '2022.02 ~ 2022.05',
+        images: [
+          {
+            src: '/wadiz-supporterclub-log1.png',
+            alt: '와디즈 서포터클럽 첫번째 이미지',
+          },
+          {
+            src: '/wadiz-supporterclub-log2.png',
+            alt: '와디즈 서포터클럽 두번째 이미지',
+          },
+          {
+            src: '/wadiz-supporterclub-log3.png',
+            alt: '와디즈 서포터클럽 세번째 이미지',
+          },
+          {
+            src: '/wadiz-supporterclub-log4.png',
+            alt: '와디즈 서포터클럽 이벤트페이지 이미지',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            '와디즈 서비스 안에서 다양한 멤버십 콘텐츠, 혜택을 제공하는 서포터클럽 UI 기능개발',
+            '펀딩/스토어 결제, 서포터클럽 가입프로세스, 서포터클럽 이벤트 페이지 개발',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://www.wadiz.kr/web/supporter-club/intro',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Scss, React-query, React-hook-form, Storybook, Jest, MSW',
+              },
+            },
+          ],
+        },
+      },
+      {
+        title: '스토어 상세페이지',
+        date: '2021.05 ~ 2021.08',
+        images: [
+          {
+            src: '/wadiz-store-detail-log1.png',
+            alt: '와디즈 스토어 상세페이지 첫번째 이미지',
+          },
+          {
+            src: '/wadiz-store-detail-log2.png',
+            alt: '와디즈 스토어 상세페이지 두번째 이미지',
+          },
+          {
+            src: '/wadiz-store-detail-log3.png',
+            alt: '와디즈 스토어 상세페이지 세번째 이미지',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            '와디즈 스토어 상세페이지 UI 기능개발',
+            '스토리, 만족도평가, 반품/교환 기능개발',
+            '상품 구매 프로세스 기능 개발(상품 선택, 재고수량 관리)',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://www.wadiz.kr/web/store/main',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Scss, React-query, Redux Toolkit, Storybook, Jest, MSW',
+              },
+            },
+          ],
+        },
+      },
+      {
+        title: '펀딩/스토어/스튜디오 운영업무',
+        date: '2020.12 ~ 2022.12',
+        images: [
+          {
+            src: '/wadiz-operation-log1.png',
+            alt: '와디즈 펀딩 메이커 스튜디오 이미지',
+          },
+          {
+            src: '/wadiz-operation-log2.png',
+            alt: '와디즈 펀딩 상세페이지 이미지',
+          },
+          {
+            src: '/wadiz-operation-log3.png',
+            alt: '와디즈 스토어 상세페이지 이미지',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            '펀딩 프로젝트 개설에 필요한 메이커스튜디오 기능/UI 개발',
+            '펀딩/스토어 도메인 운영 업무 대응',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://www.wadiz.kr/web/main',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Scss, React-query, Redux Toolkit, React-hook-form, Storybook, Jest, Cypress, MSW',
+              },
+            },
+          ],
+        },
+      },
+    ],
   },
   hancom: {
     header: '한글과 컴퓨터',
