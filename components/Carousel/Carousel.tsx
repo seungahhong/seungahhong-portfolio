@@ -35,10 +35,6 @@ interface ICarouselListItem {
   transition: string;
 }
 
-interface ITouchPos {
-  startPagePos: number;
-}
-
 type listPosData = {
   defaultWidth: number;
   defaultHeight: number;
