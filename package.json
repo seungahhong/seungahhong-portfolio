@@ -19,7 +19,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
-    "react-responsive": "^9.0.0-beta.10"
+    "react-responsive": "^9.0.0-beta.10",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
