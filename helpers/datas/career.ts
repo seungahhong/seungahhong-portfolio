@@ -83,7 +83,7 @@ export const careerProjectDetailType: IProjectItemType = {
               value: {
                 type: 'link',
                 data: 'https://help.wadiz.kr/ko/articles/2303579-%EB%A6%AC%EC%9B%8C%EB%93%9C-%EC%98%B5%EC%85%98%EC%9D%80-%EB%AC%B4%EC%97%87%EC%9D%B4%EA%B3%A0-%EC%96%B4%EB%96%BB%EA%B2%8C-%EC%84%A4%EC%A0%95%ED%95%98%EB%82%98%EC%9A%94?_ga=2.179797347.673619699.1672277230-1234746516.1654083430&_gac=1.158640712.1672277234.CjwKCAiA76-dBhByEiwAA0_s9XTCaGTJxV3AW4e2ZKj7ImCR46BaiM_hjgZu9OAV8YCANe6HU_Zh5BoCGDsQAvD_BwE',
-                title: '펀딩 리워드 옵션개선 URL',
+                title: '펀딩 상품옵션 URL',
               },
             },
             {
