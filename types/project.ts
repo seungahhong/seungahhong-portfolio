@@ -12,6 +12,7 @@ export interface IProjectItem {
       value: {
         type: string;
         data: string;
+        title?: string;
       };
     }[];
   };

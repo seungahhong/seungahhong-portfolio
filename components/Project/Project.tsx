@@ -182,7 +182,7 @@ const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {label.value.data}
+                      {label.value.title || label.value.data}
                     </LabelLinkValue>
                   )}
                   {label.value.type === 'text' && (
