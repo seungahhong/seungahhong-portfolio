@@ -4,34 +4,33 @@ import {
   useState,
   useRef,
   useMemo,
-  TouchEvent,
   useEffect,
 } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
-import { ICarouselProps } from './type';
 import { useResizeObserver } from '../../helpers/hooks/useResizeObserver';
+import { DIRECTION_TYPE } from '../../types';
+import { useSwipe } from '../../helpers/hooks/useSwipe';
 
-const ARROW_TYPE = {
-  LEFT: 'LEFT',
-  RIGHT: 'RIGHT',
-} as const;
+export interface ICarouselProps {
+  images: {
+    src: string;
+    alt: string;
+  }[];
+  threshold?: number;
+  transitionEffect?: string;
+  verticalSwiping?: boolean;
+}
 
 type ArrowButtonTypes = {
-  direction: keyof typeof ARROW_TYPE;
-};
-
-type SwipeDataTypes = {
-  isSwiping: boolean;
-  direction?: keyof typeof ARROW_TYPE;
-  startPos: number;
-  delta: number;
+  direction: keyof typeof DIRECTION_TYPE;
 };
 
 interface ICarouselListItem {
   translateX: number;
+  translateY: number;
   transition: string;
 }
 
@@ -57,9 +56,11 @@ const CarouselListItem = styled.li<ICarouselListItem>`
   position: relative;
   flex: 1 0 100%;
   width: 100%;
-  height: calc(100% - 32px);
 
-  transform: translateX(-${({ translateX }) => translateX}px);
+  transform: translate(
+    -${({ translateX }) => translateX}px,
+    -${({ translateY }) => translateY}px
+  );
   transition: ${({ transition }) => transition};
 
   & > img {
@@ -70,8 +71,6 @@ const CarouselListItem = styled.li<ICarouselListItem>`
 
 const ArrowButton = styled.button<ArrowButtonTypes>`
   position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
   z-index: 1;
   cursor: pointer;
   background: transparent;
@@ -82,12 +81,21 @@ const ArrowButton = styled.button<ArrowButtonTypes>`
   padding: 0;
 
   ${({ direction }) =>
-    direction === ARROW_TYPE.LEFT
+    direction === DIRECTION_TYPE.LEFT || direction === DIRECTION_TYPE.RIGHT
       ? css`
-          left: 0;
+          ${direction === DIRECTION_TYPE.LEFT
+            ? 'left: -20px;'
+            : 'right: -20px;'}
+          top: 50%;
+          transform: translate(0, -50%);
         `
       : css`
-          right: 0;
+          ${direction === DIRECTION_TYPE.TOP ? 'top: -20px;' : 'bottom: -20px;'}
+          left: 50%;
+          transform: translate(-50%, 0);
+          svg {
+            transform: rotate(90deg);
+          }
         `};
 `;
 
@@ -107,16 +115,13 @@ const NavContainer = styled.div`
 `;
 
 const Carousel: FunctionComponent<ICarouselProps> = ({
-  images,
-  threshold = 150,
+  images = [],
+  threshold = 100,
+  verticalSwiping = false,
+  transitionEffect = '100ms ease-in-out',
 }) => {
-  const [swipe, setSwipe] = useState<SwipeDataTypes>({
-    isSwiping: false,
-    startPos: 0,
-    delta: 0,
-  });
-  const [transition, setTransition] = useState<string>('none');
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [transition, setTransition] = useState<string>('none');
   const listRef = useRef<HTMLUListElement>(null);
   const listPosData = useRef<listPosData[]>([]);
   const currImages = useMemo(
@@ -126,6 +131,55 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
         : images,
     [images]
   );
+  const handleLeftArrowClick = useCallback(
+    (index: number) => {
+      setTransition(transitionEffect);
+      setActiveIndex(index - 1 < 0 ? currImages.length - 1 : index - 1);
+
+      setTimeout(() => {
+        if (index - 1 === 0) {
+          setTransition('none');
+          setActiveIndex(currImages.length - 2);
+        }
+      }, 200);
+    },
+    [currImages, transitionEffect]
+  );
+
+  const handleRightArrowClick = useCallback(
+    (index: number) => {
+      setTransition(transitionEffect);
+      setActiveIndex(index >= currImages.length - 1 ? 0 : index + 1);
+
+      setTimeout(() => {
+        if (index + 1 === currImages.length - 1) {
+          setTransition('none');
+          setActiveIndex(1);
+        }
+      }, 200);
+    },
+    [currImages, transitionEffect]
+  );
+
+  const handleArrowClick = useCallback(
+    (direction: keyof typeof DIRECTION_TYPE) => {
+      if (
+        direction === DIRECTION_TYPE.LEFT ||
+        direction === DIRECTION_TYPE.TOP
+      ) {
+        handleLeftArrowClick(activeIndex);
+      } else {
+        handleRightArrowClick(activeIndex);
+      }
+    },
+    [handleLeftArrowClick, handleRightArrowClick, activeIndex]
+  );
+  const [swipe, handleTouchStart, handleTouchMove, handleTouchEnd] = useSwipe({
+    enabled: images.length > 1,
+    threshold: threshold,
+    verticalSwiping: verticalSwiping,
+    handleArrowClick,
+  });
 
   const handleListPos = useCallback((elements: HTMLElement | null) => {
     if (elements) {
@@ -140,76 +194,32 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
     }
   }, []);
 
-  const handleLeftArrowClick = useCallback(
-    (index: number) => {
-      setTransition('100ms ease-in-out');
-      setActiveIndex(index - 1 < 0 ? currImages.length - 1 : index - 1);
+  useEffect(() => {
+    const RefValue = listRef.current;
+    if (listRef.current && images.length > 1) {
+      listRef.current.addEventListener('touchstart', handleTouchStart);
+      listRef.current.addEventListener('touchmove', handleTouchMove);
+      listRef.current.addEventListener('touchend', handleTouchEnd);
 
-      setTimeout(() => {
-        if (index - 1 === 0) {
-          setTransition('none');
-          setActiveIndex(currImages.length - 2);
-        }
-      }, 200);
-    },
-    [currImages]
-  );
+      listRef.current.addEventListener('mousedown', handleTouchStart);
+      listRef.current.addEventListener('mousemove', handleTouchMove);
+      listRef.current.addEventListener('mouseup', handleTouchEnd);
+      listRef.current.addEventListener('mouseleave', handleTouchEnd);
+    }
 
-  const handleRightArrowClick = useCallback(
-    (index: number) => {
-      setTransition('100ms ease-in-out');
-      setActiveIndex((prev) => (prev >= currImages.length - 1 ? 0 : prev + 1));
+    return () => {
+      if (RefValue && images.length > 1) {
+        RefValue.removeEventListener('touchstart', handleTouchStart);
+        RefValue.removeEventListener('touchmove', handleTouchMove);
+        RefValue.removeEventListener('touchend', handleTouchEnd);
 
-      setTimeout(() => {
-        if (index + 1 === currImages.length - 1) {
-          setTransition('none');
-          setActiveIndex(1);
-        }
-      }, 200);
-    },
-    [currImages]
-  );
-
-  const handleTouchStart = useCallback((e: TouchEvent<HTMLUListElement>) => {
-    setSwipe((prev) => ({
-      ...prev,
-      startPos: e.changedTouches[0].pageX,
-    }));
-  }, []);
-
-  const handleTouchMove = useCallback((e: TouchEvent<HTMLUListElement>) => {
-    setSwipe((prev) => {
-      const delta = -(e.changedTouches[0].pageX - prev.startPos);
-
-      return {
-        ...prev,
-        isSwiping: true,
-        direction: delta < 0 ? ARROW_TYPE.LEFT : ARROW_TYPE.RIGHT,
-        delta,
-      };
-    });
-  }, []);
-
-  const handleTouchEnd = useCallback(
-    (e: TouchEvent<HTMLUListElement>) => {
-      if (Math.abs(swipe.delta) > threshold) {
-        if (swipe.direction === 'LEFT') {
-          handleLeftArrowClick(activeIndex);
-        } else {
-          handleRightArrowClick(activeIndex);
-        }
+        RefValue.removeEventListener('mousedown', handleTouchStart);
+        RefValue.removeEventListener('mousemove', handleTouchMove);
+        RefValue.removeEventListener('mouseup', handleTouchEnd);
+        RefValue.removeEventListener('mouseleave', handleTouchEnd);
       }
-
-      setSwipe((prev) => ({
-        ...prev,
-        direction: ARROW_TYPE.LEFT,
-        isSwiping: false,
-        startPos: 0,
-        delta: 0,
-      }));
-    },
-    [swipe, activeIndex, handleLeftArrowClick, handleRightArrowClick, threshold]
-  );
+    };
+  }, [images, handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   useEffect(() => {
     if (currImages.length > 0 && listPosData.current.length === 0) {
@@ -224,10 +234,18 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
     <Container>
       {images.length > 1 && (
         <ArrowButton
-          direction={ARROW_TYPE.LEFT}
-          title="Left Arrow Button"
-          aria-label="Left Arrow Button"
-          onClick={() => handleLeftArrowClick(activeIndex)}
+          direction={verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT}
+          title={`${
+            verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
+          } Arrow Button`}
+          aria-label={`${
+            verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
+          } Arrow Button`}
+          onClick={() =>
+            handleArrowClick(
+              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.LEFT
+            )
+          }
         >
           <RiArrowDropLeftLine />
         </ArrowButton>
@@ -235,19 +253,31 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
       {images.length > 0 && (
         <CarouselList
           ref={listRef}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          style={{
+            height: images.length > 1 ? '90%' : '100%',
+            flexDirection: verticalSwiping ? 'column' : 'row',
+          }}
         >
           {currImages.map((image, index) => (
             <CarouselListItem
               key={`CarouselList_${index}`}
               translateX={
-                !swipe.isSwiping
+                verticalSwiping
+                  ? 0
+                  : !swipe.dragging
                   ? listPosData.current[activeIndex]?.defaultWidth *
                       activeIndex || 0
                   : (listPosData.current[activeIndex]?.defaultWidth *
                       activeIndex || 0) + swipe.delta
+              }
+              translateY={
+                verticalSwiping
+                  ? !swipe.dragging
+                    ? listPosData.current[activeIndex]?.defaultHeight *
+                        activeIndex || 0
+                    : (listPosData.current[activeIndex]?.defaultHeight *
+                        activeIndex || 0) + swipe.delta
+                  : 0
               }
               transition={transition}
             >
@@ -259,10 +289,20 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
       {images.length > 1 && (
         <>
           <ArrowButton
-            direction={ARROW_TYPE.RIGHT}
-            title="Right Arrow Button"
-            aria-label="Right Arrow Button"
-            onClick={() => handleRightArrowClick(activeIndex)}
+            direction={
+              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
+            }
+            title={`${
+              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
+            } Arrow Button`}
+            aria-label={`${
+              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
+            } Arrow Button`}
+            onClick={() =>
+              handleArrowClick(
+                verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.RIGHT
+              )
+            }
           >
             <RiArrowDropRightLine />
           </ArrowButton>

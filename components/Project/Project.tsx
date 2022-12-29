@@ -1,11 +1,11 @@
 import type { CSSProperties, FunctionComponent } from 'react';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import styled from '@emotion/styled';
 import facepaint from 'facepaint';
 
 import { breakpoints } from '../../helpers/styles/mediaQuery';
-import Carousel from '../Carousel';
 import { IProjectItem } from '../../types';
+import Carousel from '../Carousel';
 
 const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
@@ -58,7 +58,6 @@ const Content = styled.div`
 `;
 
 const ContentImage = styled.div`
-  width: 40%;
   margin-right: 3rem;
 
   ${mq({

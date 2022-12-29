@@ -1,1 +1,2 @@
-export * from './projectType';
+export * from './project';
+export * from './carousel';
