@@ -4,7 +4,7 @@ import { IProjectItemType } from '../../types';
 export const workProjectValues: CardsType.ICardItemProps[] = [
   {
     title: '프로젝트',
-    description: '기술블로그, 포트폴리오, 특허',
+    description: '기술블로그, 포트폴리오, 특허, 회사블로그',
     href: 'project',
     image: {
       src: '/project_logo.jpeg',
@@ -177,6 +177,43 @@ export const workProjectDetailType: IProjectItemType = {
               value: {
                 type: 'text',
                 data: 'Vanilla, CSS',
+              },
+            },
+          ],
+        },
+      },
+      {
+        title: '회사 기술 블로그 기고',
+        date: '2022.08',
+        images: [
+          {
+            src: '/company_blog_logo.png',
+            alt: '회사 기술 블로그 이미지',
+          },
+        ],
+        description: {
+          'sub-discription':
+            '상세페이지 성능 개선을 위해서 작업한 기술적인 내용에 대해서 회사 기술블로그에 기고한 내용입니다.',
+          labels: [
+            {
+              name: '주요 기능',
+              value: {
+                type: 'text',
+                data: '이미지 지연 로딩 기술 적용, 콘텐츠 리플로우 방지, 화면보다 넓은 범위의 이미지 프리로딩 기술에 대한 내용',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://blog.wadiz.kr/%ed%8e%80%eb%94%a9%ed%95%98%ea%b8%b0-%ec%83%81%ec%84%b8-%ed%8e%98%ec%9d%b4%ec%a7%80-%ec%84%b1%eb%8a%a5-%ea%b0%9c%ec%84%a0%ed%95%98%ea%b8%b0/',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'VanillaJS, CSS, React',
               },
             },
           ],

@@ -53,6 +53,92 @@ export const careerProjectDetailType: IProjectItemType = {
     header: '와디즈',
     items: [
       {
+        title: 'FE 개발 프로세스',
+        date: '2021.07 ~ 2022.11',
+        images: [
+          {
+            src: '/wadiz-develop-process-logo.png',
+            alt: 'FE 개발 프로세스 이미지',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            '기획/디자인/백엔드/타부서와 개발을 진행하면서 FE만의 개발 프로세스를 확립하기 위해서 꾸준히 정리 후 팀에 공유하고 있으며, 일부는 도입되어서 개발 업무 진행 시 어려움점을 해결 할 수 있었습니다.',
+            '타부서와의 병렬로 업무를 진행하기 위해서 스토리북, API 인터페이스 공유, MSW 도입등의 여러가지 기술들을 도입을 하였고, 도입 이후에 개발속도, 효율성을 높일 수 있었습니다.',
+            '개발완료 이후에도 성능개선, 웹접근성 개선등의 후속작업을 진행하면서 와디즈 서비스의 품질/안정성 등을 높일 수 있었습니다.',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://material-debt-c1c.notion.site/FE-afe328f22181407daffccf8cbd698ad0',
+                title: 'FE 개발 프로세스 URL',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Scss, React-query, Storybook, Jest, Cypress, MSW',
+              },
+            },
+          ],
+        },
+      },
+      {
+        title: 'MSW(모킹 라이브러리) 도입',
+        date: '2021.11 ~ 2022.03',
+        images: [
+          {
+            src: '/wadiz-msw-logo1.png',
+            alt: 'MSW 도입 이미지 1',
+          },
+          {
+            src: '/wadiz-msw-logo2.png',
+            alt: 'MSW 도입 이미지 2',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            'BE/FE 개발을 병렬로 진행 시 기존에는 BE API가 완료되기 전까지는 FE에서는 서버 데이터 연동을 못했었고, 또한 테스트를 위해서 샘플 데이터를 추가해서 테스트 하다보니 FE 개발에 어려움이 발생하였습니다.',
+            'FE 개발에 어려움을 극복하고자, 개발 단계에서 API 인터페이스를 미리 공유받아서 FE만의 모킹 서버를 구축하기 위해서 MSW를 도입을 하게되었습니다.',
+            'MSW 모킹 데이터를 만들어서 서버모킹, 스토리북, Jest(유닛테스트), Cypress에서도 공통으로 사용함으로써 개발의 효율성을 높일 수 있었습니다.',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://material-debt-c1c.notion.site/msw-cbbd808ef913402cbdd7ccc614cacd32',
+                title: 'MSW(모킹 라이브러리) 도입',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Storybook, Jest, Cypress, MSW',
+              },
+            },
+          ],
+        },
+      },
+      {
         title: '펀딩 상품옵션 개선',
         date: '2022.07 ~ 2022.10',
         images: [
