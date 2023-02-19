@@ -1,8 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 
-const isVideoRecord =
-  process.env.PLAYWRIGHT_VIDEO === 'true' ||
-  process.env.PLAYWRIGHT_VIDEO === undefined;
+const isVideoRecord = process.env.PLAYWRIGHT_VIDEO === 'true';
 
 export default defineConfig({
   timeout: 60 * 1000 * 30,
