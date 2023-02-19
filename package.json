@@ -7,15 +7,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "playwright:run": "cross-env PLAYWRIGHT_VIDEO=false playwright test",
+    "playwright:debug": "cross-env PLAYWRIGHT_VIDEO=false playwright test --debug"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "cross-env": "^7.0.3",
     "emotion-reset": "^3.0.1",
     "facepaint": "^1.2.1",
     "next": "12.2.5",
     "next-sitemap": "^3.1.21",
+    "playwright": "^1.30.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
@@ -24,6 +28,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
+    "@playwright/test": "^1.30.0",
     "@types/facepaint": "^1.2.2",
     "@types/node": "18.7.14",
     "@types/react": "18.0.18",
@@ -31,5 +36,9 @@
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
     "typescript": "4.8.2"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:seungahhong/seungahhong-portfolio.git",
+  "author": "hongseungah <gmm117@naver.com>",
+  "license": "MIT"
 }
