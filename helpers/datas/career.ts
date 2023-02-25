@@ -1,5 +1,8 @@
+import dayjs from 'dayjs';
 import { CardsType } from '../../components/type';
 import { IProjectItemType } from '../../types';
+
+const today = dayjs().format('YYYY.MM');
 
 export const careerProjectValues: CardsType.ICardItemProps[] = [
   {
@@ -54,7 +57,7 @@ export const careerProjectDetailType: IProjectItemType = {
     items: [
       {
         title: 'FE 개발 프로세스',
-        date: '2021.07 ~ 2022.11',
+        date: `2021.07 ~ ${today}`,
         images: [
           {
             src: '/wadiz-develop-process-logo.png',
@@ -79,7 +82,7 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'URL',
               value: {
                 type: 'link',
-                data: 'https://material-debt-c1c.notion.site/FE-afe328f22181407daffccf8cbd698ad0',
+                data: 'https://seungahhong.github.io/blog/2023/01/2023-01-01-fe-process/',
                 title: 'FE 개발 프로세스 URL',
               },
             },
@@ -87,15 +90,15 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Scss, React-query, Storybook, Jest, Cypress, MSW',
+                data: 'React, Scss, Redux, React-query, Storybook, Jest, Cypress, MSW, Playwright, Typescript',
               },
             },
           ],
         },
       },
       {
-        title: 'MSW(모킹 라이브러리) 도입',
-        date: '2021.11 ~ 2022.03',
+        title: 'MSW(모킹 서비스) 도입/데이터 추가',
+        date: `2021.11 ~ ${today}`,
         images: [
           {
             src: '/wadiz-msw-logo1.png',
@@ -124,7 +127,7 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'URL',
               value: {
                 type: 'link',
-                data: 'https://material-debt-c1c.notion.site/msw-cbbd808ef913402cbdd7ccc614cacd32',
+                data: 'https://seungahhong.github.io/blog/2022/07/2022-07-25-msw/',
                 title: 'MSW(모킹 라이브러리) 도입',
               },
             },
@@ -153,8 +156,8 @@ export const careerProjectDetailType: IProjectItemType = {
         ],
         description: {
           'sub-discription': [
-            '펀딩 상품이 3depth 서브옵션까지 지원 가능하도록 기능개발',
-            '기존에 지원하던 옵션없는 상품, 직접입력, 상품옵션 레거시 기능/디자인을 개편작업(리액트, 디자인시스템으로 개편)',
+            '기존 펀딩 1depth 서브옵션을 3depth 서브옵션이 가능하도록 기능개발',
+            '기존에 지원하던 옵션없는 상품, 직접입력 등의 레거시 기능/디자인 개편작업 진행(리액트, 디자인시스템으로 개편)',
           ],
           labels: [
             {
@@ -220,7 +223,8 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'URL',
               value: {
                 type: 'link',
-                data: 'https://www.wadiz.kr/web/supporter-club/intro',
+                data: 'https://helpcenter.wadiz.kr/hc/ko/articles/7345808859161--%EC%84%9C%ED%8F%AC%ED%84%B0%ED%81%B4%EB%9F%BD-%EC%84%9C%ED%8F%AC%ED%84%B0%ED%81%B4%EB%9F%BD%EC%9D%B4-%EB%AD%90%EC%97%90%EC%9A%94-',
+                title: '서포터클럽 링크',
               },
             },
             {
@@ -252,9 +256,8 @@ export const careerProjectDetailType: IProjectItemType = {
         ],
         description: {
           'sub-discription': [
-            '와디즈 스토어 상세페이지 UI 기능개발',
-            '스토리, 만족도평가, 반품/교환 기능개발',
-            '상품 구매 프로세스 기능 개발(상품 선택, 재고수량 관리)',
+            '와디즈 스토어 상세페이지 메인 UI, 탭(스토리, 만족도평가, 반품/교환) 기능개발',
+            '상품 구매 프로세스 기능개발(상품 옵션 선택, 재고수량 관리 등)',
           ],
           labels: [
             {
@@ -268,14 +271,15 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'URL',
               value: {
                 type: 'link',
-                data: 'https://www.wadiz.kr/web/store/main',
+                data: 'https://helpcenter.wadiz.kr/hc/ko/articles/7285191978777--%EC%A3%BC%EB%AC%B8-%EA%B2%B0%EC%A0%9C-%EC%99%80%EB%94%94%EC%A6%88-%EC%8A%A4%ED%86%A0%EC%96%B4%EA%B0%80-%EB%AD%90%EC%98%88%EC%9A%94-',
+                title: '스토어 상세페이지 링크',
               },
             },
             {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Scss, React-query, Redux Toolkit, Storybook, Jest, MSW',
+                data: 'React, Scss, Redux, Redux Toolkit, React-query, Storybook, Jest, MSW',
               },
             },
           ],
@@ -283,7 +287,7 @@ export const careerProjectDetailType: IProjectItemType = {
       },
       {
         title: '펀딩/스토어/스튜디오 운영업무',
-        date: '2020.12 ~ 2022.12',
+        date: `2020.12 ~ ${today}`,
         images: [
           {
             src: '/wadiz-operation-log1.png',
@@ -312,17 +316,18 @@ export const careerProjectDetailType: IProjectItemType = {
               },
             },
             {
-              name: 'URL',
+              name: 'Studio URL',
               value: {
                 type: 'link',
-                data: 'https://www.wadiz.kr/web/main',
+                data: 'https://www.wadiz.kr/web/wboard/newsBoardDetail/6918',
+                title: '메이커 스튜디오 링크',
               },
             },
             {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Scss, React-query, Redux Toolkit, React-hook-form, Storybook, Jest, Cypress, MSW',
+                data: 'React, Scss, React-query, Redux(Redux Toolkit), React-hook-form, Storybook, Jest, Cypress, MSW, Typescript',
               },
             },
           ],

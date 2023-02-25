@@ -15,6 +15,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "cross-env": "^7.0.3",
+    "dayjs": "^1.11.7",
     "emotion-reset": "^3.0.1",
     "facepaint": "^1.2.1",
     "next": "12.2.5",

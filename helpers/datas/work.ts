@@ -1,5 +1,8 @@
+import dayjs from 'dayjs';
 import { CardsType } from '../../components/type';
 import { IProjectItemType } from '../../types';
+
+const today = dayjs().format('YYYY.MM');
 
 export const workProjectValues: CardsType.ICardItemProps[] = [
   {
@@ -32,7 +35,7 @@ export const workProjectDetailType: IProjectItemType = {
     items: [
       {
         title: '포트폴리오 웹사이트',
-        date: '2022.12 (개인 프로젝트)',
+        date: `${today} (개인 프로젝트)`,
         images: [
           {
             src: '/works_portfolio_1_logo.png',
@@ -71,7 +74,14 @@ export const workProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'NextJS, TypeScript, Emotion',
+                data: 'React, NextJS, TypeScript, Emotion',
+              },
+            },
+            {
+              name: 'E2E Test',
+              value: {
+                type: 'text',
+                data: 'Playwright',
               },
             },
             {
@@ -86,7 +96,7 @@ export const workProjectDetailType: IProjectItemType = {
       },
       {
         title: '기술블로그 웹사이트',
-        date: '2022.09 (개인 프로젝트)',
+        date: `${today} (개인 프로젝트)`,
         images: [
           {
             src: '/works_blog_1_logo.png',
@@ -125,7 +135,7 @@ export const workProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'Gatsby, TypeScript, Styled-Components',
+                data: 'React, Gatsby, TypeScript, Styled-Components',
               },
             },
             {
