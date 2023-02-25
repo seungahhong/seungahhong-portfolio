@@ -31,6 +31,11 @@ $ yarn dev
 # webpack-dev-server Run
 $ yarn start
 
+# playwright Run
+$ yarn playwright:run
+
+# playwright debug
+$ yarn playwright:debug
 ```
 
 ## Download
@@ -50,6 +55,7 @@ This software uses the following open source packages:
 - [nextjs](https://nextjs.org/)
 - [typescript](https://www.typescriptlang.org/)
 - [emotion](https://emotion.sh/docs/introduction)
+- [playwright](https://playwright.dev/)
 
 ## Support
 
@@ -57,4 +63,4 @@ This software uses the following open source packages:
 
 ## CopyLight & License
 
-Copyright (c) 2022 Hong SeungAh. index.tsx is released under the [MIT license](https://opensource.org/licenses/MIT).
+Copyright (c) 2023 Hong SeungAh. index.tsx is released under the [MIT license](https://opensource.org/licenses/MIT).
