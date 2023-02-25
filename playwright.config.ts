@@ -6,7 +6,7 @@ export default defineConfig({
   // reporter: [['html', { outputFolder: './e2e/playwright/reports' }]], // html report
   timeout: 60 * 1000 * 3,
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://seungahhong-portfolio.vercel.app/',
     headless: true,
     ignoreHTTPSErrors: true,
     ...(isVideoRecord
