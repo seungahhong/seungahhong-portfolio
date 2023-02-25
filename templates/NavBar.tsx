@@ -202,10 +202,14 @@ const Navbar: FunctionComponent = () => {
               <h3>홍승아 포트폴리오</h3>
             </a>
           </Link>
-          <MobileMenu onClick={handleNavOpen}>
+          <MobileMenu
+            role="button"
+            aria-label="navigation-button"
+            onClick={handleNavOpen}
+          >
             <MenuItem />
           </MobileMenu>
-          <DesktopMenu>
+          <DesktopMenu aria-label="desktop-navigation">
             <NavMenu color="#ffffff" fontWeight="normal">
               <NavLink />
             </NavMenu>

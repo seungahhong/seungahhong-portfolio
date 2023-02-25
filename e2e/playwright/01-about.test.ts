@@ -9,13 +9,30 @@ test.describe('포트폴리오 About 홈', () => {
     browserContext = await browser.newContext(contextOptions);
   });
 
-  test.beforeEach(async () => {
+  test.beforeEach(async ({ isMobile }) => {
     // 페이지 생성
     page = await browserContext.newPage();
 
     await page.goto('/');
 
-    await page.locator('header ul > li', { hasText: 'About' }).click();
+    if (isMobile) {
+      await page.locator('[aria-label="navigation-button"]').click();
+      await page.locator('[aria-label="about-link"]:visible').click();
+    } else {
+      await page
+        .locator(
+          '[aria-label="desktop-navigation"] [aria-label="about-link"]:visible'
+        )
+        .click();
+    }
+  });
+
+  test.afterEach(async () => {
+    await page.close();
+  });
+
+  test.afterAll(async () => {
+    await browserContext.close();
   });
 
   test('01-1. about url을 검사한다.', async () => {

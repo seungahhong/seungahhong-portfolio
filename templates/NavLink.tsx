@@ -18,22 +18,22 @@ const NavLink: FunctionComponent<INaveLinkProps> = ({
     <ul onClick={handleClose}>
       <li>
         <Link href="/">
-          <Anchor>Home</Anchor>
+          <Anchor aria-label="home-link">Home</Anchor>
         </Link>
       </li>
       <li>
         <Link href="/career">
-          <Anchor>Career</Anchor>
+          <Anchor aria-label="career-link">Career</Anchor>
         </Link>
       </li>
       <li>
         <Link href="/work">
-          <Anchor>Work</Anchor>
+          <Anchor aria-label="work-link">Work</Anchor>
         </Link>
       </li>
       <li>
         <Link href="/about">
-          <Anchor>About</Anchor>
+          <Anchor aria-label="about-link">About</Anchor>
         </Link>
       </li>
     </ul>
