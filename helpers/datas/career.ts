@@ -168,8 +168,8 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'URL',
               value: {
                 type: 'link',
-                data: 'https://material-debt-c1c.notion.site/Playwright-83814d26b78345baaffb5e547df4c290',
-                title: 'Playwright 사용법',
+                data: 'https://seungahhong.github.io/blog/2023/04/2023-04-02-playwright/',
+                title: 'Playwright URL',
               },
             },
             {
