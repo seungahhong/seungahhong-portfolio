@@ -23,16 +23,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'npm'
 
       # 패키지를 설치합니다.
       - name: Install dependencies
-        run: npm install
-
-      # e2e(playwright) 테스트 툴을 설치합니다.
-      - name: Install playwright browsers
-        run: npx playwright install --with-deps
+        run: yarn install
 
       # e2e 테스트를 수행합니다.
       - name: Run e2e tests
-        run: npx playwright test
+        run: yarn e2e:ci
