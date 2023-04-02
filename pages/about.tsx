@@ -202,7 +202,7 @@ const About: NextPageWithLayout = () => {
           <Progress title="C,C++" percent={90} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
-          <Progress title="Typescript" percent={70} isStart={isStart} />
+          <Progress title="Typescript" percent={80} isStart={isStart} />
         </ProgressContainer>
         <ProgressContainer>
           <Progress title="Express" percent={70} isStart={isStart} />
