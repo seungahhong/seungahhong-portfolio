@@ -142,6 +142,47 @@ export const careerProjectDetailType: IProjectItemType = {
         },
       },
       {
+        title: 'E2E 테스트',
+        date: `2022.08 ~ ${today}`,
+        images: [
+          {
+            src: '/wadiz-develop-playwright.png',
+            alt: 'playwright 이미지 1',
+          },
+        ],
+        description: {
+          'sub-discription': [
+            '도입배경: 서비스가 확장됨에 따라서 라이브 이슈가 증가하게 되었고, 이슈에 대한 빠른 파악 및 대응을 위해서 playwright 테스트를 도입하게 되었습니다.',
+            '서비스 기획서에 정의된 동작을 바탕으로 e2e 테스트 코드를 작성하고 있으면, 혹여 기획서 변경 시 e2e 테스트 코드도 같이 수정해서 동기화를 진행하고 있습니다.',
+            '실제 환경과 동일한 테스트 동선을 제공하기 위해서 Mock 데이터 사용을 지양하고 있으며, 테스트 수행 후 오류 발생 시 빠르게 이슈를 파악(슬랙연동)해서 수정 작업을 진행하고 있습니다.',
+          ],
+          labels: [
+            {
+              name: 'Role',
+              value: {
+                type: 'text',
+                data: 'Front-End Developer',
+              },
+            },
+            {
+              name: 'URL',
+              value: {
+                type: 'link',
+                data: 'https://material-debt-c1c.notion.site/Playwright-83814d26b78345baaffb5e547df4c290',
+                title: 'Playwright 사용법',
+              },
+            },
+            {
+              name: 'Frontend',
+              value: {
+                type: 'text',
+                data: 'React, Scss, Typescript, Playwright',
+              },
+            },
+          ],
+        },
+      },
+      {
         title: '펀딩 상품옵션 개선',
         date: '2022.07 ~ 2022.10',
         images: [
