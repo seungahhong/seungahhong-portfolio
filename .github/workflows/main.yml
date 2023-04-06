@@ -23,7 +23,7 @@ jobs:
             pages:
               - 'pages/**'
 
-  tests_e2e:
+  ci:
     needs: changes
     if: ${{ needs.changes.outputs.pages == 'true' }}
 
@@ -34,7 +34,6 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      - if: steps.changes.outputs.pages_change === 'true'
       - name: Install node
         uses: actions/setup-node@v3
         with:
