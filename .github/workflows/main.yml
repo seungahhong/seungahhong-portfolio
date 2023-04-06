@@ -11,21 +11,28 @@ on:
       - 'releases/**'
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      pages: ${{ steps.filter.outputs.pages }}
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            pages:
+              - 'pages/**'
+
   tests_e2e:
+    needs: changes
+    if: ${{ needs.changes.outputs.pages == 'true' }}
+
     name: Run end-to-end tests
     runs-on: ubuntu-latest
     steps:
       # 해당 저장소의 코드를 가져옵니다.
       - name: Git checkout
         uses: actions/checkout@v3
-      
-      - name: Path Filter
-        uses: dorny/paths-filter@v2
-          id: changes
-          with:
-            filters: |
-              pages_change:
-                - 'pages/**'
 
       - if: steps.changes.outputs.pages_change === 'true'
       - name: Install node
