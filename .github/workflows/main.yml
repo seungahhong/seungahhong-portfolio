@@ -11,7 +11,22 @@ on:
       - 'releases/**'
 
 jobs:
-  tests_e2e:
+  # changes:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     pages: ${{ steps.filter.outputs.pages }}
+  #   steps:
+  #     - uses: dorny/paths-filter@v2
+  #       id: filter
+  #       with:
+  #         filters: |
+  #           pages:
+  #             - 'pages/**'
+
+  ci:
+    # needs: changes
+    # if: ${{ needs.changes.outputs.pages == 'true' }}
+
     name: Run end-to-end tests
     runs-on: ubuntu-latest
     steps:
