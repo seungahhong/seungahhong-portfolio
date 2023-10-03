@@ -97,11 +97,7 @@ const CardA: FunctionComponent<ICardItemProps> = ({
         return WrappedComponent;
       }
 
-      return (
-        <Link href={href}>
-          <a href={href}>{WrappedComponent}</a>
-        </Link>
-      );
+      return <Link href={href}>{WrappedComponent}</Link>;
     },
     []
   );

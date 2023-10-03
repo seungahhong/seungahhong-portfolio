@@ -31,7 +31,7 @@ MyApp.getInitialProps = ({ ctx }: AppContext) => {
 
 function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const getLayout = Component.getLayout ?? ((page: any) => page);
 
   // GA 설정 시작
   const router = useRouter();
