@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useCallback, RefObject } from 'react';
+import { RefObject, useEffect } from 'react';
 import ResizeObserver from 'resize-observer-polyfill';
 
 export interface ResizeObserverEntry {
@@ -10,7 +10,7 @@ export const useResizeObserver = (
   ref: RefObject<HTMLElement>,
   callback?: (entry: DOMRectReadOnly) => void
 ) => {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!ref.current) {
       return;
     }
