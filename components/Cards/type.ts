@@ -3,7 +3,7 @@ export interface ICardItemProps {
   image: {
     src: string;
     alt: string;
-    objectFit: string;
+    objectFit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
   };
   title: string;
   description?: string;

@@ -123,7 +123,7 @@ const About: NextPageWithLayout = () => {
     <Content>
       <Profile>
         <ImageProfile>
-          <Image src="/profile_logo.png" alt="프로필 로고" layout="fill" />
+          <Image src="/profile_logo.png" alt="프로필 로고" fill />
         </ImageProfile>
         <SocialProfile>
           <SocialLink

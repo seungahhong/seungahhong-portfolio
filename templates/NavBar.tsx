@@ -194,7 +194,7 @@ const Navbar: FunctionComponent = () => {
   return (
     <>
       <Container>
-        <Image src="/background-NavBar.jpg" alt="" layout="fill" aria-hidden />
+        <Image src="/background-NavBar.jpg" alt="" fill aria-hidden />
         <Overlay />
         <Content>
           <Link href="/">

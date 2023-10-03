@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from '@emotion/styled';
 import { keyframes, Keyframes } from '@emotion/react';
@@ -160,8 +160,8 @@ const CardC: FunctionComponent<ICardItemProps> = ({
               <Image
                 src={image.src}
                 alt={image.alt}
-                layout="fill"
-                objectFit={image.objectFit as ImageProps['objectFit']}
+                fill
+                style={{ objectFit: image.objectFit }}
               />
             </InnerImage>
             <DesktopOverlay>
