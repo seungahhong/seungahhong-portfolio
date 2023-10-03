@@ -31,12 +31,12 @@ MyApp.getInitialProps = ({ ctx }: AppContext) => {
 
 function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout ?? ((page: any) => page);
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   // GA 설정 시작
   const router = useRouter();
   useEffect(() => {
-    const handleRouteChange = (url: any) => {
+    const handleRouteChange = (url: string) => {
       gtag.pageview(url);
     };
     router.events.on('routeChangeComplete', handleRouteChange);
