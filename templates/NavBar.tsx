@@ -198,9 +198,7 @@ const Navbar: FunctionComponent = () => {
         <Overlay />
         <Content>
           <Link href="/">
-            <a>
-              <h3>홍승아 포트폴리오</h3>
-            </a>
+            <h3>홍승아 포트폴리오</h3>
           </Link>
           <MobileMenu
             role="button"

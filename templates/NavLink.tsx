@@ -6,7 +6,7 @@ interface INaveLinkProps {
   handleClose?: () => void;
 }
 
-const Anchor = styled.a`
+const Anchor = styled(Link)`
   display: block;
   cursor: pointer;
 `;
@@ -17,24 +17,24 @@ const NavLink: FunctionComponent<INaveLinkProps> = ({
   return (
     <ul onClick={handleClose}>
       <li>
-        <Link href="/">
-          <Anchor aria-label="home-link">Home</Anchor>
-        </Link>
+        <Anchor href="/" aria-label="home-link">
+          Home
+        </Anchor>
       </li>
       <li>
-        <Link href="/career">
-          <Anchor aria-label="career-link">Career</Anchor>
-        </Link>
+        <Anchor href="/career" aria-label="career-link">
+          Career
+        </Anchor>
       </li>
       <li>
-        <Link href="/work">
-          <Anchor aria-label="work-link">Work</Anchor>
-        </Link>
+        <Anchor href="/work" aria-label="work-link">
+          Work
+        </Anchor>
       </li>
       <li>
-        <Link href="/about">
-          <Anchor aria-label="about-link">About</Anchor>
-        </Link>
+        <Anchor href="/about" aria-label="about-link">
+          About
+        </Anchor>
       </li>
     </ul>
   );

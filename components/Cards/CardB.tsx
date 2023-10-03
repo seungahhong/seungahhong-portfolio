@@ -73,15 +73,13 @@ const CardB: FunctionComponent<ICardBItemProps> = ({
     <Container className={className}>
       {title && (
         <Title>
-          <Link href={href} passHref>
-            <a
-              href={href}
-              aria-label={label}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {title}
-            </a>
+          <Link
+            href={href}
+            passHref
+            aria-label={label}
+            rel="noopener noreferrer"
+          >
+            {title}
           </Link>
         </Title>
       )}

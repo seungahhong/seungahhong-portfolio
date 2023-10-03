@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
   // GA 설정 시작
   const router = useRouter();
   useEffect(() => {
-    const handleRouteChange = (url: any) => {
+    const handleRouteChange = (url: string) => {
       gtag.pageview(url);
     };
     router.events.on('routeChangeComplete', handleRouteChange);
