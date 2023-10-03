@@ -281,7 +281,7 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
               }
               transition={transition}
             >
-              <Image src={image.src} alt={image.alt} layout="fill" />
+              <Image src={image.src} alt={image.alt} fill />
             </CarouselListItem>
           ))}
         </CarouselList>

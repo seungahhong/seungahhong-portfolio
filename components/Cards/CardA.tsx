@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react';
 import { keyframes, Keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 import { ICardItemProps } from './type';
 
 interface IContainerProps {
@@ -112,9 +112,9 @@ const CardA: FunctionComponent<ICardItemProps> = ({
               <Image
                 src={image.src}
                 alt={image.alt}
-                layout="fill"
+                fill
                 aria-label="logo"
-                objectFit={image.objectFit as ImageProps['objectFit']}
+                style={{ objectFit: image.objectFit }}
               />
             </CardImage>
             <Content>
