@@ -11,6 +11,8 @@ import theme from '../styles/theme';
 import Template from '../templates/Template';
 import * as gtag from '../lib/gtags';
 
+import '../styles/globals.css';
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
