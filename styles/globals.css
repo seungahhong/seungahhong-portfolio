@@ -1,3 +1,22 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind base;
+
+:root {
+  --spacing-1: 1px;
+  --spacing-2: 2px;
+  --spacing-3: 4px;
+  --spacing-4: 8px;
+  --spacing-5: 16px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 40px;
+}
+
+@layer utilities {
+  .title-3 {
+    line-height: 38px;
+    letter-spacing: -0.6px;
+    font-size: 28px;
+  }
+}
