@@ -1,18 +1,10 @@
 import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
 
 import SocialLink from './SocialLink';
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: 40px 40px 40px 40px;
-  grid-gap: 8px;
-  margin-top: 36px;
-`;
-
 const Social: FunctionComponent = () => {
   return (
-    <Container>
+    <div className="grid grid-cols-[40px_40px_40px_40px] gap-[8px] mt-[36px]">
       <SocialLink
         link={{
           href: 'tel:010-7118-2519',
@@ -61,7 +53,7 @@ const Social: FunctionComponent = () => {
           height: 38,
         }}
       />
-    </Container>
+    </div>
   );
 };
 

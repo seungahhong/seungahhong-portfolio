@@ -11,31 +11,45 @@ const Anchor = styled(Link)`
   cursor: pointer;
 `;
 
+const LinkItems = [
+  {
+    href: '/',
+    label: 'Home Link',
+    value: 'Home',
+  },
+  {
+    href: '/career',
+    label: 'Career Link',
+    value: 'Career',
+  },
+  {
+    href: '/work',
+    label: 'Work Link',
+    value: 'Work',
+  },
+  {
+    href: '/about',
+    label: 'About Link',
+    value: 'About',
+  },
+];
+
 const NavLink: FunctionComponent<INaveLinkProps> = ({
   handleClose = () => {},
 }) => {
   return (
     <ul onClick={handleClose}>
-      <li>
-        <Anchor href="/" aria-label="home-link">
-          Home
-        </Anchor>
-      </li>
-      <li>
-        <Anchor href="/career" aria-label="career-link">
-          Career
-        </Anchor>
-      </li>
-      <li>
-        <Anchor href="/work" aria-label="work-link">
-          Work
-        </Anchor>
-      </li>
-      <li>
-        <Anchor href="/about" aria-label="about-link">
-          About
-        </Anchor>
-      </li>
+      {LinkItems.map((item, index) => (
+        <li key={`NavLink_${index}`}>
+          <Link
+            className="block cursor-pointer"
+            href={item.href}
+            aria-label={item.label}
+          >
+            {item.value}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 };

@@ -1,32 +1,9 @@
 import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
-
-import facepaint from 'facepaint';
-import { breakpoints } from '../../helpers/styles/mediaQuery';
-
-const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
 interface IPageHeaderProps {
   title: string;
   description?: string;
 }
-
-const Title = styled.h1`
-  max-height: 1024px;
-  text-align: center;
-  ${(props) => props.theme.fonts.title1};
-  font-weight: 800;
-
-  ${mq({
-    fontSize: ['60px', '48px'],
-  })}
-`;
-
-const Description = styled.p`
-  max-height: 780px;
-  margin: 24px auto 0;
-  font-size: 18px;
-`;
 
 const PageHeader: FunctionComponent<IPageHeaderProps> = ({
   title,
@@ -34,8 +11,16 @@ const PageHeader: FunctionComponent<IPageHeaderProps> = ({
 }) => {
   return (
     <>
-      {title && <Title>{title}</Title>}
-      {description && <Description>{description}</Description>}
+      {title && (
+        <h1 className="title-3 max-h-[1024px] text-center font-extrabold !text-[48px] lg:!text-[60px]">
+          {title}
+        </h1>
+      )}
+      {description && (
+        <p className="max-h-[780px] mt-[24px] mb-0 mx-auto text-[18px]">
+          {description}
+        </p>
+      )}
     </>
   );
 };
