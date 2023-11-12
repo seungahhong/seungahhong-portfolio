@@ -38,7 +38,7 @@ const Career: NextPageWithLayout = () => {
 
 Career.getLayout = function getLayout(page: React.ReactElement) {
   return (
-    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] my-[auto]">
+    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] mx-[auto] my-0">
       {page}
     </section>
   );

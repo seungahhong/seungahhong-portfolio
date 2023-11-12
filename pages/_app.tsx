@@ -5,7 +5,6 @@ import type { AppProps, AppContext } from 'next/app';
 import Script from 'next/script';
 import { ThemeProvider } from '@emotion/react';
 
-import GlobalStyles from '../styles/globalStyles';
 import Layout from '../templates/Layout';
 import theme from '../styles/theme';
 import Template from '../templates/Template';
@@ -53,7 +52,6 @@ function MyApp({ Component, pageProps, canonical }: AppPropsWithLayout) {
   return (
     <ThemeProvider theme={theme}>
       <Layout>
-        <GlobalStyles />
         <Template {...pageProps} canonical={canonical}>
           {/* GA 설정 시작 */}
           {/* Global Site Tag (gtag.js) - Google Analytics */}
