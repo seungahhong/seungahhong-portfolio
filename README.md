@@ -56,6 +56,7 @@ This software uses the following open source packages:
 - [typescript](https://www.typescriptlang.org/)
 - [emotion](https://emotion.sh/docs/introduction)
 - [playwright](https://playwright.dev/)
+- [tailwindcss](https://tailwindcss.com/)
 
 ## Support
 

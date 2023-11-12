@@ -47,7 +47,6 @@ const CareerItem = ({
     items,
     isMobile ? 1 : 2
   );
-  // className="w-[100%] lg:w-[calc(4_/_12_*_100%)]"
   return (
     <div className="flex flex-col w-[100%] bg-[#f5f5f5] text-base py-[96px]">
       <PageHeader title={header} />
