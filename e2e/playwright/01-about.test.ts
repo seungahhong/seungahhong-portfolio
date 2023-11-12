@@ -17,11 +17,11 @@ test.describe('포트폴리오 About 홈', () => {
 
     if (isMobile) {
       await page.locator('[aria-label="navigation-button"]').click();
-      await page.locator('[aria-label="about-link"]:visible').click();
+      await page.locator('[aria-label="About Link"]:visible').click();
     } else {
       await page
         .locator(
-          '[aria-label="desktop-navigation"] [aria-label="about-link"]:visible'
+          '[aria-label="desktop-navigation"] [aria-label="About Link"]:visible'
         )
         .click();
     }

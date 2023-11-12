@@ -17,11 +17,11 @@ test.describe('포트폴리오 Career 홈', () => {
 
     if (isMobile) {
       await page.locator('[aria-label="navigation-button"]').click();
-      await page.locator('[aria-label="career-link"]:visible').click();
+      await page.locator('[aria-label="Career Link"]:visible').click();
     } else {
       await page
         .locator(
-          '[aria-label="desktop-navigation"] [aria-label="career-link"]:visible'
+          '[aria-label="desktop-navigation"] [aria-label="Career Link"]:visible'
         )
         .click();
     }
