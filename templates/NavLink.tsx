@@ -1,15 +1,9 @@
 import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
 import Link from 'next/link';
 
 interface INaveLinkProps {
   handleClose?: () => void;
 }
-
-const Anchor = styled(Link)`
-  display: block;
-  cursor: pointer;
-`;
 
 const LinkItems = [
   {

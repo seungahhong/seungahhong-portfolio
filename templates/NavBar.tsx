@@ -1,183 +1,10 @@
 import { FunctionComponent, useCallback, useState } from 'react';
 import Image from 'next/image';
-import styled from '@emotion/styled';
-import facepaint from 'facepaint';
 import Social from '../components/Socials/Social';
-import { breakpoints } from '../helpers/styles/mediaQuery';
 
 import NavLink from './NavLink';
 import Link from 'next/link';
 
-const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
-
-interface INavMenuProps {
-  color: string;
-  fontWeight: number | string;
-}
-
-interface INavigationProps {
-  isOpen: boolean;
-}
-
-const Container = styled.header`
-  position: relative;
-
-  ${(props) =>
-    mq({
-      position: ['fixed', 'relative'],
-      width: ['25%', '100%'],
-      left: 0,
-      top: 0,
-      bottom: 0,
-      padding: ['0', props.theme.spacing['spacing-7']],
-    })}
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(22, 27, 33, 0.7);
-`;
-
-const Content = styled.div`
-  display: flex;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  color: #fff;
-  font-weight: 600;
-
-  & > a {
-    text-decoration: none;
-  }
-
-  & h3 {
-    font-size: 28px;
-    color: #fff;
-
-    ${(props) =>
-      mq({
-        marginBottom: [props.theme.spacing['spacing-5'], 0],
-        fontSize: ['28px', '20px'],
-      })}
-  }
-
-  ${(props) =>
-    mq({
-      left: ['auto', 0],
-      top: ['auto', 0],
-      right: ['auto', 0],
-      alignItems: ['stretch', 'center'],
-      flexDirection: ['column', 'row'],
-      padding: ['60px 30px 52px', props.theme.spacing['spacing-5']],
-      justifyContent: ['normal', 'space-between'],
-    })}
-`;
-
-const NavMenu = styled.div<INavMenuProps>`
-  margin-top: 30px;
-
-  & > ul {
-    list-style: none;
-    font-size: 20px;
-    line-height: 1.6;
-
-    a {
-      text-decoration: none;
-      font-weight: ${(props) => props.fontWeight};
-      color: ${(props) => props.color};
-    }
-  }
-`;
-
-const MobileMenu = styled.div`
-  display: none;
-
-  @media (max-width: 1024px) {
-    display: block;
-    position: relative;
-    width: 24px;
-    height: 20px;
-    margin-left: 8px;
-
-    & > span:before {
-      top: -8px;
-    }
-
-    & > span:after {
-      top: 8px;
-    }
-  }
-`;
-
-const DesktopMenu = styled.div`
-  display: block;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
-`;
-
-const MenuItem = styled.span`
-  position: absolute;
-  top: 8px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
-  background: rgba(255, 255, 255, 0.7);
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    transition: all 0.1s;
-    background: rgba(255, 255, 255, 0.7);
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    transition: all 0.1s;
-    background: rgba(255, 255, 255, 0.7);
-  }
-`;
-
-const Navigation = styled.section<INavigationProps>`
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 2;
-  background: #ffffff;
-  transform: translateX(${(props) => (props.isOpen ? 0 : '100%')});
-  padding: ${(props) => props.theme.spacing['spacing-5']};
-  transition: all 1s ease;
-`;
-
-const NavTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  & > h2 {
-    ${(props) => props.theme.fonts.title1};
-  }
-`;
 const Navbar: FunctionComponent = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -193,31 +20,38 @@ const Navbar: FunctionComponent = () => {
 
   return (
     <>
-      <Container>
+      <header className="relative left-0 top-0 bottom-0 w-[100%] p-[var(--spacing-7)] lg:fixed lg:w-[25%] lg:p-0">
         <Image src="/background-NavBar.jpg" alt="" fill aria-hidden />
-        <Overlay />
-        <Content>
+        <div className="absolute left-0 top-0 right-0 bottom-0 bg-[rgb(22,27,33)] bg-opacity-70" />
+        <div className="flex absolute left-0 top-0 right-0 bottom-0 text-white font-semibold [&>a]:no-underline items-center flex-row p-[var(--spacing-5)] justify-between lg:left-auto lg:top-auto lg:right-auto lg:items-stretch lg:flex-col lg:p-[60px_30px_52px] lg:justify-normal">
           <Link href="/">
-            <h3>홍승아 포트폴리오</h3>
+            <h3 className="text-white mb-0 text-[20px] lg:mb-[var(--spacing-5)] lg:text-[28px]">
+              홍승아 포트폴리오
+            </h3>
           </Link>
-          <MobileMenu
+          <div
+            className="block relative w-[24px] h-[20px] ml-[8px] [&>span:before]:top-[-8px] [&>span:after]:top-[8px] lg:hidden"
             role="button"
             aria-label="navigation-button"
             onClick={handleNavOpen}
           >
-            <MenuItem />
-          </MobileMenu>
-          <DesktopMenu aria-label="desktop-navigation">
-            <NavMenu color="#ffffff" fontWeight="normal">
+            <span className="absolute top-[8px] left-0 w-[100%] h-[3px] transition-all duration-100 bg-white opacity-70 before:absolute before:content-[''] before:top-[8px] before:left-0 before:w-[100%] before:h-[100%] before:transition-all before:duration-100 before:bg-white before:opacity-70 after:content-[''] after:absolute after:top-[8px] after:left-0 after:w-[100%] after:h-[100%] after:transition-all after:duration-100 after:bg-white after:opacity-70" />
+          </div>
+          <div className="hidden lg:block" aria-label="desktop-navigation">
+            <div className="mt-[30px] [&>ul]:list-none [&>ul]:text-[20px] [&>ul]:leading-[1.6] [&>ul_a]:no-underline [&>ul_a]:font-normal [&>ul_a]:text-[#ffffff]">
               <NavLink />
-            </NavMenu>
+            </div>
             <Social />
-          </DesktopMenu>
-        </Content>
-      </Container>
-      <Navigation isOpen={isOpen}>
-        <NavTitle>
-          <h2>Menu</h2>
+          </div>
+        </div>
+      </header>
+      <section
+        className={`fixed left-0 right-0 top-0 bottom-0 z-[2] bg-white transition-all ease duration-1000 p-[var(--spacing-5)] ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <h2 className="title-1">Menu</h2>
           <Image
             src="/close_circle.svg"
             alt="Close Button"
@@ -225,12 +59,12 @@ const Navbar: FunctionComponent = () => {
             height={32}
             onClick={handleNavClose}
           />
-        </NavTitle>
-        <NavMenu color="#000000" fontWeight={700}>
+        </div>
+        <div className="mt-[30px] [&>ul]:list-none [&>ul]:text-[20px] [&>ul]:leading-[1.6] [&>ul_a]:no-underline [&>ul_a]:font-bold [&>ul_a]:text-[#000000]">
           <NavLink handleClose={handleNavClose} />
-        </NavMenu>
+        </div>
         <Social />
-      </Navigation>
+      </section>
     </>
   );
 };
