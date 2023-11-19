@@ -1,4 +1,4 @@
-import { useState, RefObject, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { DIRECTION_TYPE } from '../../types';
 type SwipeTypes = {
   dragging: boolean;
