@@ -1,136 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from '@emotion/styled';
-import { keyframes, Keyframes } from '@emotion/react';
-import facepaint from 'facepaint';
-
-import { breakpoints } from '../../helpers/styles/mediaQuery';
 import { ICardItemProps } from './type';
-
-const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
-
-interface IContainerProps {
-  animation: Keyframes;
-}
-
-const bounce = keyframes`
-  from {
-    transform: translate(0, 100px);
-  }
-  to {
-    transform: translate(0);
-  }
-`;
-
-const Container = styled.div<IContainerProps>`
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding-top: 100%;
-  will-change: transform;
-  cursor: pointer;
-
-  animation: ${({ animation }) => animation} 0.75s 1 ease-in-out;
-`;
-
-const Inner = styled.figure`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: rgb(0 0 0 / 50%) 0px 0px 8px;
-`;
-
-const InnerImage = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  ${mq({
-    bottom: [0, '30%'],
-  })}
-`;
-
-const DesktopOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0);
-
-  @media (hover: hover) {
-    &:hover {
-      background: rgba(0, 0, 0, 0.7);
-
-      & > figcaption {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-      }
-    }
-  }
-
-  ${mq({
-    display: ['block', 'none'],
-  })}
-`;
-
-const DesktopContent = styled.figcaption`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  opacity: 0;
-  transition: all 0.5s;
-  padding: ${(props) => props.theme.spacing['spacing-8']};
-
-  ${(props) => props.theme.fonts.title4};
-  color: #ffffff;
-`;
-
-const MobileContent = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  padding: ${(props) => props.theme.spacing['spacing-5']}
-    ${(props) => props.theme.spacing['spacing-6']};
-  background: white;
-  box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
-  color: rgb(30, 30, 30);
-
-  ${mq({
-    display: ['none', 'block'],
-  })}
-`;
-
-const Title = styled.h3`
-  margin: ${(props) => props.theme.spacing['spacing-4']} 0;
-  ${(props) => props.theme.fonts.title4};
-  font-size: 1.5em;
-  font-weight: 700;
-`;
-
-const Description = styled.p`
-  font-size: 16px;
-  margin-top: ${(props) => props.theme.spacing['spacing-4']};
-`;
-
-const Date = styled.p`
-  font-size: 16px;
-  margin-top: ${(props) => props.theme.spacing['spacing-4']};
-  color: #7e7e7e;
-`;
 
 const CardC: FunctionComponent<ICardItemProps> = ({
   href,
@@ -151,35 +22,53 @@ const CardC: FunctionComponent<ICardItemProps> = ({
   );
 
   return (
-    <Container animation={bounce}>
-      <Inner>
+    <div className="animate-card relative top-0 left-0 right-0 bottom-0 pt-[100%] will-change-transform cursor-pointer">
+      <figure className="absolute left-0 top-0 right-0 bottom-0 overflow-hidden rounded-[8px] shadow-[rgb(0_0_0_/_50%)_0px_0px_8px]">
         {withAnchore(
           href,
           <>
-            <InnerImage>
+            <div className="absolute top-0 left-0 right-0 bottom-[30%] lg:bottom-0">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 style={{ objectFit: image.objectFit }}
               />
-            </InnerImage>
-            <DesktopOverlay>
-              <DesktopContent>
-                <Title>{title}</Title>
-                {description && <Description>{description}</Description>}
-                {date && <Description>{date}</Description>}
-              </DesktopContent>
-            </DesktopOverlay>
-            <MobileContent>
-              <Title>{title}</Title>
-              {description && <Description>{description}</Description>}
-              {date && <Date>{date}</Date>}
-            </MobileContent>
+            </div>
+            <div className="absolute top-0 bottom-0 left-0 right-0 bg-[rgba(0,0,0,0)] hidden lg:block hover:bg-[rgba(0,0,0,0.7)] group">
+              <figcaption className="flex flex-col items-center w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full opacity-0 transition-all duration-500 p-[var(--spacing-8)] title-4 text-white group-hover:transform group-hover:-translate-x-1/2 group-hover:-translate-y-1/2 group-hover:opacity-100">
+                <h2 className="m-[var(--spacing-4)_0] text-[1.5em] font-bold leading-[26px] tracking-[-0.6px]">
+                  {title}
+                </h2>
+                {description && (
+                  <p className="text-[16px] mt-[var(--spacing-4)]">
+                    {description}
+                  </p>
+                )}
+                {date && (
+                  <p className="text-[16px] mt-[var(--spacing-4)]">{date}</p>
+                )}
+              </figcaption>
+            </div>
+            <div className="absolute w-full bottom-0 p-[var(--spacing-5)_var(--spacing-6)] bg-white shadow-[rgb(0_0_0_/_10%)_0px_0px_8px] text-[rgb(30,30,30)] block lg:hidden">
+              <h2 className="m-[var(--spacing-4)_0] text-[1.5em] font-bold leading-[26px] tracking-[-0.6px]">
+                {title}
+              </h2>
+              {description && (
+                <p className="text-[16px] mt-[var(--spacing-4)]">
+                  {description}
+                </p>
+              )}
+              {date && (
+                <p className="text-[16px] mt-[var(--spacing-4)] text-[#7e7e7e]">
+                  {date}
+                </p>
+              )}
+            </div>
           </>
         )}
-      </Inner>
-    </Container>
+      </figure>
+    </div>
   );
 };
 
