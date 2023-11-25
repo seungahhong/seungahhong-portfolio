@@ -5,7 +5,6 @@ import type { AppProps, AppContext } from 'next/app';
 import Script from 'next/script';
 
 import Layout from '../templates/Layout';
-import theme from '../styles/theme';
 import Template from '../templates/Template';
 import * as gtag from '../lib/gtags';
 
