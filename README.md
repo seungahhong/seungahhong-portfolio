@@ -54,7 +54,6 @@ This software uses the following open source packages:
 - [babel](https://babeljs.io/)
 - [nextjs](https://nextjs.org/)
 - [typescript](https://www.typescriptlang.org/)
-- [emotion](https://emotion.sh/docs/introduction)
 - [playwright](https://playwright.dev/)
 - [tailwindcss](https://tailwindcss.com/)
 
