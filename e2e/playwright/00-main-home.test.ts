@@ -1,7 +1,7 @@
-import { expect, Page, test, BrowserContext } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('포트폴리오 Main 홈', () => {
-  test.beforeEach(async ({ page, context, baseURL }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
