@@ -1,88 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { keyframes, Keyframes } from '@emotion/react';
-import styled from '@emotion/styled';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ICardItemProps } from './type';
-
-interface IContainerProps {
-  animation: Keyframes;
-}
-
-const bounce = keyframes`
-  from {
-    transform: translate(0, 100px);
-  }
-  to {
-    transform: translate(0);
-  }
-`;
-
-const Container = styled.div<IContainerProps>`
-  will-change: transform;
-  padding: 20px;
-  overflow: hidden;
-  animation: ${({ animation }) => animation} 0.75s 1 ease-in-out;
-
-  & a {
-    text-decoration: none;
-    color: inherit;
-  }
-`;
-
-const Inner = styled.div`
-  border-radius: 16px;
-  transform: translate(0);
-  transition: all 0.2s;
-  height: 100%;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 15%) 0px 0px 8px;
-  overflow: hidden;
-
-  @media (hover: hover) {
-    &:hover {
-      transform: translate(0, -10px);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-  }
-`;
-
-const CardImage = styled.div`
-  position: relative;
-  height: 0;
-  padding-bottom: 70%;
-  overflow: hidden;
-
-  img {
-    position: absolute;
-  }
-`;
-
-const Content = styled.div`
-  position: relative;
-  z-index: 1;
-  padding: 20px;
-  background: rgba(248, 249, 250, 0.8);
-  box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
-`;
-
-const Title = styled.h2`
-  margin: ${(props) => props.theme.spacing['spacing-5']} 0;
-  ${(props) => props.theme.fonts.title6};
-  font-size: 1.5em;
-  font-weight: 700;
-`;
-
-const Description = styled.p`
-  font-size: 16px;
-  margin-top: ${(props) => props.theme.spacing['spacing-2']};
-`;
-
-const Date = styled.p`
-  font-size: 16px;
-  margin-top: ${(props) => props.theme.spacing['spacing-4']};
-  color: #7e7e7e;
-`;
 
 const CardA: FunctionComponent<ICardItemProps> = ({
   href,
@@ -103,12 +22,12 @@ const CardA: FunctionComponent<ICardItemProps> = ({
   );
 
   return (
-    <Container animation={bounce}>
-      <Inner>
+    <div className="animate-card will-change-transform p-[20px] [&_a]:no-underline [&_a]:text-inherit">
+      <div className="rounded-[16px] transform translate-x-0 transition-[all_0.2s] h-full cursor-pointer shadow-[rgb(0_0_0_/_15%)_0px_0px_8px] overflow-hidden hover:transform hover:translate-x-0 hover:translate-y-[-10px] hover:shadow-[0_0_10px_rgba(0,0,0,0.3)]">
         {withAnchore(
           href,
           <>
-            <CardImage>
+            <div className="relative h-0 pb-[70%] overflow-hidden">
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -116,16 +35,26 @@ const CardA: FunctionComponent<ICardItemProps> = ({
                 aria-label="logo"
                 style={{ objectFit: image.objectFit }}
               />
-            </CardImage>
-            <Content>
-              <Title>{title}</Title>
-              {description && <Description>{description}</Description>}
-              {date && <Date>{date}</Date>}
-            </Content>
+            </div>
+            <div className="relative z-[1] p-5 bg-[rgba(248,249,250,0.8)] shadow-[rgb(0_0_0_/_10%)_0px_0px_8px]">
+              <h2 className="m-[var(--spacing-5)_0] text-[1.5em] font-bold leading-[26px] tracking-[-0.6px]">
+                {title}
+              </h2>
+              {description && (
+                <p className="text-[16px] mt-[var(--spacing-2)]">
+                  {description}
+                </p>
+              )}
+              {date && (
+                <p className="text-[16px] mt-[var(--spacing-4)] text-[#7e7e7e]">
+                  {date}
+                </p>
+              )}
+            </div>
           </>
         )}
-      </Inner>
-    </Container>
+      </div>
+    </div>
   );
 };
 

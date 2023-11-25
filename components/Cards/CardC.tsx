@@ -47,17 +47,6 @@ const Inner = styled.figure`
   box-shadow: rgb(0 0 0 / 50%) 0px 0px 8px;
 `;
 
-const InnerImage = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  ${mq({
-    bottom: [0, '30%'],
-  })}
-`;
-
 const DesktopOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -82,23 +71,6 @@ const DesktopOverlay = styled.div`
   })}
 `;
 
-const DesktopContent = styled.figcaption`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  opacity: 0;
-  transition: all 0.5s;
-  padding: ${(props) => props.theme.spacing['spacing-8']};
-
-  ${(props) => props.theme.fonts.title4};
-  color: #ffffff;
-`;
-
 const MobileContent = styled.div`
   position: absolute;
   width: 100%;
@@ -112,24 +84,6 @@ const MobileContent = styled.div`
   ${mq({
     display: ['none', 'block'],
   })}
-`;
-
-const Title = styled.h3`
-  margin: ${(props) => props.theme.spacing['spacing-4']} 0;
-  ${(props) => props.theme.fonts.title4};
-  font-size: 1.5em;
-  font-weight: 700;
-`;
-
-const Description = styled.p`
-  font-size: 16px;
-  margin-top: ${(props) => props.theme.spacing['spacing-4']};
-`;
-
-const Date = styled.p`
-  font-size: 16px;
-  margin-top: ${(props) => props.theme.spacing['spacing-4']};
-  color: #7e7e7e;
 `;
 
 const CardC: FunctionComponent<ICardItemProps> = ({
@@ -156,25 +110,43 @@ const CardC: FunctionComponent<ICardItemProps> = ({
         {withAnchore(
           href,
           <>
-            <InnerImage>
+            <div className="absolute top-0 left-0 right-0 bottom-[30%] lg:bottom-0">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 style={{ objectFit: image.objectFit }}
               />
-            </InnerImage>
+            </div>
             <DesktopOverlay>
-              <DesktopContent>
-                <Title>{title}</Title>
-                {description && <Description>{description}</Description>}
-                {date && <Description>{date}</Description>}
-              </DesktopContent>
+              <figcaption className="flex flex-col items-center w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-full opacity-0 transition-all duration-500 p-[var(--spacing-8)] title-4 text-white">
+                <h2 className="m-[var(--spacing-4)_0] text-[1.5em] font-bold leading-[26px] tracking-[-0.6px]">
+                  {title}
+                </h2>
+                {description && (
+                  <p className="text-[16px] mt-[var(--spacing-4)]">
+                    {description}
+                  </p>
+                )}
+                {date && (
+                  <p className="text-[16px] mt-[var(--spacing-4)]">{date}</p>
+                )}
+              </figcaption>
             </DesktopOverlay>
             <MobileContent>
-              <Title>{title}</Title>
-              {description && <Description>{description}</Description>}
-              {date && <Date>{date}</Date>}
+              <h2 className="m-[var(--spacing-4)_0] text-[1.5em] font-bold leading-[26px] tracking-[-0.6px]">
+                {title}
+              </h2>
+              {description && (
+                <p className="text-[16px] mt-[var(--spacing-4)]">
+                  {description}
+                </p>
+              )}
+              {date && (
+                <p className="text-[16px] mt-[var(--spacing-4)] text-[#7e7e7e]">
+                  {date}
+                </p>
+              )}
             </MobileContent>
           </>
         )}

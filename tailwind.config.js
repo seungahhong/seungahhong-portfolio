@@ -12,7 +12,17 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        card: {
+          from: { transform: 'translate(0, 100px)' },
+          to: { transform: 'translate(0)' },
+        },
+      },
+      animation: {
+        card: 'card 0.75s 1 ease-in-out',
+      },
+    },
   },
   plugins: [
     plugin(function ({ addUtilities }) {
