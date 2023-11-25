@@ -269,7 +269,7 @@ export const workProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'Cypress, Jest, MSW, CSS-in-JS...',
+                data: 'Playwright, Jest, MSW, CSS-in-JS...',
               },
             },
           ],
