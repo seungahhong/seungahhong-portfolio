@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'react';
-import styled from '@emotion/styled';
 
 interface IProgressProps {
   title: string;

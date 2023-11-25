@@ -6,8 +6,6 @@ import {
   useMemo,
   useEffect,
 } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import Image from 'next/image';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
 import { useResizeObserver } from '../../helpers/hooks/useResizeObserver';
@@ -24,95 +22,10 @@ export interface ICarouselProps {
   verticalSwiping?: boolean;
 }
 
-type ArrowButtonTypes = {
-  direction: keyof typeof DIRECTION_TYPE;
-};
-
-interface ICarouselListItem {
-  translateX: number;
-  translateY: number;
-  transition: string;
-}
-
 type listPosData = {
   defaultWidth: number;
   defaultHeight: number;
 };
-
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;
-
-const CarouselList = styled.ul`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-`;
-
-const CarouselListItem = styled.li<ICarouselListItem>`
-  position: relative;
-  flex: 1 0 100%;
-  width: 100%;
-
-  transform: translate(
-    -${({ translateX }) => translateX}px,
-    -${({ translateY }) => translateY}px
-  );
-  transition: ${({ transition }) => transition};
-
-  & > img {
-    width: 100%;
-    height: fit-content;
-  }
-`;
-
-const ArrowButton = styled.button<ArrowButtonTypes>`
-  position: absolute;
-  z-index: 1;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  color: #000;
-  font-size: 40px;
-  margin: 0;
-  padding: 0;
-
-  ${({ direction }) =>
-    direction === DIRECTION_TYPE.LEFT || direction === DIRECTION_TYPE.RIGHT
-      ? css`
-          ${direction === DIRECTION_TYPE.LEFT
-            ? 'left: -20px;'
-            : 'right: -20px;'}
-          top: 50%;
-          transform: translate(0, -50%);
-        `
-      : css`
-          ${direction === DIRECTION_TYPE.TOP ? 'top: -20px;' : 'bottom: -20px;'}
-          left: 50%;
-          transform: translate(-50%, 0);
-          svg {
-            transform: rotate(90deg);
-          }
-        `};
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, 0);
-  font-size: 12px;
-  font-weight: 900;
-
-  & > svg {
-    font-size: 24px;
-  }
-`;
 
 const Carousel: FunctionComponent<ICarouselProps> = ({
   images = [],
@@ -231,27 +144,34 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
   useResizeObserver(listRef, () => handleListPos(listRef.current));
 
   return (
-    <Container>
+    <div className="relative w-full h-full">
       {images.length > 1 && (
-        <ArrowButton
-          direction={verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT}
-          title={`${
-            verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
-          } Arrow Button`}
-          aria-label={`${
-            verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
-          } Arrow Button`}
-          onClick={() =>
-            handleArrowClick(
-              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.LEFT
-            )
-          }
-        >
-          <RiArrowDropLeftLine />
-        </ArrowButton>
+        <>
+          <button
+            className={`absolute z-[1] cursor-pointer bg-transparent border-none text-black text-[40px] m-0 p-0 ${
+              !verticalSwiping
+                ? '-left-[20px] top-1/2 transform translate-x-0 -translate-y-1/2'
+                : '-top-[20px] left-1/2 transform -translate-x-1/2 translate-y-0 [&>svg]:transform [&>svg]:rotate-90'
+            }`}
+            title={`${
+              verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
+            } Arrow Button`}
+            aria-label={`${
+              verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
+            } Arrow Button`}
+            onClick={() =>
+              handleArrowClick(
+                verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.LEFT
+              )
+            }
+          >
+            <RiArrowDropLeftLine />
+          </button>
+        </>
       )}
       {images.length > 0 && (
-        <CarouselList
+        <ul
+          className="flex h-full overflow-hidden w-hull"
           ref={listRef}
           style={{
             height: images.length > 1 ? '90%' : '100%',
@@ -259,39 +179,45 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
           }}
         >
           {currImages.map((image, index) => (
-            <CarouselListItem
+            <li
+              className="relative flex-[1_0_100%] w-full"
               key={`CarouselList_${index}`}
-              translateX={
-                verticalSwiping
-                  ? 0
-                  : !swipe.dragging
-                  ? listPosData.current[activeIndex]?.defaultWidth *
-                      activeIndex || 0
-                  : (listPosData.current[activeIndex]?.defaultWidth *
-                      activeIndex || 0) + swipe.delta
-              }
-              translateY={
-                verticalSwiping
-                  ? !swipe.dragging
-                    ? listPosData.current[activeIndex]?.defaultHeight *
-                        activeIndex || 0
-                    : (listPosData.current[activeIndex]?.defaultHeight *
-                        activeIndex || 0) + swipe.delta
-                  : 0
-              }
-              transition={transition}
+              style={{
+                transform: `translate(
+                  -${
+                    verticalSwiping
+                      ? 0
+                      : !swipe.dragging
+                      ? listPosData.current[activeIndex]?.defaultWidth *
+                          activeIndex || 0
+                      : (listPosData.current[activeIndex]?.defaultWidth *
+                          activeIndex || 0) + swipe.delta
+                  }px,
+                  -${
+                    verticalSwiping
+                      ? !swipe.dragging
+                        ? listPosData.current[activeIndex]?.defaultHeight *
+                            activeIndex || 0
+                        : (listPosData.current[activeIndex]?.defaultHeight *
+                            activeIndex || 0) + swipe.delta
+                      : 0
+                  }px)`,
+                transition: transition,
+              }}
             >
               <Image src={image.src} alt={image.alt} fill />
-            </CarouselListItem>
+            </li>
           ))}
-        </CarouselList>
+        </ul>
       )}
       {images.length > 1 && (
         <>
-          <ArrowButton
-            direction={
-              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
-            }
+          <div
+            className={`absolute z-[1] cursor-pointer bg-transparent border-none text-black text-[40px] m-0 p-0 ${
+              !verticalSwiping
+                ? '-right-[20px] top-1/2 transform translate-x-0 -translate-y-1/2'
+                : '-bottom-[20px] left-1/2 transform -translate-x-1/2 translate-y-0 [&>svg]:transform [&>svg]:rotate-90'
+            }`}
             title={`${
               verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
             } Arrow Button`}
@@ -305,8 +231,8 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
             }
           >
             <RiArrowDropRightLine />
-          </ArrowButton>
-          <NavContainer>
+          </div>
+          <div className="absolute bottom-0 flex items-center transform -translate-x-1/2 left-1/2 translate-y-0 text-[12px] font-[900] [&>svg]:text-[24px]">
             <RiArrowDropLeftLine />
             <span>
               {activeIndex === 0
@@ -317,10 +243,10 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
               / {currImages.length - 2}
             </span>
             <RiArrowDropRightLine />
-          </NavContainer>
+          </div>
         </>
       )}
-    </Container>
+    </div>
   );
 };
 
