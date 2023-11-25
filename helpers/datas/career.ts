@@ -90,7 +90,7 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Scss, Redux, React-query, Storybook, Jest, Cypress, MSW, Playwright, Typescript',
+                data: 'React, Scss, Redux, React-query, Storybook, Jest, MSW, Playwright, Typescript',
               },
             },
           ],
@@ -113,7 +113,7 @@ export const careerProjectDetailType: IProjectItemType = {
           'sub-discription': [
             'BE/FE 개발을 병렬로 진행 시 기존에는 BE API가 완료되기 전까지는 FE에서는 서버 데이터 연동을 못했었고, 또한 테스트를 위해서 샘플 데이터를 추가해서 테스트 하다보니 FE 개발에 어려움이 발생하였습니다.',
             'FE 개발에 어려움을 극복하고자, 개발 단계에서 API 인터페이스를 미리 공유받아서 FE만의 모킹 서버를 구축하기 위해서 MSW를 도입을 하게되었습니다.',
-            'MSW 모킹 데이터를 만들어서 서버모킹, 스토리북, Jest(유닛테스트), Cypress에서도 공통으로 사용함으로써 개발의 효율성을 높일 수 있었습니다.',
+            'MSW 모킹 데이터를 만들어서 서버모킹, 스토리북, Jest(유닛테스트), Playwright에서도 공통으로 사용함으로써 개발의 효율성을 높일 수 있었습니다.',
           ],
           labels: [
             {
@@ -135,7 +135,7 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Storybook, Jest, Cypress, MSW',
+                data: 'React, Storybook, Jest, Playwright, MSW',
               },
             },
           ],
@@ -220,7 +220,7 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Scss, React-query, Storybook, Jest, Cypress, MSW',
+                data: 'React, Scss, React-query, Storybook, Jest, Playwright, MSW',
               },
             },
           ],
@@ -368,7 +368,7 @@ export const careerProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, Scss, React-query, Redux(Redux Toolkit), React-hook-form, Storybook, Jest, Cypress, MSW, Typescript',
+                data: 'React, Scss, React-query, Redux(Redux Toolkit), React-hook-form, Storybook, Jest, Playwright, MSW, Typescript',
               },
             },
           ],
