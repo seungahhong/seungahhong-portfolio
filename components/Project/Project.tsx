@@ -1,79 +1,13 @@
 import type { CSSProperties, FunctionComponent } from 'react';
-import { useMemo, useState } from 'react';
-import styled from '@emotion/styled';
-import facepaint from 'facepaint';
+import { useMemo } from 'react';
 
-import { breakpoints } from '../../helpers/styles/mediaQuery';
 import { IProjectItem } from '../../types';
 import Carousel from '../Carousel';
-
-const mq = facepaint(breakpoints.map((bp) => `@media (max-width: ${bp}px)`));
 
 interface IProjectProps {
   item: IProjectItem;
   style?: CSSProperties;
 }
-
-const Description = styled.div`
-  ${mq({
-    width: ['calc(60% - 3rem)', '100%'],
-  })}
-
-  & > p {
-    white-space: pre-line;
-    ${mq({
-      marginTop: ['0', '16px'],
-    })}
-  }
-
-  & > ul > li {
-    display: flex;
-    align-items: baseline;
-
-    &:before {
-      display: inline;
-      content: '●';
-    }
-
-    & > span {
-      line-height: 20px;
-      padding-left: ${(props) => props.theme.spacing['spacing-5']};
-    }
-  }
-`;
-
-const LabelOrderList = styled.ol`
-  & * {
-    word-break: break-all;
-  }
-
-  & > li {
-    display: flex;
-    margin-bottom: ${(props) => props.theme.spacing['spacing-5']};
-
-    ${mq({
-      flexDirection: ['row', 'column'],
-    })}
-  }
-`;
-
-const LabelName = styled.span`
-  display: inline-block;
-  vertical-align: top;
-  width: 50px;
-  min-width: 150px;
-  font-weight: 800;
-
-  &:before {
-    content: '●';
-    display: inline;
-    padding-right: 0.5rem;
-  }
-
-  ${mq({
-    marginBottom: ['0', `4px`],
-  })}
-`;
 
 const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
   const descriptionElement = useMemo(() => {
@@ -82,14 +16,19 @@ const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
       return (
         <ul>
           {description.map((desc, index) => (
-            <li key={`discription_${index}`}>
-              <span>{desc}</span>
+            <li
+              key={`discription_${index}`}
+              className="flex items-baseline before:inline before:content-['●']"
+            >
+              <span className="pl-[var(--spacing-5)] leading-5">{desc}</span>
             </li>
           ))}
         </ul>
       );
     }
-    return <p>{description}</p>;
+    return (
+      <p className="whitespace-pre-line mt-[16px] lg:mt-0">{description}</p>
+    );
   }, [item.description]);
 
   return (
@@ -107,14 +46,19 @@ const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
         <div className="mr-12 w-full h-[200px] lg:w-[40%] lg:h-auto">
           <Carousel images={item.images} />
         </div>
-        <Description>
+        <div className="w-full lg:w-[calc(60%_-_3rem)]">
           {descriptionElement}
           <hr className="m-[var(--spacing-5)]" />
           {item.description.labels.length > 0 && (
-            <LabelOrderList>
+            <ol className="[&_*]:break-all">
               {item.description.labels.map((label, index) => (
-                <li key={`Description_${index}`}>
-                  <LabelName>{label.name}</LabelName>
+                <li
+                  className="flex mb-[var(--spacing-5)] flex-col lg:flex-row"
+                  key={`Description_${index}`}
+                >
+                  <span className="inline-block align-top w-[50px] min-w-[150px] font-extrabold mb-[4px] lg:mb-0 before:content-['●'] before:inline before:pr-2">
+                    {label.name}
+                  </span>
                   {label.value.type === 'link' && (
                     <a
                       className="flex-1 text-[blue] underline"
@@ -130,9 +74,9 @@ const Project: FunctionComponent<IProjectProps> = ({ item, style }) => {
                   )}
                 </li>
               ))}
-            </LabelOrderList>
+            </ol>
           )}
-        </Description>
+        </div>
       </div>
     </div>
   );
