@@ -74,7 +74,7 @@ export const workProjectDetailType: IProjectItemType = {
               name: 'Frontend',
               value: {
                 type: 'text',
-                data: 'React, NextJS, TypeScript, Emotion',
+                data: 'React, NextJS, TypeScript, TailwindCss',
               },
             },
             {

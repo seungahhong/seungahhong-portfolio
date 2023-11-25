@@ -15,8 +15,6 @@
     "e2e:debug": "cross-env PLAYWRIGHT_VIDEO=false playwright test --debug"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.7",
     "facepaint": "^1.2.1",
@@ -29,7 +27,6 @@
     "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.10.2",
     "@playwright/test": "^1.32.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
