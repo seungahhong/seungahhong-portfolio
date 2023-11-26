@@ -26,10 +26,10 @@ describe('<Carousel />', () => {
     expect(screen.getAllByRole('button').length).toBeGreaterThan(0);
 
     // 왼쪽 버튼 엘리먼트 유무
-    expect(screen.getByLabelText('LEFT Arrow Button')).toBeInTheDocument();
+    expect(screen.getByLabelText('LEFT 화살표 버튼')).toBeInTheDocument();
 
     // 오른쪽 버튼 엘리먼트 유무
-    expect(screen.getByLabelText('RIGHT Arrow Button')).toBeInTheDocument();
+    expect(screen.getByLabelText('RIGHT 화살표 버튼')).toBeInTheDocument();
 
     // 이미지 슬라이드 이미지 여부
     const list = screen.getByRole('list');
