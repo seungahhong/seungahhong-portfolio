@@ -4,8 +4,10 @@ import Social from '../components/Socials/Social';
 
 import NavLink from './NavLink';
 import Link from 'next/link';
+import useInView from '../helpers/hooks/useInView';
 
 const Navbar: FunctionComponent = () => {
+  const { ref, inView } = useInView();
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const handleNavClose = useCallback(() => {
@@ -21,7 +23,16 @@ const Navbar: FunctionComponent = () => {
   return (
     <>
       <header className="relative left-0 top-0 bottom-0 w-[100%] p-[var(--spacing-7)] lg:fixed lg:w-[25%] lg:p-0">
-        <Image src="/background-NavBar.jpg" alt="" fill aria-hidden />
+        <Image
+          ref={ref}
+          src={inView ? '/background-NavBar.jpg' : ''}
+          loading="eager"
+          alt=""
+          role="presentation"
+          fill
+          quality={80}
+          aria-hidden
+        />
         <div className="absolute left-0 top-0 right-0 bottom-0 bg-[rgb(22,27,33)] bg-opacity-70" />
         <div className="flex absolute left-0 top-0 right-0 bottom-0 text-white font-semibold [&>a]:no-underline items-center flex-row p-[var(--spacing-5)] justify-between lg:left-auto lg:top-auto lg:right-auto lg:items-stretch lg:flex-col lg:p-[60px_30px_52px] lg:justify-normal">
           <Link href="/">

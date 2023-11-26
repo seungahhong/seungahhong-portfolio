@@ -105,7 +105,7 @@ export const careerProjectDetailType: IProjectItemType = {
             alt: 'MSW 도입 이미지 1',
           },
           {
-            src: '/wadiz-msw-logo2.png',
+            src: '/wadiz-msw-logo2.webp',
             alt: 'MSW 도입 이미지 2',
           },
         ],
@@ -235,7 +235,7 @@ export const careerProjectDetailType: IProjectItemType = {
             alt: '와디즈 서포터클럽 첫번째 이미지',
           },
           {
-            src: '/wadiz-supporterclub-log2.png',
+            src: '/wadiz-supporterclub-log2.webp',
             alt: '와디즈 서포터클럽 두번째 이미지',
           },
           {
@@ -243,7 +243,7 @@ export const careerProjectDetailType: IProjectItemType = {
             alt: '와디즈 서포터클럽 세번째 이미지',
           },
           {
-            src: '/wadiz-supporterclub-log4.png',
+            src: '/wadiz-supporterclub-log4.webp',
             alt: '와디즈 서포터클럽 이벤트페이지 이미지',
           },
         ],
@@ -283,7 +283,7 @@ export const careerProjectDetailType: IProjectItemType = {
         date: '2021.05 ~ 2021.08',
         images: [
           {
-            src: '/wadiz-store-detail-log1.png',
+            src: '/wadiz-store-detail-log1.webp',
             alt: '와디즈 스토어 상세페이지 첫번째 이미지',
           },
           {
@@ -331,15 +331,15 @@ export const careerProjectDetailType: IProjectItemType = {
         date: `2020.12 ~ ${today}`,
         images: [
           {
-            src: '/wadiz-operation-log1.png',
+            src: '/wadiz-operation-log1.webp',
             alt: '와디즈 펀딩 메이커 스튜디오 이미지',
           },
           {
-            src: '/wadiz-operation-log2.png',
+            src: '/wadiz-operation-log2.webp',
             alt: '와디즈 펀딩 상세페이지 이미지',
           },
           {
-            src: '/wadiz-operation-log3.png',
+            src: '/wadiz-operation-log3.webp',
             alt: '와디즈 스토어 상세페이지 이미지',
           },
         ],

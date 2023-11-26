@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import useInView from '../../helpers/hooks/useInView';
 import { ICardItemProps } from './type';
 
 const CardC: FunctionComponent<ICardItemProps> = ({
@@ -10,6 +11,8 @@ const CardC: FunctionComponent<ICardItemProps> = ({
   description,
   date,
 }) => {
+  const { ref, inView } = useInView();
+
   const withAnchore = useCallback(
     (href: string | undefined, WrappedComponent: React.ReactNode) => {
       if (!href) {
@@ -29,7 +32,9 @@ const CardC: FunctionComponent<ICardItemProps> = ({
           <>
             <div className="absolute top-0 left-0 right-0 bottom-[30%] lg:bottom-0">
               <Image
-                src={image.src}
+                ref={ref}
+                loading="eager"
+                src={inView ? image.src : ''}
                 alt={image.alt}
                 fill
                 style={{ objectFit: image.objectFit }}
