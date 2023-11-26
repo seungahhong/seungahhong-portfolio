@@ -22,7 +22,6 @@ const Work: NextPageWithLayout = () => {
             {cards.map((card, index) => (
               <li
                 key={`WorkCard_${index}`}
-                role="none"
                 className="w-[100%] lg:w-[30%] relative m-[var(--spacing-6)_var(--spacing-6)_0]"
               >
                 <CardC {...card} href={`/work/${card.href}`} />

@@ -10,7 +10,7 @@ export const workProjectValues: CardsType.ICardItemProps[] = [
     description: '기술블로그, 포트폴리오, 특허, 회사블로그',
     href: 'project',
     image: {
-      src: '/project_logo.jpeg',
+      src: '/project_logo.webp',
       alt: 'project logo',
       objectFit: 'cover',
     },
@@ -38,11 +38,11 @@ export const workProjectDetailType: IProjectItemType = {
         date: `${today} (개인 프로젝트)`,
         images: [
           {
-            src: '/works_portfolio_1_logo.png',
+            src: '/works_portfolio_1_logo.webp',
             alt: '포트폴리오 이미지 1',
           },
           {
-            src: '/works_portfolio_2_logo.png',
+            src: '/works_portfolio_2_logo.webp',
             alt: '포트폴리오 이미지 2',
           },
         ],
@@ -99,7 +99,7 @@ export const workProjectDetailType: IProjectItemType = {
         date: `${today} (개인 프로젝트)`,
         images: [
           {
-            src: '/works_blog_1_logo.png',
+            src: '/works_blog_1_logo.webp',
             alt: '기술블로그 이미지 1',
           },
           {
@@ -239,7 +239,7 @@ export const workProjectDetailType: IProjectItemType = {
         date: '2022.12',
         images: [
           {
-            src: '/works_blog_1_logo.png',
+            src: '/works_blog_1_logo.webp',
             alt: '기술블로그 이미지 1',
           },
           {

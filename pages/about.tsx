@@ -34,7 +34,13 @@ const About: NextPageWithLayout = () => {
     <div className="flex flex-1 items-center p-[20px] flex-col lg:flex-row">
       <div className="h-[100%] w-[100%] m-[0_0_32px_0] lg:w-[40%] lg:m-[0_24px_0_0]">
         <div className="relative aspect-square rounded-[16px] overflow-hidden">
-          <Image src="/profile_logo.png" alt="프로필 로고" fill />
+          <Image
+            src="/profile_logo.webp"
+            alt="프로필 로고"
+            fill
+            quality={80}
+            loading="eager"
+          />
         </div>
         <div className="flex items-center justify-center lg:hidden">
           <SocialLink

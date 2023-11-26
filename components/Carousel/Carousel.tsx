@@ -20,6 +20,7 @@ export interface ICarouselProps {
   threshold?: number;
   transitionEffect?: string;
   verticalSwiping?: boolean;
+  isLazyLoad?: boolean;
 }
 
 type listPosData = {
@@ -155,10 +156,10 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
             }`}
             title={`${
               verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
-            } Arrow Button`}
+            } 화살표 버튼`}
             aria-label={`${
               verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
-            } Arrow Button`}
+            } 화살표 버튼`}
             onClick={() =>
               handleArrowClick(
                 verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.LEFT
@@ -205,7 +206,12 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
                 transition: transition,
               }}
             >
-              <Image src={image.src} alt={image.alt} fill />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                loading={index === 0 ? 'eager' : 'lazy'}
+              />
             </li>
           ))}
         </ul>
@@ -220,10 +226,10 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
             }`}
             title={`${
               verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
-            } Arrow Button`}
+            } 화살표 버튼`}
             aria-label={`${
               verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.RIGHT
-            } Arrow Button`}
+            } 화살표 버튼`}
             onClick={() =>
               handleArrowClick(
                 verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.RIGHT

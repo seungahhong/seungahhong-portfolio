@@ -16,7 +16,7 @@ describe('<Carousel />', () => {
         alt: '이미지 1',
       },
       {
-        src: 'https://seungahhong-portfolio.vercel.app/_next/image?url=%2Fwadiz-msw-logo2.png&w=3840&q=75',
+        src: 'https://seungahhong-portfolio.vercel.app/_next/image?url=%2Fwadiz-msw-logo2.webp&w=3840&q=75',
         alt: '이미지 2',
       },
     ];
