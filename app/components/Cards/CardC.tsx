@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useInView from '../../helpers/hooks/useInView';
-import { ICardItemProps } from './type';
+import useInView from '../../../helpers/hooks/useInView';
+import { ICardItemProps } from '../../../types';
 
 const CardC: FunctionComponent<ICardItemProps> = ({
   href,

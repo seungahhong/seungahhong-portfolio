@@ -1,11 +1,12 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import SocialLink from '../components/Socials/SocialLink';
 import Progress from '../components/Progress';
-import { NextPageWithLayout } from './_app';
 
-const About: NextPageWithLayout = () => {
+const About = () => {
   const currentRef = useRef<HTMLDivElement>(null);
   const [isStart, setStart] = useState(false);
 
@@ -128,14 +129,6 @@ const About: NextPageWithLayout = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-About.getLayout = function getLayout(page: React.ReactElement) {
-  return (
-    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] mx-[auto] my-[0]">
-      {page}
-    </section>
   );
 };
 

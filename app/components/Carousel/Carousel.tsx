@@ -8,9 +8,9 @@ import {
 } from 'react';
 import Image from 'next/image';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
-import { useResizeObserver } from '../../helpers/hooks/useResizeObserver';
-import { DIRECTION_TYPE } from '../../types';
-import { useSwipe } from '../../helpers/hooks/useSwipe';
+import { useResizeObserver } from '../../../helpers/hooks/useResizeObserver';
+import { DIRECTION_TYPE } from '../../../types';
+import { useSwipe } from '../../../helpers/hooks/useSwipe';
 
 export interface ICarouselProps {
   images: {

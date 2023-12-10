@@ -1,10 +1,11 @@
+'use client';
 import { FunctionComponent, useCallback, useState } from 'react';
 import Image from 'next/image';
+import useInView from '../../helpers/hooks/useInView';
 import Social from '../components/Socials/Social';
 
 import NavLink from './NavLink';
 import Link from 'next/link';
-import useInView from '../helpers/hooks/useInView';
 
 const Navbar: FunctionComponent = () => {
   const { ref, inView } = useInView();
