@@ -1,10 +1,10 @@
 import dayjs from 'dayjs';
-import { CardsType } from '../../components/type';
+import { ICardItemProps } from '../../types';
 import { IProjectItemType } from '../../types';
 
 const today = dayjs().format('YYYY.MM');
 
-export const careerProjectValues: CardsType.ICardItemProps[] = [
+export const careerProjectValues: ICardItemProps[] = [
   {
     title: '와디즈',
     href: 'wadiz',

@@ -15,7 +15,7 @@ const Work = () => {
   );
 
   return (
-    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] mx-[auto] my-[0]">>
+    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] mx-[auto] my-[0]">
       <Header title="작업" />
       {cards.length > 0 && (
         <>
