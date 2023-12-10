@@ -1,14 +1,11 @@
 import { FunctionComponent } from 'react';
 
-interface IPageHeaderProps {
+interface IHeaderProps {
   title: string;
   description?: string;
 }
 
-const PageHeader: FunctionComponent<IPageHeaderProps> = ({
-  title,
-  description,
-}) => {
+const Header: FunctionComponent<IHeaderProps> = ({ title, description }) => {
   return (
     <>
       {title && (
@@ -25,4 +22,4 @@ const PageHeader: FunctionComponent<IPageHeaderProps> = ({
   );
 };
 
-export default PageHeader;
+export default Header;

@@ -1,10 +1,9 @@
 import dayjs from 'dayjs';
-import { CardsType } from '../../components/type';
-import { IProjectItemType } from '../../types';
+import { IProjectItemType, ICardItemProps } from '../../types';
 
 const today = dayjs().format('YYYY.MM');
 
-export const workProjectValues: CardsType.ICardItemProps[] = [
+export const workProjectValues: ICardItemProps[] = [
   {
     title: '프로젝트',
     description: '기술블로그, 포트폴리오, 특허, 회사블로그',

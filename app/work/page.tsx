@@ -1,21 +1,22 @@
+'use client';
+
 import { workProjectValues } from '../../helpers/datas/work';
-import PageHeader from '../../templates/components/PageHeader';
-import CardC from '../../components/Cards/CardC';
+import { ICardItemProps } from '../../types';
 import useInfinityScroll from '../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../helpers/hooks/useMediaQuery';
-import { CardsType } from '../../components/type';
-import { NextPageWithLayout } from '../_app';
+import Header from '../components/Header';
+import CardC from '../components/Cards/CardC';
 
-const Work: NextPageWithLayout = () => {
+const Work = () => {
   const isMobile = useMediaQuery();
-  const [currentRef, cards] = useInfinityScroll<CardsType.ICardItemProps>(
+  const [currentRef, cards] = useInfinityScroll<ICardItemProps>(
     workProjectValues,
     isMobile ? 1 : 6
   );
 
   return (
-    <>
-      <PageHeader title="작업" />
+    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] mx-[auto] my-[0]">
+      <Header title="작업" />
       {cards.length > 0 && (
         <>
           <ul className="flex flex-wrap flex-initial box-border mt-[var(--spacing-6)]">
@@ -31,14 +32,6 @@ const Work: NextPageWithLayout = () => {
           <div ref={currentRef} />
         </>
       )}
-    </>
-  );
-};
-
-Work.getLayout = function getLayout(page: React.ReactElement) {
-  return (
-    <section className="flex flex-col flex-1 max-w-[1024px] pt-[96px] pb-[60px] mx-[auto] my-[0]">
-      {page}
     </section>
   );
 };
