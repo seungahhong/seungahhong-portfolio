@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
-import { ICardItemProps } from '../../types';
-import { IProjectItemType } from '../../types';
+import type { ICardItemProps, IProjectItemType } from '../../types';
 
 const today = dayjs().format('YYYY.MM');
 

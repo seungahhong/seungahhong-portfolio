@@ -1,7 +1,7 @@
 'use client';
 
 import { workProjectDetailType } from '../../../helpers/datas/work';
-import { IProjectItem } from '../../../types';
+import type { IProjectItem } from '../../../types';
 import useInfinityScroll from '../../../helpers/hooks/useInfinityScroll';
 import useMediaQuery from '../../../helpers/hooks/useMediaQuery';
 import Header from '../../components/Header';
