@@ -1,7 +1,7 @@
 import type { CSSProperties, FunctionComponent } from 'react';
 import { useMemo } from 'react';
 
-import { IProjectItem } from '../../../types';
+import type { IProjectItem } from '../../../types';
 import Carousel from '../Carousel';
 
 interface IProjectProps {
