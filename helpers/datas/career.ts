@@ -12,7 +12,7 @@ export const careerProjectValues: ICardItemProps[] = [
       alt: 'wadiz logo',
       objectFit: 'contain',
     },
-    description: '펀딩, 스토어, 스튜디오',
+    description: '펀딩, 스토어',
     date: '2020.11 ~',
   },
   {

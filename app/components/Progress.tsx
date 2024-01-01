@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from "react";
 
 interface IProgressProps {
   title: string;
@@ -19,7 +19,7 @@ const Progress: FunctionComponent<IProgressProps> = ({
     <div className="relative h-[2px]">
       <div
         className={`bg-[#eb4a4c] h-full ${
-          isStart ? `transition-all duration-1000` : null
+          isStart ? "transition-all duration-1000" : null
         }`}
         style={{ width: isStart ? `${percent}%` : 0 }}
       />
