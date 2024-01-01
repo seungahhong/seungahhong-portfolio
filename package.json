@@ -66,8 +66,8 @@
   "license": "MIT",
   "lint-staged": {
     "*.{js,tsx,ts,tsx}": [
-      "prettier --write",
-      "eslint './**/*.{js,jsx,ts,tsx}' --cache --fix"
+      "eslint './**/*.{js,jsx,ts,tsx}' --cache --fix",
+      "prettier --write"
     ]
   }
 }
