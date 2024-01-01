@@ -12,7 +12,7 @@ const CareerItem = ({
   params,
 }: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  // searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   const { header, items } = careerProjectDetailType[params.slug];
 

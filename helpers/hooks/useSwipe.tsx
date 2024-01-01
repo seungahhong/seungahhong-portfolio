@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { DIRECTION_TYPE } from '../../types';
+
 type SwipeTypes = {
   dragging: boolean;
   isSwiping: boolean;
@@ -20,7 +21,7 @@ type SwipeReturnProps = [
   swipe: SwipeTypes,
   handleTouchStart: (e: TouchEvent | MouseEvent) => void,
   handleTouchMove: (e: TouchEvent | MouseEvent) => void,
-  handleTouchEnd: (e: TouchEvent | MouseEvent) => void
+  handleTouchEnd: (e: TouchEvent | MouseEvent) => void,
 ];
 
 export const useSwipe = ({
@@ -138,8 +139,8 @@ export const useSwipe = ({
               ? DIRECTION_TYPE.TOP
               : DIRECTION_TYPE.BOTTOM
             : delta < 0
-            ? DIRECTION_TYPE.LEFT
-            : DIRECTION_TYPE.RIGHT,
+              ? DIRECTION_TYPE.LEFT
+              : DIRECTION_TYPE.RIGHT,
           delta,
         };
       });

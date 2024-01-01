@@ -5,13 +5,13 @@ const useInView = () => {
   const [inView, setInView] = useState<boolean>(true);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, _observer) => {
       if (!entries[0].isIntersecting) {
         return;
       }
 
       setInView(true);
-      observer.disconnect();
+      _observer.disconnect();
     });
 
     if (ref) {

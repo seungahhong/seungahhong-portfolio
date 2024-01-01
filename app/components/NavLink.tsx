@@ -30,22 +30,20 @@ const LinkItems = [
 
 const NavLink: FunctionComponent<INaveLinkProps> = ({
   handleClose = () => {},
-}) => {
-  return (
-    <ul onClick={handleClose}>
-      {LinkItems.map((item, index) => (
-        <li key={`NavLink_${index}`}>
-          <Link
-            className="block cursor-pointer"
-            href={item.href}
-            aria-label={item.label}
-          >
-            {item.value}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
+}) => (
+  <ul role="presentation" onClick={handleClose}>
+    {LinkItems.map((item, index) => (
+      <li key={`NavLink_${index}`}>
+        <Link
+          className="block cursor-pointer"
+          href={item.href}
+          aria-label={item.label}
+        >
+          {item.value}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
 
 export default NavLink;

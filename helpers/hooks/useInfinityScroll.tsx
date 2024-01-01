@@ -10,13 +10,13 @@ const useInfinityScroll = <T,>(
   const [count, setCount] = useState<number>(1);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, _observer) => {
       if (!entries[0].isIntersecting) {
         return;
       }
 
       setCount((prev) => prev + 1);
-      observer.disconnect();
+      _observer.disconnect();
     });
 
     if (
@@ -28,6 +28,7 @@ const useInfinityScroll = <T,>(
 
     observer.observe(currentRef.current);
 
+    // eslint-disable-next-line consistent-return
     return () => {
       observer.disconnect();
     };

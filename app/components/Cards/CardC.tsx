@@ -14,12 +14,12 @@ const CardC: FunctionComponent<ICardItemProps> = ({
   const { ref, inView } = useInView();
 
   const withAnchore = useCallback(
-    (href: string | undefined, WrappedComponent: React.ReactNode) => {
-      if (!href) {
+    (_href: string | undefined, WrappedComponent: React.ReactNode) => {
+      if (!_href) {
         return WrappedComponent;
       }
 
-      return <Link href={href}>{WrappedComponent}</Link>;
+      return <Link href={_href}>{WrappedComponent}</Link>;
     },
     []
   );

@@ -11,7 +11,7 @@ const WorkItem = ({
   params,
 }: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  // searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   const { header, items } = workProjectDetailType[params.slug];
 

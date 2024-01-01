@@ -6,7 +6,7 @@ const GoogleAnalytics = ({ gaID }: { gaID: string }) => (
       async
       src={`https://www.googletagmanager.com/gtag/js? 
       id=${gaID}`}
-    ></Script>
+     />
     <Script
       id="google-analytics"
       dangerouslySetInnerHTML={{
@@ -18,7 +18,7 @@ const GoogleAnalytics = ({ gaID }: { gaID: string }) => (
           gtag('config', '${gaID}');
         `,
       }}
-    ></Script>
+     />
   </>
 );
 export default GoogleAnalytics;

@@ -11,13 +11,13 @@ const About = () => {
   const [isStart, setStart] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, _observer) => {
       if (!entries[0].isIntersecting) {
         return;
       }
 
       setStart(true);
-      observer.disconnect();
+      _observer.disconnect();
     });
 
     if (currentRef.current === null) {
@@ -26,6 +26,7 @@ const About = () => {
 
     observer.observe(currentRef.current);
 
+    // eslint-disable-next-line consistent-return
     return () => {
       observer.disconnect();
     };
