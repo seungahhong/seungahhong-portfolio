@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "eslint ./**/*.{js,jsx,ts,tsx} --cache --fix",
+    "lint:fix": "eslint './**/*.{js,jsx,ts,tsx}' --cache --fix",
     "postbuild": "next-sitemap",
     "test": "jest --watch",
     "test:ci": "jest --ci",
@@ -67,7 +67,7 @@
   "lint-staged": {
     "*.{js,tsx,ts,tsx}": [
       "prettier --write",
-      "eslint --fix"
+      "eslint './**/*.{js,jsx,ts,tsx}' --cache --fix"
     ]
   }
 }
