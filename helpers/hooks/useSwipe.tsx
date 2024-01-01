@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary, no-unsafe-optional-chaining */
+
 import { useState, useCallback } from 'react';
 import { DIRECTION_TYPE } from '../../types';
 
@@ -24,7 +26,7 @@ type SwipeReturnProps = [
   handleTouchEnd: (e: TouchEvent | MouseEvent) => void,
 ];
 
-export const useSwipe = ({
+const useSwipe = ({
   enabled = false,
   threshold = 100,
   verticalSwiping = false,
@@ -59,6 +61,8 @@ export const useSwipe = ({
       if (currentPos.y - newPos.y > 10) {
         return DIRECTION_TYPE.BOTTOM;
       }
+
+      return DIRECTION_TYPE.LEFT;
     },
     []
   );
@@ -148,26 +152,25 @@ export const useSwipe = ({
     [getPos, enabled, verticalSwiping, getDirection]
   );
 
-  const handleTouchEnd = useCallback(
-    (e: TouchEvent | MouseEvent) => {
-      if (!enabled) {
-        return;
-      }
+  const handleTouchEnd = useCallback(() => {
+    if (!enabled) {
+      return;
+    }
 
-      if (Math.abs(swipe.delta) > threshold) {
-        handleArrowClick(swipe.direction);
-      }
+    if (Math.abs(swipe.delta) > threshold) {
+      handleArrowClick(swipe.direction);
+    }
 
-      setSwipe((prev) => ({
-        ...prev,
-        dragging: false,
-        direction: verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT,
-        startPos: 0,
-        delta: 0,
-      }));
-    },
-    [swipe, enabled, verticalSwiping, threshold, handleArrowClick]
-  );
+    setSwipe((prev) => ({
+      ...prev,
+      dragging: false,
+      direction: verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT,
+      startPos: 0,
+      delta: 0,
+    }));
+  }, [swipe, enabled, verticalSwiping, threshold, handleArrowClick]);
 
   return [swipe, handleTouchStart, handleTouchMove, handleTouchEnd];
 };
+
+export default useSwipe;
