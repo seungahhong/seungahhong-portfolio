@@ -1,11 +1,12 @@
 'use client';
+
 import { FunctionComponent, useCallback, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import useInView from '../../helpers/hooks/useInView';
-import Social from '../components/Socials/Social';
+import Social from './Socials/Social';
 
 import NavLink from './NavLink';
-import Link from 'next/link';
 
 const Navbar: FunctionComponent = () => {
   const { ref, inView } = useInView();
@@ -41,14 +42,14 @@ const Navbar: FunctionComponent = () => {
               홍승아 포트폴리오
             </h3>
           </Link>
-          <div
+          <button
+            type="button"
             className="block relative w-[24px] h-[20px] ml-[8px] [&>span:before]:top-[-8px] [&>span:after]:top-[8px] lg:hidden"
-            role="button"
             aria-label="navigation-button"
             onClick={handleNavOpen}
           >
             <span className="absolute top-[8px] left-0 w-[100%] h-[3px] transition-all duration-100 bg-white opacity-70 before:absolute before:content-[''] before:top-[8px] before:left-0 before:w-[100%] before:h-[100%] before:transition-all before:duration-100 before:bg-white before:opacity-70 after:content-[''] after:absolute after:top-[8px] after:left-0 after:w-[100%] after:h-[100%] after:transition-all after:duration-100 after:bg-white after:opacity-70" />
-          </div>
+          </button>
           <div className="hidden lg:block" aria-label="desktop-navigation">
             <div className="mt-[30px] [&>ul]:list-none [&>ul]:text-[20px] [&>ul]:leading-[1.6] [&>ul_a]:no-underline [&>ul_a]:font-normal [&>ul_a]:text-[#ffffff]">
               <NavLink />

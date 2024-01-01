@@ -23,6 +23,7 @@ export const useResizeObserver = (
 
     observer.observe(ref.current);
 
+    // eslint-disable-next-line consistent-return
     return () => {
       observer.disconnect();
     };

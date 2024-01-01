@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary, no-unsafe-optional-chaining */
 import {
   FunctionComponent,
   useCallback,
@@ -20,10 +21,9 @@ export interface ICarouselProps {
   threshold?: number;
   transitionEffect?: string;
   verticalSwiping?: boolean;
-  isLazyLoad?: boolean;
 }
 
-type listPosData = {
+type ListPosData = {
   defaultWidth: number;
   defaultHeight: number;
 };
@@ -37,7 +37,7 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [transition, setTransition] = useState<string>('none');
   const listRef = useRef<HTMLUListElement>(null);
-  const listPosData = useRef<listPosData[]>([]);
+  const listPosData = useRef<ListPosData[]>([]);
   const currImages = useMemo(
     () =>
       images.length > 1
@@ -90,8 +90,8 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
   );
   const [swipe, handleTouchStart, handleTouchMove, handleTouchEnd] = useSwipe({
     enabled: images.length > 1,
-    threshold: threshold,
-    verticalSwiping: verticalSwiping,
+    threshold,
+    verticalSwiping,
     handleArrowClick,
   });
 
@@ -99,6 +99,7 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
     if (elements) {
       listPosData.current = [];
       const childElements = Object.values(elements.childNodes) as HTMLElement[];
+      // eslint-disable-next-line no-restricted-syntax
       for (const childEl of childElements) {
         listPosData.current.push({
           defaultWidth: childEl.offsetWidth,
@@ -147,28 +148,27 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
   return (
     <div className="relative w-full h-full">
       {images.length > 1 && (
-        <>
-          <button
-            className={`absolute z-[1] cursor-pointer bg-transparent border-none text-black text-[40px] m-0 p-0 ${
-              !verticalSwiping
-                ? '-left-[20px] top-1/2 transform translate-x-0 -translate-y-1/2'
-                : '-top-[20px] left-1/2 transform -translate-x-1/2 translate-y-0 [&>svg]:transform [&>svg]:rotate-90'
-            }`}
-            title={`${
-              verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
-            } 화살표 버튼`}
-            aria-label={`${
-              verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
-            } 화살표 버튼`}
-            onClick={() =>
-              handleArrowClick(
-                verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.LEFT
-              )
-            }
-          >
-            <RiArrowDropLeftLine />
-          </button>
-        </>
+        <button
+          type="button"
+          className={`absolute z-[1] cursor-pointer bg-transparent border-none text-black text-[40px] m-0 p-0 ${
+            !verticalSwiping
+              ? '-left-[20px] top-1/2 transform translate-x-0 -translate-y-1/2'
+              : '-top-[20px] left-1/2 transform -translate-x-1/2 translate-y-0 [&>svg]:transform [&>svg]:rotate-90'
+          }`}
+          title={`${
+            verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
+          } 화살표 버튼`}
+          aria-label={`${
+            verticalSwiping ? DIRECTION_TYPE.TOP : DIRECTION_TYPE.LEFT
+          } 화살표 버튼`}
+          onClick={() =>
+            handleArrowClick(
+              verticalSwiping ? DIRECTION_TYPE.BOTTOM : DIRECTION_TYPE.LEFT
+            )
+          }
+        >
+          <RiArrowDropLeftLine />
+        </button>
       )}
       {images.length > 0 && (
         <ul
@@ -189,10 +189,10 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
                     verticalSwiping
                       ? 0
                       : !swipe.dragging
-                      ? listPosData.current[activeIndex]?.defaultWidth *
-                          activeIndex || 0
-                      : (listPosData.current[activeIndex]?.defaultWidth *
-                          activeIndex || 0) + swipe.delta
+                        ? listPosData.current[activeIndex]?.defaultWidth *
+                            activeIndex || 0
+                        : (listPosData.current[activeIndex]?.defaultWidth *
+                            activeIndex || 0) + swipe.delta
                   }px,
                   -${
                     verticalSwiping
@@ -203,7 +203,7 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
                             activeIndex || 0) + swipe.delta
                       : 0
                   }px)`,
-                transition: transition,
+                transition,
               }}
             >
               <Image
@@ -219,6 +219,7 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
       {images.length > 1 && (
         <>
           <div
+            role="presentation"
             className={`absolute z-[1] cursor-pointer bg-transparent border-none text-black text-[40px] m-0 p-0 ${
               !verticalSwiping
                 ? '-right-[20px] top-1/2 transform translate-x-0 -translate-y-1/2'
@@ -244,8 +245,8 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
               {activeIndex === 0
                 ? images.length
                 : activeIndex === currImages.length - 1
-                ? 1
-                : activeIndex}{' '}
+                  ? 1
+                  : activeIndex}{' '}
               / {currImages.length - 2}
             </span>
             <RiArrowDropRightLine />

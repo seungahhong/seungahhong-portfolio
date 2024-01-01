@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import type { Metadata } from 'next';
-import type { Viewport } from 'next';
+import type { Metadata , Viewport } from 'next';
 import GoogleAnalytics from './templates/GoogleAnalytics';
 
 import '../styles/globals.css';
