@@ -46,6 +46,9 @@ devDependencies:
   '@testing-library/user-event':
     specifier: ^14.4.3
     version: 14.5.1(@testing-library/dom@9.3.3)
+  '@types/jest':
+    specifier: ^29.5.11
+    version: 29.5.11
   '@types/node':
     specifier: 18.7.14
     version: 18.7.14
