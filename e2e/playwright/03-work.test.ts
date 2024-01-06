@@ -35,22 +35,22 @@ test.describe('포트폴리오 Work 홈', () => {
     const element = await page
       .locator('main > section > ul > li > div')
       .first();
-    const href = (await element.locator('a').getAttribute('href')) as string;
+    const href = await element.getByRole('link').getAttribute('href');
 
     element.click();
 
-    await expect(page).toHaveURL(href);
+    await expect(page).toHaveURL(href as string);
   });
 
   test('03-5. Work 상세 화면에 대한 검증을 한다.', async ({ page }) => {
     const element = await page
       .locator('main > section > ul > li > div')
       .first();
-    const href = (await element.locator('a').getAttribute('href')) as string;
+    const href = await element.getByRole('link').getAttribute('href');
 
     element.click();
 
-    await expect(page).toHaveURL(href);
+    await expect(page).toHaveURL(href as string);
 
     const subElement = await page.locator('main section > div').first();
     await expect(subElement).toBeVisible();

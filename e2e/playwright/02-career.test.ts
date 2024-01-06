@@ -32,21 +32,27 @@ test.describe('포트폴리오 Career 홈', () => {
   test('02-4. 카드를 클릭해서 상세화면을 로딩을 확인한다.', async ({
     page,
   }) => {
-    const element = await page.locator('main > section > ul > li a').first();
-    const href = (await element.getAttribute('href')) as string;
+    const element = await page
+      .locator('main > section > ul > li')
+      .getByRole('link')
+      .first();
+    const href = await element.getAttribute('href');
 
     element.click();
 
-    await expect(page).toHaveURL(href);
+    await expect(page).toHaveURL(href as string);
   });
 
   test('02-5. Carrer 상세 화면에 대한 검증을 한다.', async ({ page }) => {
-    const element = await page.locator('main > section > ul > li a').first();
-    const href = (await element.getAttribute('href')) as string;
+    const element = await page
+      .locator('main > section > ul > li')
+      .getByRole('link')
+      .first();
+    const href = await element.getAttribute('href');
 
     element.click();
 
-    await expect(page).toHaveURL(href);
+    await expect(page).toHaveURL(href as string);
 
     const subElement = await page.locator('main section > div').first();
     await expect(subElement).toBeVisible();
