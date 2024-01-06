@@ -1,37 +1,35 @@
-import { ReactNode } from 'react';
-import type { Metadata , Viewport } from 'next';
-import GoogleAnalytics from './templates/GoogleAnalytics';
+import { ReactNode } from "react";
+import type { Metadata, Viewport } from "next";
+import GoogleAnalytics from "./templates/GoogleAnalytics";
 
-import '../styles/globals.css';
-import Navbar from './components/NavBar';
-import Footer from './components/Footer';
+import "../styles/globals.css";
+import Navbar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
-  title: '홍승아 포트폴리오',
-  description: '홍승아 포트폴리오에 오신걸 환영합니다.',
-  metadataBase: new URL('https://seungahhong-portfolio.vercel.app'),
+  title: "홍승아 포트폴리오",
+  description: "홍승아 포트폴리오에 오신걸 환영합니다.",
+  metadataBase: new URL("https://seungahhong-portfolio.vercel.app"),
   openGraph: {
-    type: 'website',
-    title: '홍승아 포트폴리오',
-    description: '홍승아 포트폴리오에 오신걸 환영합니다.',
-    url: 'https://seungahhong-portfolio.vercel.app',
-    images: '_next/image?url=%2Fworks_portfolio_1_logo.webp&w=3840&q=75',
-    siteName: '홍승아',
+    type: "website",
+    title: "홍승아 포트폴리오",
+    description: "홍승아 포트폴리오에 오신걸 환영합니다.",
+    url: "https://seungahhong-portfolio.vercel.app",
+    images: "_next/image?url=%2Fworks_portfolio_1_logo.webp&w=3840&q=75",
+    siteName: "홍승아",
   },
   twitter: {
-    card: 'summary',
-    title: '홍승아 포트폴리오',
-    description: '홍승아 포트폴리오에 오신걸 환영합니다.',
-    site: '홍승아',
-    creator: '홍승아',
-    images: '_next/image?url=%2Fworks_portfolio_1_logo.webp&w=3840&q=75',
+    card: "summary",
+    title: "홍승아 포트폴리오",
+    description: "홍승아 포트폴리오에 오신걸 환영합니다.",
+    site: "홍승아",
+    creator: "홍승아",
+    images: "_next/image?url=%2Fworks_portfolio_1_logo.webp&w=3840&q=75",
   },
 };
 
 export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
+  width: "device-width",
   // Also supported by less commonly used
   // interactiveWidget: 'resizes-visual',
 };

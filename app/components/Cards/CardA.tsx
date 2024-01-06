@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import useInView from '../../../helpers/hooks/useInView';
-import { ICardItemProps } from '../../../types';
+import { FunctionComponent, useCallback } from "react";
+import type { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import useInView from "../../../helpers/hooks/useInView";
+import { ICardItemProps } from "../../../types";
 
 const CardA: FunctionComponent<ICardItemProps> = ({
   href,
@@ -14,14 +15,14 @@ const CardA: FunctionComponent<ICardItemProps> = ({
   const { ref, inView } = useInView();
 
   const withAnchore = useCallback(
-    (_href: string | undefined, WrappedComponent: React.ReactNode) => {
+    (_href: string | undefined, WrappedComponent: ReactNode) => {
       if (!_href) {
         return WrappedComponent;
       }
 
       return <Link href={_href}>{WrappedComponent}</Link>;
     },
-    []
+    [],
   );
 
   return (
@@ -34,7 +35,7 @@ const CardA: FunctionComponent<ICardItemProps> = ({
               <Image
                 ref={ref}
                 loading="eager"
-                src={inView ? image.src : ''}
+                src={inView ? image.src : ""}
                 alt={image.alt}
                 fill
                 aria-label="logo"
@@ -56,7 +57,7 @@ const CardA: FunctionComponent<ICardItemProps> = ({
                 </p>
               )}
             </div>
-          </>
+          </>,
         )}
       </div>
     </div>

@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+import type { RefObject } from "react";
 
-type InfinityScrollType<T> = [React.RefObject<HTMLDivElement>, T[]];
+type InfinityScrollType<T> = [RefObject<HTMLDivElement>, T[]];
 
 const useInfinityScroll = <T,>(
   datas: T[] = [],
-  INIT_PER_PAGE_NUMBER: number = 6
+  INIT_PER_PAGE_NUMBER: number = 6,
 ): InfinityScrollType<T> => {
   const currentRef = useRef<HTMLDivElement>(null);
   const [count, setCount] = useState<number>(1);

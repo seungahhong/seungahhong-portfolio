@@ -1,5 +1,5 @@
 const Home = () => (
-  <div className="bg-[url('/home\_logo.jpeg')] bg-cover bg-no-repeat bg-center w-[100%]">
+  <div className="bg-[url('/home\_logo.webp')] bg-cover bg-no-repeat bg-center w-[100%]">
     <section className="flex flex-col items-center max-w-[1024px] p-[96px_12px_60px] m-[0_auto] h-[100%] break-keep">
       <div className="flex flex-col justify-center flex-1">
         <div className="mt-[24px] text-[32px] font-bold leading-[32px] text-center text-[#212529]">
