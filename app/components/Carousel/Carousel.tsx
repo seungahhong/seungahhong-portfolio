@@ -112,28 +112,14 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
   useEffect(() => {
     const RefValue = listRef.current;
     if (listRef.current && images.length > 1) {
-      listRef.current.addEventListener('touchstart', handleTouchStart, {
-        passive: true,
-      });
-      listRef.current.addEventListener('touchmove', handleTouchMove, {
-        passive: true,
-      });
-      listRef.current.addEventListener('touchend', handleTouchEnd, {
-        passive: true,
-      });
+      listRef.current.addEventListener('touchstart', handleTouchStart);
+      listRef.current.addEventListener('touchmove', handleTouchMove);
+      listRef.current.addEventListener('touchend', handleTouchEnd);
 
-      listRef.current.addEventListener('mousedown', handleTouchStart, {
-        passive: true,
-      });
-      listRef.current.addEventListener('mousemove', handleTouchMove, {
-        passive: true,
-      });
-      listRef.current.addEventListener('mouseup', handleTouchEnd, {
-        passive: true,
-      });
-      listRef.current.addEventListener('mouseleave', handleTouchEnd, {
-        passive: true,
-      });
+      listRef.current.addEventListener('mousedown', handleTouchStart);
+      listRef.current.addEventListener('mousemove', handleTouchMove);
+      listRef.current.addEventListener('mouseup', handleTouchEnd);
+      listRef.current.addEventListener('mouseleave', handleTouchEnd);
     }
 
     return () => {
