@@ -4,7 +4,7 @@ const isVideoRecord = process.env.PLAYWRIGHT_VIDEO === 'true';
 
 export default defineConfig({
   // reporter: [['html', { outputFolder: './e2e/playwright/reports' }]], // html report
-  timeout: 60 * 1000 * 3,
+  timeout: 60 * 1000 * 2,
   use: {
     baseURL: 'https://seungahhong-portfolio.vercel.app/',
     headless: true,
