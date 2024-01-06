@@ -1,30 +1,30 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent } from 'react';
 
 interface IProgressProps {
-  title: string;
-  percent: number;
-  isStart: boolean;
+	title: string;
+	percent: number;
+	isStart: boolean;
 }
 
 const Progress: FunctionComponent<IProgressProps> = ({
-  title,
-  percent,
-  isStart,
+	title,
+	percent,
+	isStart,
 }) => (
-  <>
-    <span className="flex justify-between items-center text-[#a2a2a2] text-[16px] mb-[8px]">
-      <span>{title}</span>
-      <span>{percent}%</span>
-    </span>
-    <div className="relative h-[2px]">
-      <div
-        className={`bg-[#eb4a4c] h-full ${
-          isStart ? "transition-all duration-1000" : null
-        }`}
-        style={{ width: isStart ? `${percent}%` : 0 }}
-      />
-    </div>
-  </>
+	<>
+		<span className="flex justify-between items-center text-[#a2a2a2] text-[16px] mb-[8px]">
+			<span>{title}</span>
+			<span>{percent}%</span>
+		</span>
+		<div className="relative h-[2px]">
+			<div
+				className={`bg-[#eb4a4c] h-full ${
+					isStart ? 'transition-all duration-1000' : null
+				}`}
+				style={{ width: isStart ? `${percent}%` : 0 }}
+			/>
+		</div>
+	</>
 );
 
 export default Progress;
