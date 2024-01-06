@@ -92,7 +92,7 @@ const About = () => {
             Front-End Developer
           </p>
         </div>
-        <div className="text-[18px] leading-[18px]">
+        <div className="text-[18px] leading-6">
           안녕하세요 홍승아입니다. <br />
           <br />
           저는 프론트엔드 개발자로써, 빠르게 변화하는 기술에 대해서 적극적으로
@@ -120,10 +120,10 @@ const About = () => {
           <Progress title="Html,Css" percent={90} isStart={isStart} />
         </div>
         <div className="mt-[12px]">
-          <Progress title="C,C++" percent={90} isStart={isStart} />
+          <Progress title="Typescript" percent={90} isStart={isStart} />
         </div>
         <div className="mt-[12px]">
-          <Progress title="Typescript" percent={80} isStart={isStart} />
+          <Progress title="C,C++" percent={90} isStart={isStart} />
         </div>
         <div className="mt-[12px]">
           <Progress title="Express" percent={70} isStart={isStart} />
