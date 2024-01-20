@@ -7,3 +7,4 @@ Host: https://seungahhong-portfolio.vercel.app/
 
 # Sitemaps
 Sitemap: https://seungahhong-portfolio.vercel.app/sitemap.xml
+Sitemap: https://seungahhong-portfolio.vercel.app/sitemap-0.xml
