@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://seungahhong-portfolio.vercel.app/
+
+# Sitemaps
+Sitemap: https://seungahhong-portfolio.vercel.app/sitemap.xml
