@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable no-nested-ternary, no-unsafe-optional-chaining */
 import {
   FunctionComponent,
