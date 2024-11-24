@@ -7,13 +7,15 @@ export async function generateStaticParams() {
   return Object.keys(careerProjectDetailType).map((key) => [{ slug: key }]);
 }
 
-const CareerItem = ({
+const CareerItem = async ({
   params,
 }: {
   params: { slug: string };
   // searchParams: { [key: string]: string | string[] | undefined };
 }) => {
-  const { header, items } = careerProjectDetailType[params.slug];
+  const { slug } = await params;
+
+  const { header, items } = careerProjectDetailType[slug];
 
   return (
     <div className="flex flex-col w-[100%] bg-[#f5f5f5] text-base py-[96px]">

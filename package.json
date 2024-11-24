@@ -19,10 +19,10 @@
   "dependencies": {
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.7",
-    "next": "^14.0.3",
+    "next": "^15.0.3",
     "next-sitemap": "^4.2.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "19.0.0-rc.1",
+    "react-dom": "19.0.0-rc.1",
     "react-icons": "^4.11.0",
     "react-responsive": "^9.0.2",
     "resize-observer-polyfill": "^1.5.1"
@@ -35,8 +35,8 @@
     "@types/gtag.js": "^0.0.18",
     "@types/jest": "^29.5.11",
     "@types/node": "18.7.14",
-    "@types/react": "18.0.18",
-    "@types/react-dom": "^18.2.8",
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@typescript-eslint/eslint-plugin": "^6.16.0",
     "@typescript-eslint/parser": "^6.16.0",
@@ -69,5 +69,9 @@
       "eslint './**/*.{js,jsx,ts,tsx}' --cache --fix",
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@rc",
+    "@types/react-dom": "npm:types-react-dom@rc"
   }
 }
