@@ -10,7 +10,7 @@ export async function generateStaticParams() {
 const CareerItem = async ({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   // searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   const { slug } = await params;
