@@ -7,7 +7,7 @@ export interface ResizeObserverEntry {
 }
 
 export const useResizeObserver = (
-  ref: RefObject<HTMLElement>,
+  ref: RefObject<HTMLElement | null>,
   callback?: (entry: DOMRectReadOnly) => void,
 ) => {
   useEffect(() => {

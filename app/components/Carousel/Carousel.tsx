@@ -10,7 +10,6 @@ import {
   useEffect,
 } from 'react';
 import Image from 'next/image';
-import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
 import { useResizeObserver } from '../../../helpers/hooks/useResizeObserver';
 import { DIRECTION_TYPE } from '../../../types';
 import useSwipe from '../../../helpers/hooks/useSwipe';
@@ -169,7 +168,12 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
             )
           }
         >
-          <RiArrowDropLeftLine />
+          <Image
+            src="/left-arrow.png"
+            alt="오른쪽 화살표"
+            width="20"
+            height="20"
+          />
         </button>
       )}
       {images.length > 0 && (
@@ -239,10 +243,14 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
               )
             }
           >
-            <RiArrowDropRightLine />
+            <Image
+              src="/right-arrow.png"
+              alt="오른쪽 화살표"
+              width="20"
+              height="20"
+            />
           </div>
           <div className="absolute bottom-0 flex items-center transform -translate-x-1/2 left-1/2 translate-y-0 text-[12px] font-[900] [&>svg]:text-[24px]">
-            <RiArrowDropLeftLine />
             <span>
               {activeIndex === 0
                 ? images.length
@@ -251,7 +259,6 @@ const Carousel: FunctionComponent<ICarouselProps> = ({
                   : activeIndex}{' '}
               / {currImages.length - 2}
             </span>
-            <RiArrowDropRightLine />
           </div>
         </>
       )}

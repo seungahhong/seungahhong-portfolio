@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 
-type InfinityScrollType<T> = [RefObject<HTMLDivElement>, T[]];
+type InfinityScrollType<T> = [RefObject<HTMLDivElement | null>, T[]];
 
 const useInfinityScroll = <T,>(
   datas: T[] = [],
