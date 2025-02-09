@@ -326,7 +326,7 @@ export const careerProjectDetailType: IProjectItemType = {
         },
       },
       {
-        title: '펀딩/스토어/스튜디오 운영업무',
+        title: '펀딩/스토어 스튜디오 운영업무',
         date: `2020.12 ~ ${today}`,
         images: [
           {
